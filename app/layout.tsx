@@ -1,0 +1,92 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { GrainOverlay } from "@/components/ui/GrainOverlay";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://iuvora.com"),
+  title: {
+    default: "Iuvora — Web, App, Marketing & IT Services",
+    template: "%s | Iuvora",
+  },
+  description:
+    "Iuvora is a full-service digital studio offering web development, app development, digital marketing, and IT services.",
+  keywords: [
+    "web development",
+    "app development",
+    "digital marketing",
+    "IT services",
+    "SEO",
+    "Next.js",
+    "React",
+  ],
+  authors: [{ name: "Iuvora" }],
+  creator: "Iuvora",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://iuvora.com",
+    siteName: "Iuvora",
+    title: "Iuvora — Web, App, Marketing & IT Services",
+    description:
+      "Full-service digital studio. We build things that perform.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Iuvora — Digital Studio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Iuvora — Web, App, Marketing & IT Services",
+    description: "Full-service digital studio. We build things that perform.",
+    images: ["/og-image.png"],
+    creator: "@iuvora",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        {/* Grain texture overlay — fixed, pointer-events none, 3% opacity */}
+        <GrainOverlay />
+        <Header />
+        <main id="main-content">
+          {children}
+        </main>
+        <Footer />
+        {/* Custom spring cursor — desktop only, progressive enhancement */}
+        <CustomCursor />
+      </body>
+    </html>
+  );
+}

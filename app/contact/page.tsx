@@ -1,0 +1,326 @@
+"use client";
+
+import { useState } from "react";
+import { ScrollThemeProvider } from "@/components/scroll/ScrollThemeProvider";
+import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { Button } from "@/components/ui/Button";
+
+const PROJECT_TYPES = [
+  "Web Development",
+  "App Development",
+  "Digital Marketing",
+  "IT Services",
+  "Multiple services",
+  "Not sure yet",
+];
+
+const BUDGET_RANGES = [
+  "< $5,000",
+  "$5,000 – $15,000",
+  "$15,000 – $50,000",
+  "$50,000 – $150,000",
+  "$150,000+",
+  "Let's discuss",
+];
+
+export default function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    projectType: "",
+    budget: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+    // Placeholder: replace with real form submission (e.g. Resend, Formspree, or custom API)
+    await new Promise((r) => setTimeout(r, 1200));
+    setStatus("sent");
+  };
+
+  const inputBase =
+    "w-full px-4 py-3 rounded-sm text-sm bg-transparent border outline-none transition-all duration-200 focus:border-[var(--color-accent)] placeholder:text-[var(--fg-muted)]";
+  const inputStyle = {
+    borderColor: "color-mix(in srgb, var(--fg) 20%, transparent)",
+    color: "var(--fg)",
+  };
+
+  return (
+    <>
+      <ScrollThemeProvider />
+
+      {/* ── Hero ─────────────────────────────────────────── */}
+      <SectionWrapper theme="dark" id="contact-hero" noPad>
+        <div
+          className="relative flex flex-col justify-center min-h-[50vh] container-grid"
+          style={{ paddingTop: "9rem", paddingBottom: "4rem" }}
+        >
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(0deg, var(--color-white) 0, var(--color-white) 1px, transparent 1px, transparent 80px), repeating-linear-gradient(90deg, var(--color-white) 0, var(--color-white) 1px, transparent 1px, transparent 80px)",
+            }}
+          />
+          <div className="relative z-10 max-w-3xl">
+            <p className="eyebrow mb-5">Contact</p>
+            <h1 className="hero-headline mb-6" style={{ color: "var(--color-white)" }}>
+              Let&apos;s talk.
+            </h1>
+            <p
+              className="text-lg leading-relaxed"
+              style={{ color: "var(--color-gray-mid)", maxWidth: "48ch" }}
+            >
+              Fill in the form and we&apos;ll get back to you within one
+              business day with a clear, no-fluff next step.
+            </p>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* ── Form + Info ──────────────────────────────────── */}
+      <SectionWrapper theme="light" id="contact-form">
+        <div className="container-grid">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
+
+            {/* ── Contact form ──────────────── */}
+            <div className="lg:col-span-3">
+              <h2 className="text-2xl font-bold mb-8" style={{ color: "var(--fg)", fontFamily: "var(--font-display)" }}>
+                Tell us about your project
+              </h2>
+
+              {status === "sent" ? (
+                <div
+                  className="p-8 rounded-sm border text-center"
+                  style={{
+                    borderColor: "var(--color-accent)",
+                    backgroundColor: "rgba(47,123,255,0.05)",
+                  }}
+                  role="alert"
+                >
+                  <span className="text-4xl block mb-4" aria-hidden="true">✓</span>
+                  <h3 className="text-xl font-bold mb-2" style={{ color: "var(--fg)", fontFamily: "var(--font-display)" }}>
+                    Message received!
+                  </h3>
+                  <p className="text-sm" style={{ color: "var(--fg-muted)" }}>
+                    We&apos;ll be in touch within one business day.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
+                  {/* Name + Email */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label
+                        htmlFor="contact-name"
+                        className="block text-xs font-semibold mb-2 tracking-wide"
+                        style={{ color: "var(--fg-muted)" }}
+                      >
+                        Name *
+                      </label>
+                      <input
+                        id="contact-name"
+                        name="name"
+                        type="text"
+                        required
+                        autoComplete="name"
+                        placeholder="Your full name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className={inputBase}
+                        style={inputStyle}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="contact-email"
+                        className="block text-xs font-semibold mb-2 tracking-wide"
+                        style={{ color: "var(--fg-muted)" }}
+                      >
+                        Email *
+                      </label>
+                      <input
+                        id="contact-email"
+                        name="email"
+                        type="email"
+                        required
+                        autoComplete="email"
+                        placeholder="you@company.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className={inputBase}
+                        style={inputStyle}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Project type */}
+                  <div>
+                    <label
+                      htmlFor="contact-project-type"
+                      className="block text-xs font-semibold mb-2 tracking-wide"
+                      style={{ color: "var(--fg-muted)" }}
+                    >
+                      Project type
+                    </label>
+                    <select
+                      id="contact-project-type"
+                      name="projectType"
+                      value={formData.projectType}
+                      onChange={handleChange}
+                      className={inputBase}
+                      style={inputStyle}
+                    >
+                      <option value="">Select a service</option>
+                      {PROJECT_TYPES.map((t) => (
+                        <option key={t} value={t}>{t}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Budget */}
+                  <div>
+                    <label
+                      htmlFor="contact-budget"
+                      className="block text-xs font-semibold mb-2 tracking-wide"
+                      style={{ color: "var(--fg-muted)" }}
+                    >
+                      Budget range
+                    </label>
+                    <select
+                      id="contact-budget"
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleChange}
+                      className={inputBase}
+                      style={inputStyle}
+                    >
+                      <option value="">Select a range</option>
+                      {BUDGET_RANGES.map((r) => (
+                        <option key={r} value={r}>{r}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <label
+                      htmlFor="contact-message"
+                      className="block text-xs font-semibold mb-2 tracking-wide"
+                      style={{ color: "var(--fg-muted)" }}
+                    >
+                      Message *
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      required
+                      rows={6}
+                      placeholder="Tell us what you're building, what's the problem, and any timeline constraints."
+                      value={formData.message}
+                      onChange={handleChange}
+                      className={`${inputBase} resize-none`}
+                      style={inputStyle}
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    size="lg"
+                    disabled={status === "sending"}
+                    id="contact-submit-btn"
+                  >
+                    {status === "sending" ? "Sending…" : "Send message →"}
+                  </Button>
+                </form>
+              )}
+            </div>
+
+            {/* ── Contact info ──────────────── */}
+            <div className="lg:col-span-2">
+              <h2 className="text-2xl font-bold mb-8" style={{ color: "var(--fg)", fontFamily: "var(--font-display)" }}>
+                Direct channels
+              </h2>
+
+              <div className="flex flex-col gap-8">
+                {[
+                  {
+                    label: "Email",
+                    value: "hello@iuvora.com",
+                    href: "mailto:hello@iuvora.com",
+                  },
+                  {
+                    label: "Phone",
+                    value: "[PLACEHOLDER — add phone number]",
+                    href: "#",
+                  },
+                  {
+                    label: "Location",
+                    value: "[PLACEHOLDER — City, Country]",
+                    href: null,
+                  },
+                ].map((info) => (
+                  <div
+                    key={info.label}
+                    className="pb-8 border-b"
+                    style={{ borderColor: "color-mix(in srgb, var(--fg) 10%, transparent)" }}
+                  >
+                    <p className="eyebrow mb-2">{info.label}</p>
+                    {info.href ? (
+                      <a
+                        href={info.href}
+                        className="text-base font-semibold transition-colors duration-200 hover:text-[var(--color-accent)] no-underline"
+                        style={{ color: "var(--fg)" }}
+                      >
+                        {info.value}
+                      </a>
+                    ) : (
+                      <p className="text-base font-semibold" style={{ color: "var(--fg)" }}>
+                        {info.value}
+                      </p>
+                    )}
+                  </div>
+                ))}
+
+                {/* Social */}
+                <div>
+                  <p className="eyebrow mb-4">Follow us</p>
+                  <div className="flex gap-4">
+                    {[
+                      { label: "LinkedIn", href: "#", icon: "in" },
+                      { label: "X / Twitter", href: "#", icon: "𝕏" },
+                      { label: "Instagram", href: "#", icon: "ig" },
+                    ].map((s) => (
+                      <a
+                        key={s.label}
+                        href={s.href}
+                        aria-label={s.label}
+                        className="w-10 h-10 flex items-center justify-center rounded-sm text-xs font-bold border transition-colors duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] no-underline"
+                        style={{
+                          borderColor: "color-mix(in srgb, var(--fg) 20%, transparent)",
+                          color: "var(--fg-muted)",
+                        }}
+                      >
+                        {s.icon}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </SectionWrapper>
+    </>
+  );
+}
