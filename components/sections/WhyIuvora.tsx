@@ -1,77 +1,96 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { WHY_IUVORA } from "@/lib/constants";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export function WhyIuvora() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    // Header reveal
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 75%",
+      once: true,
+      onEnter: () => {
+        gsap.fromTo(
+          ".why-header-anim",
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.1 }
+        );
+        
+        gsap.fromTo(
+          ".why-accent-line",
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.6, ease: "power2.out", delay: 0.4 }
+        );
+      },
+    });
+
+    // List items reveal
+    ScrollTrigger.create({
+      trigger: ".why-list-container",
+      start: "top 75%",
+      once: true,
+      onEnter: () => {
+        gsap.fromTo(
+          ".why-list-item",
+          { opacity: 0, x: 30 },
+          { opacity: 1, x: 0, duration: 0.5, ease: "power2.out", stagger: 0.08 }
+        );
+      },
+    });
+  }, { scope: containerRef });
 
   return (
     <SectionWrapper theme="dark" id="why-iuvora">
-      <div className="container-grid">
+      <div className="container-grid" ref={containerRef}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left — sticky headline */}
-          <div ref={ref} className="lg:sticky lg:top-32">
-            <motion.p
-              className="eyebrow mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
-            >
+          <div className="lg:sticky lg:top-32">
+            <p className="why-header-anim eyebrow mb-4">
               Why Iuvora
-            </motion.p>
-            <motion.h2
-              className="section-headline mb-6"
+            </p>
+            <h2
+              className="why-header-anim section-headline mb-6"
               style={{ color: "var(--fg)" }}
-              initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 }}
             >
               The difference
               <br />
               is in the details.
-            </motion.h2>
-            <motion.p
-              className="text-base leading-relaxed"
+            </h2>
+            <p
+              className="why-header-anim text-base leading-relaxed"
               style={{ color: "var(--fg-muted)" }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 }}
             >
               We obsess over the things most agencies skip — performance,
               accessibility, long-term maintainability, and honest reporting.
-            </motion.p>
+            </p>
 
             {/* Decorative accent line */}
-            <motion.div
-              className="mt-10 h-[2px] w-16"
-              style={{ backgroundColor: "var(--color-accent)" }}
-              initial={{ scaleX: 0, originX: 0 }}
-              animate={inView ? { scaleX: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.4 }}
+            <div
+              className="why-accent-line mt-10 h-[2px] w-16"
+              style={{ backgroundColor: "var(--color-accent)", transformOrigin: "left" }}
             />
           </div>
 
           {/* Right — differentiator cards */}
-          <div className="flex flex-col gap-0">
+          <div className="why-list-container flex flex-col gap-0">
             {WHY_IUVORA.map((item, i) => (
-              <motion.div
+              <div
                 key={item.title}
-                className="flex gap-6 py-8 border-b"
+                className="why-list-item flex gap-6 py-8 border-b opacity-0"
                 style={{
                   borderColor: "color-mix(in srgb, var(--fg) 12%, transparent)",
                 }}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{
-                  duration: 0.5,
-                  ease: [0.65, 0, 0.35, 1],
-                  delay: i * 0.08,
-                }}
-                viewport={{ once: true, margin: "-60px" }}
               >
                 {/* Accent number */}
                 <span
@@ -95,7 +114,7 @@ export function WhyIuvora() {
                     {item.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

@@ -1,52 +1,76 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { PROCESS_STEPS } from "@/lib/constants";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export function Process() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    // Header reveal
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 75%",
+      once: true,
+      onEnter: () => {
+        gsap.fromTo(
+          ".process-header-anim",
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.1 }
+        );
+      },
+    });
+
+    // Steps stagger reveal
+    ScrollTrigger.create({
+      trigger: ".process-steps-container",
+      start: "top 75%",
+      once: true,
+      onEnter: () => {
+        gsap.fromTo(
+          ".process-step",
+          { opacity: 0, x: -30 },
+          { opacity: 1, x: 0, duration: 0.6, ease: "power2.out", stagger: 0.08 }
+        );
+      },
+    });
+  }, { scope: containerRef });
 
   return (
     <SectionWrapper theme="dark" id="process">
-      <div className="container-grid">
+      <div className="container-grid" ref={containerRef}>
         {/* Header */}
-        <div ref={ref} className="max-w-2xl mb-20">
-          <motion.p
-            className="eyebrow mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-          >
+        <div className="max-w-2xl mb-20">
+          <p className="process-header-anim eyebrow mb-4">
             How we work
-          </motion.p>
-          <motion.h2
-            className="section-headline mb-5"
+          </p>
+          <h2
+            className="process-header-anim section-headline mb-5"
             style={{ color: "var(--fg)" }}
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
           >
             A process built for
             <br />
             real outcomes.
-          </motion.h2>
-          <motion.p
-            className="text-base leading-relaxed"
+          </h2>
+          <p
+            className="process-header-anim text-base leading-relaxed"
             style={{ color: "var(--fg-muted)" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
           >
             No black boxes. Every phase is visible, trackable, and designed so
             you can make informed decisions throughout.
-          </motion.p>
+          </p>
         </div>
 
         {/* Steps */}
-        <div className="relative">
+        <div className="process-steps-container relative">
           {/* Vertical connector line */}
           <div
             aria-hidden="true"
@@ -62,17 +86,9 @@ export function Process() {
 
           <div className="flex flex-col gap-0">
             {PROCESS_STEPS.map((step, i) => (
-              <motion.div
+              <div
                 key={step.number}
-                className="flex gap-8 lg:gap-12"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{
-                  duration: 0.6,
-                  ease: [0.65, 0, 0.35, 1],
-                  delay: i * 0.08,
-                }}
-                viewport={{ once: true, margin: "-60px" }}
+                className="process-step flex gap-8 lg:gap-12 opacity-0"
               >
                 {/* Step number — acts as a node on the connector line */}
                 <div className="flex-none flex flex-col items-center">
@@ -113,7 +129,7 @@ export function Process() {
                     {step.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

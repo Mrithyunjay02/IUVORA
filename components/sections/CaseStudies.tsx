@@ -1,8 +1,14 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const CASE_STUDIES = [
   {
@@ -39,16 +45,11 @@ function CaseStudyCard({
   index: number;
 }) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.65, 0, 0.35, 1], delay: index * 0.1 }}
-      viewport={{ once: true, margin: "-80px" }}
-      className="group"
+    <article
+      className="case-study-card group opacity-0"
       aria-label={item.title}
       id={`case-study-${item.id}`}
     >
-      {/* Placeholder image block — geometric BW aesthetic */}
       <div
         className="relative w-full mb-6 overflow-hidden rounded-sm"
         style={{ aspectRatio: "16/10" }}
@@ -62,7 +63,6 @@ function CaseStudyCard({
                 : "linear-gradient(135deg, #0f0f1a 0%, #1a2e1a 100%)",
           }}
         />
-        {/* Geometric placeholder pattern */}
         <div
           className="absolute inset-0 opacity-20"
           style={{
@@ -82,7 +82,6 @@ function CaseStudyCard({
             0{item.id}
           </span>
         </div>
-        {/* Overlay category badge */}
         <div className="absolute top-4 left-4">
           <span
             className="eyebrow px-3 py-1 rounded-sm"
@@ -96,7 +95,6 @@ function CaseStudyCard({
         </div>
       </div>
 
-      {/* Content */}
       <h3
         className="text-xl font-bold mb-3 leading-tight group-hover:text-[var(--color-accent)] transition-colors duration-200"
         style={{ color: "var(--fg)", fontFamily: "var(--font-display)" }}
@@ -110,7 +108,6 @@ function CaseStudyCard({
         {item.description}
       </p>
 
-      {/* Tags */}
       <div className="flex flex-wrap gap-2">
         {item.tags.map((tag) => (
           <span
@@ -125,49 +122,67 @@ function CaseStudyCard({
           </span>
         ))}
       </div>
-    </motion.article>
+    </article>
   );
 }
 
 export function CaseStudies() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    // Header reveal
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 75%",
+      once: true,
+      onEnter: () => {
+        gsap.fromTo(
+          ".case-studies-header-anim",
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.1 }
+        );
+      },
+    });
+
+    // Cards stagger reveal
+    ScrollTrigger.create({
+      trigger: ".case-studies-grid",
+      start: "top 75%",
+      once: true,
+      onEnter: () => {
+        gsap.fromTo(
+          ".case-study-card",
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.1 }
+        );
+      },
+    });
+  }, { scope: containerRef });
 
   return (
     <SectionWrapper theme="light" id="work">
-      <div className="container-grid">
-        <div ref={ref} className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+      <div className="container-grid" ref={containerRef}>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
           <div>
-            <motion.p
-              className="eyebrow mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
-            >
+            <p className="case-studies-header-anim eyebrow mb-4">
               Our work
-            </motion.p>
-            <motion.h2
-              className="section-headline"
+            </p>
+            <h2
+              className="case-studies-header-anim section-headline"
               style={{ color: "var(--fg)" }}
-              initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 }}
             >
               Selected projects.
-            </motion.h2>
+            </h2>
           </div>
-          <motion.p
-            className="text-sm pb-1"
+          <p
+            className="case-studies-header-anim text-sm pb-1"
             style={{ color: "var(--color-accent)" }}
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
           >
             ⚠ Placeholders — real case studies coming soon
-          </motion.p>
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="case-studies-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {CASE_STUDIES.map((item, i) => (
             <CaseStudyCard key={item.id} item={item} index={i} />
           ))}

@@ -4,6 +4,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { SmoothScrollProvider } from "@/components/scroll/SmoothScrollProvider";
+import { Preloader } from "@/components/ui/Preloader";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://iuvora.com"),
@@ -77,13 +79,16 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* Grain texture overlay — fixed, pointer-events none, 3% opacity */}
-        <GrainOverlay />
-        <Header />
-        <main id="main-content">
-          {children}
-        </main>
-        <Footer />
+        <Preloader />
+        <SmoothScrollProvider>
+          {/* Grain texture overlay — fixed, pointer-events none, 3% opacity */}
+          <GrainOverlay />
+          <Header />
+          <main id="main-content">
+            {children}
+          </main>
+          <Footer />
+        </SmoothScrollProvider>
         {/* Custom spring cursor — desktop only, progressive enhancement */}
         <CustomCursor />
       </body>

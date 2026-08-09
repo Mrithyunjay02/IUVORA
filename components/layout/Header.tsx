@@ -50,7 +50,7 @@ export function Header() {
         >
           {/* Logo */}
           <Link href="/" aria-label="Iuvora — Home">
-            <IuvoraLogo width={120} />
+            <IuvoraLogo width={120} priority={true} />
           </Link>
 
           {/* Desktop Nav */}

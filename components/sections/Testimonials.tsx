@@ -1,8 +1,14 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const PLACEHOLDER_TESTIMONIALS = [
   {
@@ -32,48 +38,65 @@ const PLACEHOLDER_TESTIMONIALS = [
 ];
 
 export function Testimonials() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    // Header reveal
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 75%",
+      once: true,
+      onEnter: () => {
+        gsap.fromTo(
+          ".test-header-anim",
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.1 }
+        );
+      },
+    });
+
+    // Cards stagger reveal
+    ScrollTrigger.create({
+      trigger: ".testimonials-grid",
+      start: "top 75%",
+      once: true,
+      onEnter: () => {
+        gsap.fromTo(
+          ".testimonial-card",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.1 }
+        );
+      },
+    });
+  }, { scope: containerRef });
 
   return (
     <SectionWrapper theme="light" id="testimonials">
-      <div className="container-grid">
+      <div className="container-grid" ref={containerRef}>
         {/* Header */}
-        <div ref={ref} className="max-w-xl mb-16">
-          <motion.p
-            className="eyebrow mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-          >
+        <div className="max-w-xl mb-16">
+          <p className="test-header-anim eyebrow mb-4">
             What clients say
-          </motion.p>
-          <motion.h2
-            className="section-headline"
+          </p>
+          <h2
+            className="test-header-anim section-headline"
             style={{ color: "var(--fg)" }}
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
           >
             Trusted by founders
             <br />
             and operators.
-          </motion.h2>
+          </h2>
         </div>
 
         {/* Testimonial cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="testimonials-grid grid grid-cols-1 md:grid-cols-3 gap-6">
           {PLACEHOLDER_TESTIMONIALS.map((t, i) => (
-            <motion.div
+            <div
               key={t.id}
-              className="card-border rounded-sm p-8 flex flex-col gap-6"
+              className="testimonial-card card-border rounded-sm p-8 flex flex-col gap-6 opacity-0"
               style={{
                 backgroundColor: "color-mix(in srgb, var(--fg) 3%, transparent)",
               }}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: [0.65, 0, 0.35, 1], delay: i * 0.1 }}
-              viewport={{ once: true, margin: "-60px" }}
               id={`testimonial-${t.id}`}
               aria-label={`Testimonial from ${t.name}`}
             >
@@ -119,7 +142,7 @@ export function Testimonials() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

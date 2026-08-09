@@ -1,62 +1,47 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-
-/**
- * CustomCursor — zero-lag position tracking
- *
- * Position is written directly in the mousemove handler using
- * transform: translate3d(). No lerp, no spring, no rAF loop for position.
- *
- * mousemove events fire at most once per frame when the listener is
- * {passive: true}, so writing transform directly in the handler is
- * frame-perfect with zero perceptible delay.
- *
- * The hover scale/ring transition is kept as a CSS transition on the
- * element — only POSITION tracking is instant.
- */
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const HOVER = "a, button, [data-cursor-hover], .card-border, label, input, textarea, select";
 
 export function CustomCursor() {
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const canHover = window.matchMedia(
-      "(hover: hover) and (pointer: fine)"
-    ).matches;
-
-    if (!canHover) return;
+  useGSAP(() => {
+    // Only apply on fine pointers (skip on touch devices)
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
     const el = ref.current;
     if (!el) return;
 
     document.documentElement.style.cursor = "none";
 
-    let hovered = false;
+    // Set initial state via GSAP
+    gsap.set(el, { xPercent: -50, yPercent: -50, autoAlpha: 0, scale: 1 });
+
     let visible = false;
 
     const onMove = (e: MouseEvent) => {
       if (!visible) {
-        el.style.opacity = "1";
+        gsap.to(el, { autoAlpha: 1, duration: 0.15 });
         visible = true;
       }
-      // Raw position — zero lag, zero interpolation
-      // Scale is baked in so we don't need a separate rAF loop
-      el.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%) scale(${hovered ? 2.5 : 1})`;
+      gsap.to(el, { x: e.clientX, y: e.clientY, duration: 0.1, ease: "power2.out", overwrite: "auto" });
     };
 
     const onOver = (e: MouseEvent) => {
       if ((e.target as Element).closest(HOVER)) {
-        hovered = true;
         el.classList.add("cursor--hover");
+        gsap.to(el, { scale: 2.5, duration: 0.25, ease: "power2.out", overwrite: "auto" });
       }
     };
 
     const onOut = (e: MouseEvent) => {
       if ((e.target as Element).closest(HOVER)) {
-        hovered = false;
         el.classList.remove("cursor--hover");
+        gsap.to(el, { scale: 1, duration: 0.25, ease: "power2.out", overwrite: "auto" });
       }
     };
 
@@ -70,7 +55,7 @@ export function CustomCursor() {
       document.removeEventListener("mouseout", onOut);
       document.documentElement.style.cursor = "";
     };
-  }, []);
+  }, { scope: ref });
 
   return (
     <div
@@ -88,12 +73,10 @@ export function CustomCursor() {
         backgroundColor: "var(--color-accent)",
         pointerEvents: "none",
         zIndex: 9999,
-        opacity: 0,
-        // Transition ONLY visual properties (scale, bg, border) — NOT position
-        // transform is set directly in mousemove so CSS must not transition it
-        transition:
-          "opacity 150ms ease, background-color 250ms ease, border 250ms ease",
-        transform: "translate3d(-100px, -100px, 0) translate(-50%, -50%) scale(1)",
+        // Visibility is entirely controlled by GSAP
+        visibility: "hidden",
+        // Transition ONLY visual properties (bg, border)
+        transition: "background-color 250ms ease, border 250ms ease",
         willChange: "transform",
       }}
     />
