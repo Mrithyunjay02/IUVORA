@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -14,26 +15,72 @@ const CASE_STUDIES = [
   {
     id: 1,
     category: "Web Development",
-    title: "[PLACEHOLDER — Client Project Name]",
+    title: "Daynit Enterprises",
+    featured: true,
+    accent: "gold",
+    image: "/case-studies/daynit.webp",
+    imageFit: "cover" as const,
     description:
-      "[PLACEHOLDER — Replace with a 1–2 sentence summary of what was built, the problem it solved, and the technology used. Do not publish fabricated metrics.]",
-    tags: ["Next.js", "E-commerce", "Performance"],
+      "An independent import and export business connecting global markets — exporting fresh produce, spices, grains, pulses, and eco-friendly tableware. The site showcases their product range, sourcing-to-delivery process, and latest trade news for buyers worldwide.",
+    tags: ["Web Development", "Export & Trade", "Global Sourcing"],
+    link: "https://daynitenterprises.com",
+    isPrototype: false,
   },
   {
     id: 2,
-    category: "App Development",
-    title: "[PLACEHOLDER — Client Project Name]",
+    category: "Web Development",
+    title: "Shams Al Kanari",
+    featured: true,
+    accent: "gold",
+    image: "/case-studies/shams.webp",
+    imageFit: "cover" as const,
     description:
-      "[PLACEHOLDER — Replace with a 1–2 sentence summary of the mobile app, its audience, and outcome. Do not publish fabricated metrics.]",
-    tags: ["React Native", "iOS", "Android"],
+      "A luxury architectural service and property maintenance brand serving Dubai's premium villas, penthouses, and commercial spaces. The site presents their bespoke services, portfolio of featured projects, and booking channels for discerning clients across the city.",
+    tags: ["Web Development", "Luxury Architecture", "Dubai Real Estate"],
+    link: "https://shamsalkanari.com",
+    isPrototype: false,
   },
   {
     id: 3,
-    category: "Digital Marketing",
-    title: "[PLACEHOLDER — Client Project Name]",
+    category: "Web Development",
+    title: "MH Developers",
+    featured: false,
+    accent: "blue",
+    image: "/case-studies/mhdevelopers.webp",
+    imageFit: "cover" as const,
     description:
-      "[PLACEHOLDER — Replace with a brief description of the marketing campaign, channels used, and real measurable results when available.]",
-    tags: ["SEO", "Paid Ads", "Content"],
+      "A construction and real estate development company showcasing completed and ongoing residential projects, leadership team, and a project inquiry system for prospective buyers across Karnataka.",
+    tags: ["Web Development", "Real Estate", "Construction"],
+    link: "https://mhdevelopers.netlify.app",
+    isPrototype: false,
+  },
+  {
+    id: 4,
+    category: "Web Development",
+    title: "FitForce",
+    featured: false,
+    accent: "blue",
+    image: "/case-studies/fitforce.webp",
+    imageFit: "cover" as const,
+    description:
+      "A personal fitness coaching brand offering online training plans, nutrition guidance, and trainer certifications — built with a full enrollment and plan-selection experience for clients.",
+    tags: ["Web Development", "Fitness", "Coaching"],
+    link: "https://getfitwith-abhi.netlify.app",
+    isPrototype: false,
+  },
+  {
+    id: 5,
+    category: "App Development",
+    title: "Matru-Sneh",
+    featured: false,
+    accent: "blue",
+    image: "/case-studies/matrusneha.webp",
+    imageFit: "contain" as const,
+    description:
+      "A bilingual (Kannada/English) maternal health companion app for tracking pregnancy — featuring a kick counter, checkup countdown with appointment tracking, weekly baby growth updates, a daily nutrition checklist, and a health alerts system for recognizing pregnancy danger signs.",
+    tags: ["App Development", "Maternal Health", "Mobile UI"],
+    link: null,
+    isPrototype: true,
   },
 ];
 
@@ -44,83 +91,219 @@ function CaseStudyCard({
   item: (typeof CASE_STUDIES)[number];
   index: number;
 }) {
+  const isGold = item.accent === "gold";
+  const isAppDev = item.category === "App Development";
+  const accentColor = isGold ? "#C9A227" : isAppDev ? "#38bdf8" : "var(--color-accent)";
+  const accentBorder = isGold
+    ? "rgba(201,162,39,0.35)"
+    : isAppDev
+    ? "rgba(56,189,248,0.35)"
+    : "rgba(47,123,255,0.3)";
+
   return (
     <article
-      className="case-study-card group opacity-0"
+      className="case-study-card group opacity-0 flex flex-col justify-between p-6 md:p-8 rounded-sm card-border transition-all duration-300"
       aria-label={item.title}
       id={`case-study-${item.id}`}
+      style={{
+        backgroundColor: "color-mix(in srgb, var(--fg) 2%, transparent)",
+      }}
+      onMouseEnter={(e) => {
+        if (isGold) {
+          e.currentTarget.style.borderColor = "rgba(201,162,39,0.35)";
+          e.currentTarget.style.boxShadow =
+            "0 0 0 1px rgba(201,162,39,0.2), 0 0 24px rgba(201,162,39,0.12), 0 0 4px rgba(201,162,39,0.25)";
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (isGold) {
+          e.currentTarget.style.borderColor = "";
+          e.currentTarget.style.boxShadow = "";
+        }
+      }}
     >
-      <div
-        className="relative w-full mb-6 overflow-hidden rounded-sm"
-        style={{ aspectRatio: "16/10" }}
-      >
+      <div>
+        {/* Visual Header */}
         <div
-          className="absolute inset-0"
+          className="relative w-full mb-6 overflow-hidden rounded-sm border"
           style={{
+            aspectRatio: "16/10",
+            borderColor: isGold
+              ? "rgba(201,162,39,0.28)"
+              : "color-mix(in srgb, var(--fg) 10%, transparent)",
             background:
-              index % 2 === 0
-                ? "linear-gradient(135deg, var(--color-black) 0%, #1a1a2e 100%)"
-                : "linear-gradient(135deg, #0f0f1a 0%, #1a2e1a 100%)",
+              item.imageFit === "contain"
+                ? "radial-gradient(ellipse at center, #111a2e 0%, #080c14 100%)"
+                : undefined,
           }}
-        />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(45deg, var(--color-gray-mid) 0, var(--color-gray-mid) 1px, transparent 1px, transparent 20px)",
-          }}
-          aria-hidden="true"
-        />
-        <div
-          className="absolute inset-0 flex items-center justify-center"
-          aria-hidden="true"
         >
-          <span
-            className="text-6xl font-black font-[var(--font-display)] opacity-10"
-            style={{ color: "var(--color-white)" }}
-          >
-            0{item.id}
-          </span>
+          {item.image ? (
+            <>
+              {/* Real Screenshot */}
+              <Image
+                src={item.image}
+                alt={`${item.title} Screenshot Preview`}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className={
+                  item.imageFit === "contain"
+                    ? "object-contain p-3.5 transition-transform duration-500 group-hover:scale-[1.04]"
+                    : "object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                }
+                priority={index < 2}
+              />
+
+              {/* Dark vignette / gradient overlay for badges & text contrast */}
+              <div
+                className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+                style={{
+                  background:
+                    item.imageFit === "contain"
+                      ? "linear-gradient(180deg, rgba(8,12,20,0.5) 0%, transparent 40%, rgba(8,12,20,0.7) 100%)"
+                      : "linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.15) 45%, rgba(10,10,10,0.85) 100%)",
+                }}
+              />
+            </>
+          ) : (
+            <div
+              className="absolute inset-0"
+              style={{
+                background: "linear-gradient(135deg, #0b1528 0%, #102a43 50%, #1e3a8a 100%)",
+              }}
+            />
+          )}
+
+          {/* Category Tag */}
+          <div className="absolute top-4 left-4 z-10">
+            <span
+              className="eyebrow px-3 py-1 rounded-sm text-[11px] flex items-center gap-1.5"
+              style={{
+                backgroundColor: isGold
+                  ? "rgba(18,15,8,0.88)"
+                  : isAppDev
+                  ? "rgba(8,18,30,0.88)"
+                  : "rgba(8,16,32,0.88)",
+                border: `1px solid ${accentBorder}`,
+                color: accentColor,
+                backdropFilter: "blur(6px)",
+              }}
+            >
+              {isAppDev && (
+                <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                  <line x1="12" y1="18" x2="12.01" y2="18" />
+                </svg>
+              )}
+              <span>{item.category}</span>
+            </span>
+          </div>
+
+          {/* Featured Badge */}
+          {item.featured && (
+            <div className="absolute top-4 right-4 z-10">
+              <span
+                className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-sm flex items-center gap-1.5"
+                style={{
+                  backgroundColor: "rgba(18,15,8,0.88)",
+                  border: "1px solid rgba(201,162,39,0.55)",
+                  color: "#C9A227",
+                  backdropFilter: "blur(6px)",
+                }}
+              >
+                <span
+                  className="w-1.5 h-1.5 rounded-full animate-pulse"
+                  style={{ backgroundColor: "#C9A227" }}
+                />
+                Featured
+              </span>
+            </div>
+          )}
         </div>
-        <div className="absolute top-4 left-4">
-          <span
-            className="eyebrow px-3 py-1 rounded-sm"
-            style={{
-              backgroundColor: "rgba(47,123,255,0.15)",
-              border: "1px solid rgba(47,123,255,0.3)",
-            }}
-          >
-            {item.category}
-          </span>
+
+        {/* Title */}
+        <h3
+          className="text-xl md:text-2xl font-bold mb-3 leading-tight transition-colors duration-200"
+          style={{
+            color: "var(--fg)",
+            fontFamily: "var(--font-display)",
+          }}
+        >
+          {item.title}
+        </h3>
+
+        {/* Description */}
+        <p
+          className="text-sm leading-relaxed mb-6"
+          style={{ color: "var(--fg-muted)" }}
+        >
+          {item.description}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {item.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-xs px-2.5 py-1 rounded-sm"
+              style={{
+                color: "var(--fg-muted)",
+                backgroundColor: "color-mix(in srgb, var(--fg) 4%, transparent)",
+                border: "1px solid color-mix(in srgb, var(--fg) 12%, transparent)",
+              }}
+            >
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
 
-      <h3
-        className="text-xl font-bold mb-3 leading-tight group-hover:text-[var(--color-accent)] transition-colors duration-200"
-        style={{ color: "var(--fg)", fontFamily: "var(--font-display)" }}
+      {/* Footer / CTA */}
+      <div
+        className="pt-4 border-t flex items-center justify-between"
+        style={{ borderColor: "color-mix(in srgb, var(--fg) 10%, transparent)" }}
       >
-        {item.title}
-      </h3>
-      <p
-        className="text-sm leading-relaxed mb-4"
-        style={{ color: "var(--fg-muted)" }}
-      >
-        {item.description}
-      </p>
-
-      <div className="flex flex-wrap gap-2">
-        {item.tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-xs px-2 py-1 rounded-sm"
-            style={{
-              color: "var(--fg-muted)",
-              border: "1px solid color-mix(in srgb, var(--fg) 15%, transparent)",
-            }}
+        {item.link ? (
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200 no-underline"
+            style={{ color: "var(--fg)" }}
+            id={`case-study-${item.id}-link`}
+            onMouseEnter={(e) => (e.currentTarget.style.color = accentColor)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--fg)")}
           >
-            {tag}
-          </span>
-        ))}
+            <span>Visit Website</span>
+            <span
+              aria-hidden="true"
+              className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              style={{ color: accentColor }}
+            >
+              ↗
+            </span>
+          </a>
+        ) : (
+          <div className="flex items-center justify-between w-full">
+            <span
+              className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-sm border uppercase tracking-wider select-none"
+              style={{
+                backgroundColor: "rgba(56, 189, 248, 0.08)",
+                borderColor: "rgba(56, 189, 248, 0.25)",
+                color: "#38bdf8",
+              }}
+              id={`case-study-${item.id}-prototype`}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] opacity-80" />
+              Prototype
+            </span>
+            <span
+              className="text-xs font-medium"
+              style={{ color: "var(--fg-muted)" }}
+            >
+              Mobile Case Study
+            </span>
+          </div>
+        )}
       </div>
     </article>
   );
@@ -176,9 +359,9 @@ export function CaseStudies() {
           </div>
           <p
             className="case-studies-header-anim text-sm pb-1"
-            style={{ color: "var(--color-accent)" }}
+            style={{ color: "var(--fg-muted)" }}
           >
-            ⚠ Placeholders — real case studies coming soon
+            Recent deliverables &amp; client partnerships
           </p>
         </div>
 
