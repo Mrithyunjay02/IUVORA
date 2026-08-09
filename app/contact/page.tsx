@@ -25,26 +25,81 @@ const BUDGET_RANGES = [
 
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     projectType: "",
     budget: "",
     message: "",
+    honeypot: "",
   });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (status === "error") {
+      setStatus("idle");
+      setErrorMessage("");
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage("");
+
+    // Client-side quick validation
+    if (!formData.name.trim()) {
+      setStatus("error");
+      setErrorMessage("Please enter your name.");
+      return;
+    }
+    if (!formData.email.trim() || !formData.email.includes("@")) {
+      setStatus("error");
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+    if (!formData.message.trim()) {
+      setStatus("error");
+      setErrorMessage("Please enter your message or project requirements.");
+      return;
+    }
+
     setStatus("sending");
-    // Placeholder: replace with real form submission (e.g. Resend, Formspree, or custom API)
-    await new Promise((r) => setTimeout(r, 1200));
-    setStatus("sent");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send your message. Please try again.");
+      }
+
+      setStatus("sent");
+      setFormData({
+        name: "",
+        email: "",
+        projectType: "",
+        budget: "",
+        message: "",
+        honeypot: "",
+      });
+    } catch (err: unknown) {
+      setStatus("error");
+      setErrorMessage(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong while sending your message. Please try again or email hello@iuvora.com directly."
+      );
+    }
   };
 
   const inputBase =
@@ -112,12 +167,61 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold mb-2" style={{ color: "var(--fg)", fontFamily: "var(--font-display)" }}>
                     Message received!
                   </h3>
-                  <p className="text-sm" style={{ color: "var(--fg-muted)" }}>
-                    We&apos;ll be in touch within one business day.
+                  <p className="text-sm mb-6" style={{ color: "var(--fg-muted)" }}>
+                    Thanks, we&apos;ll get back to you within one business day with clear next steps.
                   </p>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      setStatus("idle");
+                      setErrorMessage("");
+                    }}
+                  >
+                    Send another message
+                  </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
+                  {/* Honeypot Spam Protection (hidden from humans) */}
+                  <div style={{ display: "none" }} aria-hidden="true">
+                    <label htmlFor="contact-hp-field">Leave this empty</label>
+                    <input
+                      id="contact-hp-field"
+                      name="honeypot"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={formData.honeypot}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  {/* Error Notification Banner */}
+                  {status === "error" && errorMessage && (
+                    <div
+                      className="p-4 rounded-sm border text-sm flex items-start gap-3"
+                      style={{
+                        backgroundColor: "rgba(239, 68, 68, 0.08)",
+                        borderColor: "rgba(239, 68, 68, 0.35)",
+                        color: "#ef4444",
+                      }}
+                      role="alert"
+                    >
+                      <span className="font-bold text-base leading-none">⚠</span>
+                      <div className="flex-1">
+                        <p className="font-semibold">{errorMessage}</p>
+                        <p className="text-xs text-[var(--fg-muted)] mt-1">
+                          You can also reach us directly at{" "}
+                          <a href="mailto:hello@iuvora.com" className="underline font-medium text-[var(--color-accent)]">
+                            hello@iuvora.com
+                          </a>.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Name + Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
@@ -240,7 +344,7 @@ export default function ContactPage() {
                     disabled={status === "sending"}
                     id="contact-submit-btn"
                   >
-                    {status === "sending" ? "Sending…" : "Send message →"}
+                    {status === "sending" ? "Sending message…" : "Send message →"}
                   </Button>
                 </form>
               )}

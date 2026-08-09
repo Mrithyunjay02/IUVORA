@@ -10,30 +10,30 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const PLACEHOLDER_TESTIMONIALS = [
+const TESTIMONIALS = [
   {
     id: 1,
     quote:
-      "[PLACEHOLDER — Replace with a real client testimonial. Do not publish this placeholder text.]",
-    name: "[PLACEHOLDER — Client Name]",
-    title: "[PLACEHOLDER — Title, Company]",
-    initial: "P",
+      "We needed a website that could actually represent our export business properly, and Iuvora delivered exactly that. Quick turnaround, easy to work with, and they got the details right.",
+    name: "Kandiga Akshay Kumar",
+    title: "Founder, Daynit Enterprises",
+    initial: "KA",
   },
   {
     id: 2,
     quote:
-      "[PLACEHOLDER — Replace with a real client testimonial. Do not publish this placeholder text.]",
-    name: "[PLACEHOLDER — Client Name]",
-    title: "[PLACEHOLDER — Title, Company]",
-    initial: "P",
+      "Iuvora understood the premium feel we wanted for our brand right away. Communication was smooth throughout, and the final site turned out better than we expected.",
+    name: "Rashid Ahmed",
+    title: "Founder, Shams Al Kanari",
+    initial: "RA",
   },
   {
     id: 3,
     quote:
-      "[PLACEHOLDER — Replace with a real client testimonial. Do not publish this placeholder text.]",
-    name: "[PLACEHOLDER — Client Name]",
-    title: "[PLACEHOLDER — Title, Company]",
-    initial: "P",
+      "Clean, professional work from start to finish. Iuvora took our requirements and turned them into a site that genuinely fits our business.",
+    name: null,
+    title: "Founder, MH Developers",
+    initial: "MH",
   },
 ];
 
@@ -90,7 +90,7 @@ export function Testimonials() {
 
         {/* Testimonial cards */}
         <div className="testimonials-grid grid grid-cols-1 md:grid-cols-3 gap-6">
-          {PLACEHOLDER_TESTIMONIALS.map((t, i) => (
+          {TESTIMONIALS.map((t) => (
             <div
               key={t.id}
               className="testimonial-card card-border rounded-sm p-8 flex flex-col gap-6 opacity-0"
@@ -98,7 +98,7 @@ export function Testimonials() {
                 backgroundColor: "color-mix(in srgb, var(--fg) 3%, transparent)",
               }}
               id={`testimonial-${t.id}`}
-              aria-label={`Testimonial from ${t.name}`}
+              aria-label={`Testimonial from ${t.name || t.title}`}
             >
               {/* Quote mark */}
               <span
@@ -119,7 +119,7 @@ export function Testimonials() {
               </blockquote>
 
               <div className="flex items-center gap-3 mt-auto pt-4 border-t" style={{ borderColor: "color-mix(in srgb, var(--fg) 10%, transparent)" }}>
-                {/* Avatar placeholder */}
+                {/* Avatar Initials */}
                 <div
                   className="w-10 h-10 rounded-sm flex items-center justify-center text-sm font-bold shrink-0"
                   style={{
@@ -131,24 +131,31 @@ export function Testimonials() {
                   {t.initial}
                 </div>
                 <div>
-                  <p
-                    className="text-sm font-bold"
-                    style={{ color: "var(--fg)" }}
-                  >
-                    {t.name}
-                  </p>
-                  <p className="text-xs" style={{ color: "var(--fg-muted)" }}>
-                    {t.title}
-                  </p>
+                  {t.name ? (
+                    <>
+                      <p
+                        className="text-sm font-bold"
+                        style={{ color: "var(--fg)" }}
+                      >
+                        {t.name}
+                      </p>
+                      <p className="text-xs" style={{ color: "var(--fg-muted)" }}>
+                        {t.title}
+                      </p>
+                    </>
+                  ) : (
+                    <p
+                      className="text-sm font-bold"
+                      style={{ color: "var(--fg)" }}
+                    >
+                      {t.title}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
           ))}
         </div>
-
-        <p className="mt-8 text-xs text-center" style={{ color: "var(--color-accent)" }}>
-          ⚠ Testimonial placeholders — replace with real client quotes before publishing
-        </p>
       </div>
     </SectionWrapper>
   );
