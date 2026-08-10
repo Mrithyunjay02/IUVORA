@@ -6,7 +6,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, projectType, budget, message, honeypot } = body;
+    const { name, email, projectType, message, honeypot } = body;
 
     // 1. Honeypot Spam Protection: if bot filled hidden field, fake success
     if (honeypot && String(honeypot).trim().length > 0) {
@@ -24,8 +24,6 @@ export async function POST(req: Request) {
       typeof projectType === "string" && projectType.trim()
         ? projectType.trim()
         : "Not specified";
-    const cleanBudget =
-      typeof budget === "string" && budget.trim() ? budget.trim() : "Not specified";
 
     if (!cleanName || cleanName.length < 2) {
       return NextResponse.json(
@@ -88,10 +86,6 @@ export async function POST(req: Request) {
               <td style="padding: 8px 0; color: #6b7280; font-weight: 600;">Project Type:</td>
               <td style="padding: 8px 0; color: #111827;">${cleanProjectType}</td>
             </tr>
-            <tr>
-              <td style="padding: 8px 0; color: #6b7280; font-weight: 600;">Budget Range:</td>
-              <td style="padding: 8px 0; color: #111827;">${cleanBudget}</td>
-            </tr>
           </tbody>
         </table>
 
@@ -112,7 +106,6 @@ New Project Inquiry - Iuvora
 Client Name: ${cleanName}
 Email: ${cleanEmail}
 Project Type: ${cleanProjectType}
-Budget Range: ${cleanBudget}
 
 Message:
 ${cleanMessage}

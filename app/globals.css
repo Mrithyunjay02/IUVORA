@@ -197,6 +197,7 @@ a.accent-link:hover {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-accent);
+  max-width: 100%;
 }
 
 /* Divider */

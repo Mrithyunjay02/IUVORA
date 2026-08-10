@@ -13,7 +13,7 @@ if (typeof window !== "undefined") {
 
 // ── Section 9.4 — Stat counter ─────────────────────────────────────────────
 const STATS = [
-  { target: 50,  suffix: "+", label: "Projects delivered" },
+  { target: 5,   suffix: "",  label: "Projects delivered" },
   { target: 4,   suffix: "",  label: "Service verticals"  },
   { target: 100, suffix: "%", label: "In-house team"       },
 ];

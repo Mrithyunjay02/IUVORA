@@ -57,13 +57,13 @@ export function CtaBand() {
           />
         </div>
 
-        <div className="relative z-10 text-center max-w-3xl mx-auto">
-          <p className="cta-anim-item eyebrow mb-6">
+        <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto">
+          <p className="cta-anim-item eyebrow mb-6 text-center w-full">
             Ready to build?
           </p>
 
           <h2
-            className="cta-anim-item section-headline mb-6"
+            className="cta-anim-item section-headline mb-6 text-center w-full"
             style={{ color: "var(--fg)" }}
           >
             Let&apos;s turn your idea
@@ -72,7 +72,7 @@ export function CtaBand() {
           </h2>
 
           <p
-            className="cta-anim-item text-lg leading-relaxed mb-10 mx-auto"
+            className="cta-anim-item text-lg leading-relaxed mb-10 text-center mx-auto"
             style={{ color: "var(--fg-muted)", maxWidth: "45ch" }}
           >
             Tell us about your project. We&apos;ll respond within one business

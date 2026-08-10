@@ -191,24 +191,26 @@ export function ServicePageTemplate({ service }: ServicePageTemplateProps) {
 
       {/* ── CTA ──────────────────────────────────────────────── */}
       <SectionWrapper theme="light" id="service-cta">
-        <div className="container-grid text-center max-w-2xl mx-auto">
-          <p className="eyebrow mb-4">Get started</p>
-          <h2 className="section-headline mb-6" style={{ color: "var(--fg)" }}>
-            Ready to work
-            <br />
-            together?
-          </h2>
-          <p className="text-base leading-relaxed mb-10" style={{ color: "var(--fg-muted)" }}>
-            Tell us about your project and we&apos;ll come back with a clear
-            proposal — scoped, costed, and ready to start.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button href="/contact" size="lg" id={`${service.slug}-cta-bottom`}>
-              Start a Project →
-            </Button>
-            <Button href="/about" size="lg" variant="outline" id={`${service.slug}-about-link`}>
-              About Iuvora
-            </Button>
+        <div className="container-grid">
+          <div className="max-w-2xl mx-auto flex flex-col items-center text-center">
+            <p className="eyebrow mb-4 text-center">Get started</p>
+            <h2 className="section-headline mb-6 text-center w-full" style={{ color: "var(--fg)" }}>
+              Ready to work
+              <br />
+              together?
+            </h2>
+            <p className="text-base leading-relaxed mb-10 text-center mx-auto" style={{ color: "var(--fg-muted)", maxWidth: "48ch" }}>
+              Tell us about your project and we&apos;ll come back with a clear
+              proposal — scoped, costed, and ready to start.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button href="/contact" size="lg" id={`${service.slug}-cta-bottom`}>
+                Start a Project →
+              </Button>
+              <Button href="/about" size="lg" variant="outline" id={`${service.slug}-about-link`}>
+                About Iuvora
+              </Button>
+            </div>
           </div>
         </div>
       </SectionWrapper>

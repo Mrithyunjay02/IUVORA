@@ -14,15 +14,6 @@ const PROJECT_TYPES = [
   "Not sure yet",
 ];
 
-const BUDGET_RANGES = [
-  "< $5,000",
-  "$5,000 – $15,000",
-  "$15,000 – $50,000",
-  "$50,000 – $150,000",
-  "$150,000+",
-  "Let's discuss",
-];
-
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
@@ -30,7 +21,6 @@ export default function ContactPage() {
     name: "",
     email: "",
     projectType: "",
-    budget: "",
     message: "",
     honeypot: "",
   });
@@ -88,7 +78,6 @@ export default function ContactPage() {
         name: "",
         email: "",
         projectType: "",
-        budget: "",
         message: "",
         honeypot: "",
       });
@@ -288,30 +277,6 @@ export default function ContactPage() {
                       <option value="">Select a service</option>
                       {PROJECT_TYPES.map((t) => (
                         <option key={t} value={t}>{t}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Budget */}
-                  <div>
-                    <label
-                      htmlFor="contact-budget"
-                      className="block text-xs font-semibold mb-2 tracking-wide"
-                      style={{ color: "var(--fg-muted)" }}
-                    >
-                      Budget range
-                    </label>
-                    <select
-                      id="contact-budget"
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleChange}
-                      className={inputBase}
-                      style={inputStyle}
-                    >
-                      <option value="">Select a range</option>
-                      {BUDGET_RANGES.map((r) => (
-                        <option key={r} value={r}>{r}</option>
                       ))}
                     </select>
                   </div>

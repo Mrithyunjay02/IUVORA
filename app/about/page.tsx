@@ -16,22 +16,10 @@ export const metadata: Metadata = {
 
 const TEAM_MEMBERS = [
   {
-    name: "[PLACEHOLDER — Founder Name]",
-    role: "[PLACEHOLDER — Founder / CEO]",
-    bio: "[PLACEHOLDER — Replace with real team bio. Do not publish this text.]",
-    initial: "F",
-  },
-  {
-    name: "[PLACEHOLDER — Team Member Name]",
-    role: "[PLACEHOLDER — Role]",
-    bio: "[PLACEHOLDER — Replace with real team bio. Do not publish this text.]",
-    initial: "T",
-  },
-  {
-    name: "[PLACEHOLDER — Team Member Name]",
-    role: "[PLACEHOLDER — Role]",
-    bio: "[PLACEHOLDER — Replace with real team bio. Do not publish this text.]",
-    initial: "T",
+    name: "Kandiga Akshay Kumar",
+    role: "Founder, Iuvora & Daynit Enterprises",
+    bio: "Computer Science graduate leading development across Iuvora's web and app projects.",
+    initial: "K",
   },
 ];
 
@@ -103,10 +91,10 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col gap-6">
               <p className="text-base leading-relaxed" style={{ color: "var(--fg-muted)" }}>
-                [PLACEHOLDER — Founding story paragraph. Replace with the real narrative of why Iuvora was started, what problem you saw in the market, and what you set out to change. Do not publish this placeholder.]
+                Iuvora started as a group of friends who kept ending up on the same side of every project — one of us building the product, another shaping how it looked and felt, another figuring out how to get it in front of people. We noticed we worked better together than apart, and that the skills we&apos;d each been building separately — development, design, marketing — covered exactly what small businesses and startups actually need but rarely find under one roof.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--fg-muted)" }}>
-                [PLACEHOLDER — Second paragraph. Could cover: team background, geographic reach, approach philosophy. Replace before publishing.]
+                We&apos;re a small team, which is deliberate. It means no handoffs between departments that don&apos;t talk to each other, no work getting diluted across five layers of account managers. Whether it&apos;s a website, an app, a marketing push, or the IT groundwork behind it, the same people who understand your project from day one are the ones building it through to launch.
               </p>
             </div>
           </div>
@@ -165,54 +153,82 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="max-w-md">
             {TEAM_MEMBERS.map((member, idx) => (
               <div
                 key={`${member.name}-${idx}`}
-                className="card-border rounded-sm p-8"
+                className="relative rounded-sm p-8 transition-all duration-300 border bg-[#0a0a0a] hover:border-[rgba(201,162,39,0.6)] hover:shadow-[0_0_24px_rgba(201,162,39,0.15)]"
+                style={{
+                  borderColor: "rgba(201,162,39,0.28)",
+                }}
                 aria-label={`Team member: ${member.name}`}
               >
-                {/* Avatar */}
-                <div
-                  className="w-16 h-16 rounded-sm flex items-center justify-center text-xl font-bold mb-6"
-                  style={{ backgroundColor: "color-mix(in srgb, var(--fg) 8%, transparent)", color: "var(--fg)" }}
-                  aria-hidden="true"
-                >
-                  {member.initial}
+                {/* Top Row: Avatar + Featured Badge */}
+                <div className="flex items-start justify-between mb-6">
+                  {/* Avatar */}
+                  <div
+                    className="w-16 h-16 rounded-sm flex items-center justify-center text-xl font-bold"
+                    style={{
+                      backgroundColor: "rgba(201,162,39,0.12)",
+                      border: "1px solid rgba(201,162,39,0.35)",
+                      color: "#C9A227",
+                    }}
+                    aria-hidden="true"
+                  >
+                    {member.initial}
+                  </div>
+
+                  {/* Featured Badge */}
+                  <span
+                    className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-sm flex items-center gap-1.5"
+                    style={{
+                      backgroundColor: "rgba(18,15,8,0.88)",
+                      border: "1px solid rgba(201,162,39,0.55)",
+                      color: "#C9A227",
+                      backdropFilter: "blur(6px)",
+                    }}
+                  >
+                    <span
+                      className="w-1.5 h-1.5 rounded-full animate-pulse"
+                      style={{ backgroundColor: "#C9A227" }}
+                    />
+                    Featured
+                  </span>
                 </div>
+
                 <h3
-                  className="text-lg font-bold mb-1"
-                  style={{ color: "var(--fg)", fontFamily: "var(--font-display)" }}
+                  className="text-lg font-bold mb-1 text-white"
+                  style={{ fontFamily: "var(--font-display)" }}
                 >
                   {member.name}
                 </h3>
-                <p className="eyebrow mb-4">{member.role}</p>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--fg-muted)" }}>
+                <p className="eyebrow mb-4" style={{ color: "#C9A227" }}>
+                  {member.role}
+                </p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.72)" }}>
                   {member.bio}
                 </p>
               </div>
             ))}
           </div>
-
-          <p className="mt-8 text-xs" style={{ color: "var(--color-accent)" }}>
-            ⚠ Team placeholders — replace with real names and bios before publishing
-          </p>
         </div>
       </SectionWrapper>
 
       {/* ── CTA ──────────────────────────────────────────── */}
       <SectionWrapper theme="dark" id="about-cta">
-        <div className="container-grid text-center max-w-2xl mx-auto">
-          <p className="eyebrow mb-4">Work with us</p>
-          <h2 className="section-headline mb-6" style={{ color: "var(--fg)" }}>
-            Let&apos;s build
-            <br />
-            something great.
-          </h2>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button href="/contact" size="lg" id="about-cta-btn">
-              Start a Project →
-            </Button>
+        <div className="container-grid">
+          <div className="max-w-2xl mx-auto flex flex-col items-center text-center">
+            <p className="eyebrow mb-4 text-center">Work with us</p>
+            <h2 className="section-headline mb-6 text-center w-full" style={{ color: "var(--fg)" }}>
+              Let&apos;s build
+              <br />
+              something great.
+            </h2>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button href="/contact" size="lg" id="about-cta-btn">
+                Start a Project →
+              </Button>
+            </div>
           </div>
         </div>
       </SectionWrapper>
