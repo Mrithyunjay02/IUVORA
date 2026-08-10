@@ -32,13 +32,22 @@ export function Footer() {
             {/* Social links */}
             <div className="flex gap-4 mt-6">
               {[
-                { label: "LinkedIn", href: "#", icon: "in" },
-                { label: "X / Twitter", href: "#", icon: "𝕏" },
-                { label: "Instagram", href: "#", icon: "ig" },
+                {
+                  label: "LinkedIn",
+                  href: "https://www.linkedin.com/company/aktekdynamics/",
+                  icon: "in",
+                },
+                {
+                  label: "Instagram",
+                  href: "https://www.instagram.com/iuvora_info",
+                  icon: "ig",
+                },
               ].map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={s.label}
                   className="w-9 h-9 flex items-center justify-center rounded-sm text-xs font-bold border transition-colors duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] no-underline"
                   style={{
@@ -104,20 +113,20 @@ export function Footer() {
             <ul className="flex flex-col gap-3 list-none m-0 p-0">
               <li>
                 <a
-                  href="mailto:hello@iuvora.com"
+                  href="mailto:info@iuvora.com"
                   className="text-sm transition-colors duration-200 hover:text-[var(--color-accent)] no-underline"
                   style={{ color: "var(--color-gray-mid)" }}
                 >
-                  hello@iuvora.com
+                  info@iuvora.com
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+1000000000"
+                  href="tel:+918792400712"
                   className="text-sm transition-colors duration-200 hover:text-[var(--color-accent)] no-underline"
                   style={{ color: "var(--color-gray-mid)" }}
                 >
-                  [PLACEHOLDER — add phone]
+                  +91 87924 00712
                 </a>
               </li>
             </ul>

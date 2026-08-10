@@ -83,7 +83,7 @@ export function CtaBand() {
             <Button href="/contact" size="lg" id="cta-band-primary">
               Start a Project →
             </Button>
-            <Button href="mailto:hello@iuvora.com" size="lg" variant="outline" id="cta-band-email">
+            <Button href="mailto:info@iuvora.com" size="lg" variant="outline" id="cta-band-email">
               Email us directly
             </Button>
           </div>

@@ -86,7 +86,7 @@ export default function ContactPage() {
       setErrorMessage(
         err instanceof Error
           ? err.message
-          : "Something went wrong while sending your message. Please try again or email hello@iuvora.com directly."
+          : "Something went wrong while sending your message. Please try again or email info@iuvora.com directly."
       );
     }
   };
@@ -203,8 +203,8 @@ export default function ContactPage() {
                         <p className="font-semibold">{errorMessage}</p>
                         <p className="text-xs text-[var(--fg-muted)] mt-1">
                           You can also reach us directly at{" "}
-                          <a href="mailto:hello@iuvora.com" className="underline font-medium text-[var(--color-accent)]">
-                            hello@iuvora.com
+                          <a href="mailto:info@iuvora.com" className="underline font-medium text-[var(--color-accent)]">
+                            info@iuvora.com
                           </a>.
                         </p>
                       </div>
@@ -325,18 +325,20 @@ export default function ContactPage() {
                 {[
                   {
                     label: "Email",
-                    value: "hello@iuvora.com",
-                    href: "mailto:hello@iuvora.com",
+                    value: "info@iuvora.com",
+                    href: "mailto:info@iuvora.com",
                   },
                   {
                     label: "Phone",
-                    value: "[PLACEHOLDER — add phone number]",
-                    href: "#",
+                    value: "+91 87924 00712",
+                    href: "tel:+918792400712",
                   },
                   {
                     label: "Location",
-                    value: "[PLACEHOLDER — City, Country]",
-                    href: null,
+                    value: "MyOffice Space, Karnataka",
+                    href: "https://www.google.com/maps/place/MyOffice+Space/@13.9342297,75.5519359,14.76z/data=!4m6!3m5!1s0x3bbba9b1d9337d07:0xaf17a81c62aa234e!8m2!3d13.9348738!4d75.571792!16s%2Fg%2F11h9bqj5t4",
+                    target: "_blank",
+                    rel: "noopener noreferrer",
                   },
                 ].map((info) => (
                   <div
@@ -348,6 +350,8 @@ export default function ContactPage() {
                     {info.href ? (
                       <a
                         href={info.href}
+                        target={info.target}
+                        rel={info.rel}
                         className="text-base font-semibold transition-colors duration-200 hover:text-[var(--color-accent)] no-underline"
                         style={{ color: "var(--fg)" }}
                       >
@@ -366,13 +370,22 @@ export default function ContactPage() {
                   <p className="eyebrow mb-4">Follow us</p>
                   <div className="flex gap-4">
                     {[
-                      { label: "LinkedIn", href: "#", icon: "in" },
-                      { label: "X / Twitter", href: "#", icon: "𝕏" },
-                      { label: "Instagram", href: "#", icon: "ig" },
+                      {
+                        label: "LinkedIn",
+                        href: "https://www.linkedin.com/company/aktekdynamics/",
+                        icon: "in",
+                      },
+                      {
+                        label: "Instagram",
+                        href: "https://www.instagram.com/iuvora_info",
+                        icon: "ig",
+                      },
                     ].map((s) => (
                       <a
                         key={s.label}
                         href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         aria-label={s.label}
                         className="w-10 h-10 flex items-center justify-center rounded-sm text-xs font-bold border transition-colors duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] no-underline"
                         style={{
