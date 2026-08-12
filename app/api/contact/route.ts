@@ -60,8 +60,7 @@ export async function POST(req: Request) {
 
     const resend = new Resend(apiKey);
     const toEmail = process.env.CONTACT_RECEIVER_EMAIL || "info@iuvora.com";
-    const fromEmail =
-      process.env.RESEND_FROM_EMAIL || "Iuvora Inquiry <onboarding@resend.dev>";
+    const fromEmail = "Iuvora <info@iuvora.com>";
 
     const subject = `New Inquiry: ${cleanName} — ${cleanProjectType}`;
 
