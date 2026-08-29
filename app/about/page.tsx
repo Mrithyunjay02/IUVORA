@@ -10,7 +10,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About | Iuvora",
     description: "The team, mission, and story behind Iuvora.",
-    url: "https://iuvora.com/about",
+    url: "https://www.iuvora.com/about",
+  },
+  alternates: {
+    canonical: "https://www.iuvora.com/about",
   },
 };
 

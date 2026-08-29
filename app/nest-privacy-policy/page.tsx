@@ -10,7 +10,10 @@ export const metadata: Metadata = {
     title: "Privacy Policy — NEST | Iuvora",
     description:
       "Privacy Policy for the NEST pregnancy companion application developed by Iuvora.",
-    url: "https://iuvora.com/nest-privacy-policy",
+    url: "https://www.iuvora.com/nest-privacy-policy",
+  },
+  alternates: {
+    canonical: "https://www.iuvora.com/nest-privacy-policy",
   },
   robots: {
     index: true,

@@ -12,11 +12,32 @@ import { Marquee } from "@/components/ui/Marquee";
 export const metadata: Metadata = {
   title: "Iuvora — Web, App, Marketing & IT Services",
   description:
-    "Iuvora is a full-service digital studio offering web development, app development, A–Z digital marketing, and IT services. We build things that perform.",
+    "Iuvora is your partner for Web, App, Marketing and IT solutions that drive growth.",
   openGraph: {
     title: "Iuvora — Web, App, Marketing & IT Services",
-    description: "Full-service digital studio. We build things that perform.",
-    url: "https://iuvora.com",
+    description:
+      "Iuvora is your partner for Web, App, Marketing and IT solutions that drive growth.",
+    url: "https://www.iuvora.com",
+    siteName: "Iuvora",
+    images: [
+      {
+        url: "https://www.iuvora.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Iuvora — Web, App, Marketing & IT Services",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Iuvora — Web, App, Marketing & IT Services",
+    description:
+      "Iuvora is your partner for Web, App, Marketing and IT solutions that drive growth.",
+    images: ["https://www.iuvora.com/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://www.iuvora.com",
   },
 };
 

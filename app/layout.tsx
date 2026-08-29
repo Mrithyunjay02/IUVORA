@@ -8,47 +8,72 @@ import { SmoothScrollProvider } from "@/components/scroll/SmoothScrollProvider";
 import { Preloader } from "@/components/ui/Preloader";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://iuvora.com"),
+  metadataBase: new URL("https://www.iuvora.com"),
   title: {
     default: "Iuvora — Web, App, Marketing & IT Services",
     template: "%s | Iuvora",
   },
   description:
-    "Iuvora is a full-service digital studio offering web development, app development, digital marketing, and IT services.",
+    "Iuvora is your partner for Web, App, Marketing and IT solutions that drive growth.",
   keywords: [
     "web development",
     "app development",
     "digital marketing",
     "IT services",
+    "cloud infrastructure",
+    "cybersecurity",
+    "UI/UX design",
     "SEO",
     "Next.js",
     "React",
+    "Iuvora",
   ],
-  authors: [{ name: "Iuvora" }],
+  authors: [{ name: "Iuvora", url: "https://www.iuvora.com" }],
   creator: "Iuvora",
+  publisher: "Iuvora",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/icon-192x192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512x512.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://iuvora.com",
+    url: "https://www.iuvora.com",
     siteName: "Iuvora",
     title: "Iuvora — Web, App, Marketing & IT Services",
     description:
-      "Full-service digital studio. We build things that perform.",
+      "Iuvora is your partner for Web, App, Marketing and IT solutions that drive growth.",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://www.iuvora.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Iuvora — Digital Studio",
+        alt: "Iuvora — Web, App, Marketing & IT Services",
+        type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Iuvora — Web, App, Marketing & IT Services",
-    description: "Full-service digital studio. We build things that perform.",
-    images: ["/og-image.png"],
+    description:
+      "Iuvora is your partner for Web, App, Marketing and IT solutions that drive growth.",
+    images: ["https://www.iuvora.com/og-image.png"],
     creator: "@iuvora",
+  },
+  alternates: {
+    canonical: "https://www.iuvora.com",
   },
   robots: {
     index: true,

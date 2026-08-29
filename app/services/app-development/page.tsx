@@ -12,7 +12,10 @@ export const metadata: Metadata = {
     title: "App Development | Iuvora",
     description:
       "Native-quality apps with cross-platform reach. From MVP to full-scale product.",
-    url: "https://iuvora.com/services/app-development",
+    url: "https://www.iuvora.com/services/app-development",
+  },
+  alternates: {
+    canonical: "https://www.iuvora.com/services/app-development",
   },
 };
 

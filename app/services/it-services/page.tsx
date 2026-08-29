@@ -12,7 +12,10 @@ export const metadata: Metadata = {
     title: "IT Services | Iuvora",
     description:
       "Reliable cloud infrastructure and managed IT support with zero downtime.",
-    url: "https://iuvora.com/services/it-services",
+    url: "https://www.iuvora.com/services/it-services",
+  },
+  alternates: {
+    canonical: "https://www.iuvora.com/services/it-services",
   },
 };
 

@@ -12,7 +12,10 @@ export const metadata: Metadata = {
     title: "Digital Marketing | Iuvora",
     description:
       "Full-funnel growth marketing — SEO, paid ads, social, content, and branding.",
-    url: "https://iuvora.com/services/digital-marketing",
+    url: "https://www.iuvora.com/services/digital-marketing",
+  },
+  alternates: {
+    canonical: "https://www.iuvora.com/services/digital-marketing",
   },
 };
 

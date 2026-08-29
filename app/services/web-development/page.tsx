@@ -12,7 +12,10 @@ export const metadata: Metadata = {
     title: "Web Development | Iuvora",
     description:
       "From marketing sites to complex web apps — we design and build with performance and conversion at the core.",
-    url: "https://iuvora.com/services/web-development",
+    url: "https://www.iuvora.com/services/web-development",
+  },
+  alternates: {
+    canonical: "https://www.iuvora.com/services/web-development",
   },
 };
 

@@ -8,7 +8,10 @@ export const metadata: Metadata = {
     title: "Contact | Iuvora",
     description:
       "Start a project with Iuvora. Respond within 24 hours, no-fluff process.",
-    url: "https://iuvora.com/contact",
+    url: "https://www.iuvora.com/contact",
+  },
+  alternates: {
+    canonical: "https://www.iuvora.com/contact",
   },
 };
 
