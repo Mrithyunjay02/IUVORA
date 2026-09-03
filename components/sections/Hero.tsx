@@ -78,20 +78,39 @@ export function Hero() {
     if (prefersReduced) return;
 
     const tl = gsap.timeline();
-    
+
+    // Hero headline: word-by-word reveal
+    tl.to(
+      ".hero-headline-word",
+      { opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.08 },
+      0
+    );
+
+    // Eyebrow
     tl.fromTo(
       ".hero-animate",
-      { opacity: 0, y: 32 },
-      { opacity: 1, y: 0, duration: 0.7, ease: "power2.out", stagger: 0.1 }
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+      0.1
     );
-    
+
+    // Subheadline & stats
+    tl.fromTo(
+      ".hero-animate:not(.eyebrow)",
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.08 },
+      0.4
+    );
+
+    // Video/asset with parallax setup
     tl.fromTo(
       ".hero-video",
       { opacity: 0, y: 32 },
-      { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
-      "-=0.5"
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+      0.2
     );
 
+    // Scroll cue pulse
     gsap.to(".scroll-cue", {
       opacity: 0.4,
       duration: 1,
@@ -99,7 +118,7 @@ export function Hero() {
       yoyo: true,
       ease: "power1.inOut"
     });
-    
+
     gsap.set(".scroll-cue", { opacity: 1 });
 
   }, { scope: container });
@@ -140,12 +159,14 @@ export function Hero() {
           </p>
 
           <h1
-            className="hero-animate hero-headline mb-8"
+            className="hero-headline mb-8"
             style={{ color: "var(--color-white)" }}
           >
-            We build things
+            <span className="hero-headline-word" style={{ display: "inline-block", opacity: 0 }}>We</span>{" "}
+            <span className="hero-headline-word" style={{ display: "inline-block", opacity: 0 }}>build</span>{" "}
+            <span className="hero-headline-word" style={{ display: "inline-block", opacity: 0 }}>things</span>
             <br />
-            <span style={{ color: "var(--color-accent)" }}>that perform.</span>
+            <span className="hero-headline-word" style={{ display: "inline-block", opacity: 0, color: "var(--color-accent)" }}>that perform.</span>
           </h1>
 
           <p
