@@ -102,6 +102,7 @@ function ServiceCard({
       className="h-full service-card"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      style={{ opacity: 0, transform: "translateY(40px)" }}
     >
       <Link
         href={`/services/${slug}`}
@@ -177,6 +178,29 @@ function ServiceCard({
 // ── ServicesOverview section ──────────────────────────────────────────────────
 export function ServicesOverview() {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 60%",
+      once: true,
+      onEnter: () => {
+        const cards = containerRef.current?.querySelectorAll(".service-card");
+        if (!cards) return;
+
+        gsap.to(cards, {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          stagger: 0.12,
+        });
+      },
+    });
+  }, { scope: containerRef });
 
   return (
     <SectionWrapper theme="light" id="services">
