@@ -239,14 +239,14 @@ export function Hero() {
         </div>
 
         {/* Mascots section - right side */}
-        <div className="hidden md:flex flex-1 items-start justify-center shrink-0 relative" style={{ minHeight: "300px" }}>
-          {/* Code/Terminal mascot - top-left */}
-          <div className="absolute left-0 -top-20 lg:-top-12 w-40 lg:w-48 opacity-80">
+        <div className="hidden md:flex flex-1 items-start justify-center shrink-0 relative" style={{ minHeight: "350px" }}>
+          {/* Code/Terminal mascot - center-top */}
+          <div className="absolute left-1/4 top-8 lg:left-1/3 w-36 lg:w-44 opacity-85">
             <CodeTerminalMascot delay={0.3} />
           </div>
 
-          {/* Brain/AI mascot - top-right */}
-          <div className="absolute right-0 top-0 lg:top-6 w-48 lg:w-56">
+          {/* Brain/AI mascot - center-right */}
+          <div className="absolute right-1/4 top-16 lg:right-1/3 lg:top-20 w-44 lg:w-52">
             <BrainMascot delay={0.5} />
           </div>
         </div>
