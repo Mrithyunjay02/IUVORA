@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { AccentLine } from "@/components/ui/AccentLine";
 import { GeometricAccent } from "@/components/ui/GeometricAccent";
 
 if (typeof window !== "undefined") {
@@ -83,13 +84,16 @@ export function Testimonials() {
             What clients say
           </p>
           <h2
-            className=" section-headline"
+            className=" section-headline mb-4"
             style={{ color: "var(--fg)" }}
           >
             Trusted by founders
             <br />
             and operators.
           </h2>
+          <div className="w-12">
+            <AccentLine trigger="scroll" />
+          </div>
         </div>
 
         {/* Testimonial cards */}

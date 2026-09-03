@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { AccentLine } from "@/components/ui/AccentLine";
 import { PROCESS_STEPS } from "@/lib/constants";
 
 if (typeof window !== "undefined") {
@@ -77,12 +78,15 @@ export function Process() {
             real outcomes.
           </h2>
           <p
-            className=" text-base leading-relaxed"
+            className=" text-base leading-relaxed mb-6"
             style={{ color: "var(--fg-muted)" }}
           >
             No black boxes. Every phase is visible, trackable, and designed so
             you can make informed decisions throughout.
           </p>
+          <div className="w-12">
+            <AccentLine trigger="scroll" />
+          </div>
         </div>
 
         {/* Steps */}

@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { AccentLine } from "@/components/ui/AccentLine";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -327,17 +328,20 @@ export function CaseStudies() {
   return (
     <SectionWrapper theme="light" id="work">
       <div className="container-grid" ref={containerRef}>
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
             <p className=" eyebrow mb-4">
               Our work
             </p>
             <h2
-              className=" section-headline"
+              className=" section-headline mb-4"
               style={{ color: "var(--fg)" }}
             >
               Selected projects.
             </h2>
+            <div className="w-12">
+              <AccentLine trigger="scroll" />
+            </div>
           </div>
           <p
             className=" text-sm pb-1"

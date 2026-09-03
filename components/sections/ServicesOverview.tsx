@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { AccentLine } from "@/components/ui/AccentLine";
 import { SERVICES } from "@/lib/constants";
 
 if (typeof window !== "undefined") {
@@ -219,13 +220,16 @@ export function ServicesOverview() {
             business needs.
           </h2>
           <p
-            className=" text-base leading-relaxed"
+            className=" text-base leading-relaxed mb-6"
             style={{ color: "var(--fg-muted)" }}
           >
             From your first website to a full-scale growth engine - we cover the
             complete stack so you never need to coordinate between three different
             agencies.
           </p>
+          <div className="w-12">
+            <AccentLine trigger="scroll" />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
