@@ -335,8 +335,8 @@ export default function ContactPage() {
                   },
                   {
                     label: "Location",
-                    value: "MyOffice Space, Karnataka",
-                    href: "https://www.google.com/maps/place/MyOffice+Space/@13.9342297,75.5519359,14.76z/data=!4m6!3m5!1s0x3bbba9b1d9337d07:0xaf17a81c62aa234e!8m2!3d13.9348738!4d75.571792!16s%2Fg%2F11h9bqj5t4",
+                    value: "IUVORA PVT LIMITED\nWHQ8+5H6, Kuvempu Rd\nMission Compound\nShivamogga, Karnataka 577201",
+                    href: "https://maps.google.com/?q=IUVORA+PVT+LIMITED+Shivamogga+Karnataka",
                     target: "_blank",
                     rel: "noopener noreferrer",
                   },
@@ -353,7 +353,7 @@ export default function ContactPage() {
                         target={info.target}
                         rel={info.rel}
                         className="text-base font-semibold transition-colors duration-200 hover:text-[var(--color-accent)] no-underline"
-                        style={{ color: "var(--fg)" }}
+                        style={{ color: "var(--fg)", whiteSpace: "pre-wrap" }}
                       >
                         {info.value}
                       </a>
