@@ -134,11 +134,6 @@ export function CodeTerminalMascot({ className = "", delay = 0 }: CodeTerminalMa
           <line x1="20" y1="250" x2="220" y2="250" opacity="0.4" strokeWidth="1.5" />
         </g>
 
-        {/* Decorative elements - glowing circles around terminal */}
-        <g opacity="0.1">
-          <circle cx="120" cy="140" r="140" fill="none" stroke="var(--color-accent)" strokeWidth="1" />
-          <circle cx="120" cy="140" r="110" fill="none" stroke="var(--color-accent)" strokeWidth="1" />
-        </g>
       </svg>
     </div>
   );
