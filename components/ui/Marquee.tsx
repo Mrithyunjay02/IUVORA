@@ -37,6 +37,21 @@ export function Marquee() {
         userSelect: "none",
       }}
     >
+      {/* Edge fade gradients for premium look */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          pointerEvents: "none",
+          background:
+            "linear-gradient(to right, var(--color-black) 0%, transparent 15%, transparent 85%, var(--color-black) 100%)",
+          zIndex: 10,
+        }}
+      />
       {/*
        * .marquee-track is defined in globals.css:
        *   animation: marquee-scroll 35s linear infinite

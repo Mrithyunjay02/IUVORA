@@ -218,6 +218,18 @@ a.accent-link:hover {
   transform: translateX(4px);
 }
 
+/* ─── Footer social icon glow ──────────────────────────────────────── */
+footer a[aria-label*="LinkedIn"],
+footer a[aria-label*="Instagram"] {
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+footer a[aria-label*="LinkedIn"]:hover,
+footer a[aria-label*="Instagram"]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(47, 123, 255, 0.25), 0 0 4px rgba(47, 123, 255, 0.4);
+}
+
 /* ─── Marquee strip (Section 9.2) ───────────────────────────────────── */
 @keyframes marquee-scroll {
   from { transform: translateX(0%); }
