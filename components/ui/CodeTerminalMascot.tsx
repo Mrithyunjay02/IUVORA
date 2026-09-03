@@ -7,9 +7,27 @@ import { useGSAP } from "@gsap/react";
 interface CodeTerminalMascotProps {
   className?: string;
   delay?: number;
+  codeLines?: {
+    line1?: string;
+    line2?: string;
+    line3?: string;
+    line4?: string;
+    line5?: string;
+    line6?: string;
+  };
 }
 
-export function CodeTerminalMascot({ className = "", delay = 0 }: CodeTerminalMascotProps) {
+export function CodeTerminalMascot({ className = "", delay = 0, codeLines }: CodeTerminalMascotProps) {
+  const defaultLines = {
+    line1: "<div>",
+    line2: "className=",
+    line3: '"build"',
+    line4: "</div>",
+    line5: "<span>...</span>",
+    line6: "</>",
+  };
+
+  const lines = { ...defaultLines, ...codeLines };
   const containerRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<SVGLineElement>(null);
   const codeRef = useRef<SVGGElement>(null);
@@ -86,34 +104,34 @@ export function CodeTerminalMascot({ className = "", delay = 0 }: CodeTerminalMa
 
           {/* Code lines - left angle bracket */}
           <g ref={codeRef} style={{ opacity: 1 }} textRendering="optimizeLegibility">
-            {/* Line 1: <div> */}
+            {/* Line 1 */}
             <text x="35" y="75" fontSize="12" fontFamily="monospace" fill="url(#codeGradient)" opacity="1" stroke="none">
-              &lt;div&gt;
+              {lines.line1}
             </text>
 
-            {/* Line 2: className */}
+            {/* Line 2 */}
             <text x="45" y="95" fontSize="11" fontFamily="monospace" fill="var(--color-accent)" opacity="0.9" stroke="none">
-              className=
+              {lines.line2}
             </text>
 
-            {/* Line 3: indented content */}
+            {/* Line 3 */}
             <text x="55" y="115" fontSize="11" fontFamily="monospace" fill="var(--color-accent)" opacity="0.85" stroke="none">
-              "build"
+              {lines.line3}
             </text>
 
-            {/* Line 4: closing tag */}
+            {/* Line 4 */}
             <text x="35" y="135" fontSize="12" fontFamily="monospace" fill="url(#codeGradient)" opacity="1" stroke="none">
-              &lt;/div&gt;
+              {lines.line4}
             </text>
 
-            {/* Line 5: another tag */}
+            {/* Line 5 */}
             <text x="35" y="160" fontSize="12" fontFamily="monospace" fill="url(#codeGradient)" opacity="0.9" stroke="none">
-              &lt;span&gt;...&lt;/span&gt;
+              {lines.line5}
             </text>
 
-            {/* Line 6: closing */}
+            {/* Line 6 */}
             <text x="35" y="185" fontSize="12" fontFamily="monospace" fill="url(#codeGradient)" opacity="0.85" stroke="none">
-              &lt;/&gt;
+              {lines.line6}
             </text>
           </g>
 
