@@ -67,10 +67,12 @@ export function Button({
     "inline-flex items-center justify-center gap-2",
     "font-semibold font-[var(--font-display)]",
     "rounded-sm",
-    "transition-all duration-200 ease-out",
+    "transition-all duration-150 cubic-bezier(0.16, 1, 0.3, 1)",
     "transform", // Required to ensure --tw-translate variables are applied
-    // 9.5 — hover polish: subtle scale lift + press-down on click
-    "hover:scale-[1.02] active:scale-[0.97]",
+    // Hover: lift + glow intensify
+    "hover:scale-[1.02] hover:shadow-lg",
+    // Active: press-down + visual feedback
+    "active:scale-[0.96] active:translate-y-[1px]",
     "cursor-pointer select-none",
     "no-underline",
     disabled ? "opacity-50 pointer-events-none" : "",
