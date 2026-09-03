@@ -3,7 +3,7 @@ import { IuvoraLogo } from "@/components/icons/IuvoraLogo";
 import { SERVICES } from "@/lib/constants";
 
 /**
- * Footer — Always dark. Outside the scroll-invert cycle.
+ * Footer - Always dark. Outside the scroll-invert cycle.
  * Uses hardcoded dark palette, not --bg/--fg vars.
  */
 export function Footer() {
@@ -23,11 +23,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" aria-label="Iuvora — Home">
+            <Link href="/" aria-label="Iuvora - Home">
               <IuvoraLogo width={120} />
             </Link>
             <p className="mt-4 text-sm leading-relaxed" style={{ color: "var(--color-gray-mid)", maxWidth: "28ch" }}>
-              Web development, app development, digital marketing, and IT services — end to end.
+              Web development, app development, digital marketing, and IT services - end to end.
             </p>
             {/* Social links */}
             <div className="flex gap-4 mt-6">

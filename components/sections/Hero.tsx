@@ -11,7 +11,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// ── Section 9.4 — Stat counter ─────────────────────────────────────────────
+// ── Section 9.4 - Stat counter ─────────────────────────────────────────────
 const STATS = [
   { target: 5,   suffix: "",  label: "Projects delivered" },
   { target: 4,   suffix: "",  label: "Service verticals"  },
@@ -180,7 +180,7 @@ export function Hero() {
             style={{ color: "var(--color-gray-mid)", maxWidth: "52ch" }}
           >
             Iuvora delivers web development, app development, digital marketing,
-            and IT services — everything you need to launch and grow online.
+            and IT services - everything you need to launch and grow online.
           </p>
 
           <div className="hero-animate flex flex-wrap gap-4">

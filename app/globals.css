@@ -11,7 +11,7 @@
   --section-transition-duration: 1100ms;
   --section-transition-easing: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Live theme vars — mutated by ScrollThemeProvider */
+  /* Live theme vars - mutated by ScrollThemeProvider */
   --bg: var(--color-black);
   --fg: var(--color-white);
   --fg-muted: var(--color-gray-mid);
@@ -51,7 +51,7 @@ body {
 
 /*
  * Motion-respectful transition.
- * background-color is NOT transitioned here — the clip-path wipe overlay
+ * background-color is NOT transitioned here - the clip-path wipe overlay
  * in ScrollThemeProvider handles that visually.
  * color (text) transitions with a 180ms delay so text fades in AFTER the
  * background wipe has started moving, preventing the "everything flashes
@@ -118,7 +118,7 @@ p {
 }
 
 /*
- * Sections are transparent — the background lives on body.
+ * Sections are transparent - the background lives on body.
  * z-index: 2 ensures sections sit above the transform wipe overlay
  * (which is a fixed div at z-index: 1 injected by ScrollThemeProvider).
  */
@@ -146,14 +146,14 @@ footer {
  * compositor layer for these elements BEFORE the animation starts,
  * avoiding the costly mid-animation layer promotion that causes frame drops.
  *
- * The rule targets [style*="opacity: 0"] — once FM finishes the animation
+ * The rule targets [style*="opacity: 0"] - once FM finishes the animation
  * and sets opacity: 1, the selector no longer matches, automatically
  * releasing the will-change hint and freeing GPU memory. This means
  * already-visible elements don't waste compositor layer budget.
  *
  * Note: Framer Motion's `y`, `x`, `scale` all compile to CSS `transform`.
  * No animation in this codebase touches layout properties (top, left,
- * width, height, margin) — confirmed via full audit.
+ * width, height, margin) - confirmed via full audit.
  */
 [style*="opacity: 0"] {
   will-change: transform, opacity;
@@ -237,7 +237,7 @@ footer a[aria-label*="Instagram"]:hover {
 }
 
 /*
- * .marquee-track — horizontal scrolling text belt.
+ * .marquee-track - horizontal scrolling text belt.
  * The inner content is duplicated 4× so translateX(-50%) produces a
  * seamless loop point regardless of how wide the viewport is.
  */
@@ -247,12 +247,12 @@ footer a[aria-label*="Instagram"]:hover {
   will-change: transform;
 }
 
-/* Pause on hover — feels alive, not mechanical */
+/* Pause on hover - feels alive, not mechanical */
 .marquee-track:hover {
   animation-play-state: paused;
 }
 
-/* Respect reduced motion — stop entirely, don't just slow down */
+/* Respect reduced motion - stop entirely, don't just slow down */
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation-play-state: paused;
@@ -263,7 +263,7 @@ footer a[aria-label*="Instagram"]:hover {
 /* ─── Glow hover on cards and buttons ───────────────────────────────── */
 
 /*
- * Additive blue glow on hover — the resting border is unchanged.
+ * Additive blue glow on hover - the resting border is unchanged.
  * Transition only affects box-shadow so the border never jumps.
  * Works in both dark and light sections: on dark bg the outer glow
  * reads strongly; on light bg the inner ring (rgba 0.25) reads instead.
@@ -282,16 +282,16 @@ footer a[aria-label*="Instagram"]:hover {
 }
 
 /*
- * Button glow — scoped to primary variant only (blue bg buttons).
+ * Button glow - scoped to primary variant only (blue bg buttons).
  * Outline variant already has a visible border; the glow is more
  * subtle there so we use lower opacity values.
  */
 button:hover,
 a:has(> *):hover {
-  /* intentionally not adding glow here — Button component handles its own */
+  /* intentionally not adding glow here - Button component handles its own */
 }
 
-/* Primary button (blue fill) — glow matches button color */
+/* Primary button (blue fill) - glow matches button color */
 .btn-primary-glow {
   transition:
     background-color 200ms ease-out,
@@ -306,7 +306,7 @@ a:has(> *):hover {
     0 0 4px rgba(47, 123, 255, 0.4);
 }
 
-/* Outline button — softer glow (border is already the visual focus) */
+/* Outline button - softer glow (border is already the visual focus) */
 .btn-outline-glow {
   transition:
     background-color 200ms ease-out,

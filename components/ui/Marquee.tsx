@@ -1,5 +1,5 @@
 /**
- * Capabilities marquee strip — Section 9.2
+ * Capabilities marquee strip - Section 9.2
  *
  * Pure CSS-animated horizontal ticker. Placed between ServicesOverview (light)
  * and Process (dark) as a visual rhythm break. Hardcoded dark styling so it
@@ -19,8 +19,8 @@ const CAPABILITIES = [
   "IT SERVICES",
 ];
 
-// Single pass of text: "WEB DEVELOPMENT — APP DEVELOPMENT — DIGITAL MARKETING — IT SERVICES — "
-const TRACK = CAPABILITIES.join("\u00A0\u00A0—\u00A0\u00A0") + "\u00A0\u00A0—\u00A0\u00A0";
+// Single pass of text: "WEB DEVELOPMENT - APP DEVELOPMENT - DIGITAL MARKETING - IT SERVICES - "
+const TRACK = CAPABILITIES.join("\u00A0\u00A0-\u00A0\u00A0") + "\u00A0\u00A0-\u00A0\u00A0";
 
 export function Marquee() {
   return (
@@ -55,7 +55,7 @@ export function Marquee() {
       {/*
        * .marquee-track is defined in globals.css:
        *   animation: marquee-scroll 35s linear infinite
-       * Two copies of TRACK inside — when first copy exits left, the second
+       * Two copies of TRACK inside - when first copy exits left, the second
        * is already in the exact same visual position. translateX(-50%) = one full copy.
        */}
       <div className="marquee-track" aria-hidden="true">

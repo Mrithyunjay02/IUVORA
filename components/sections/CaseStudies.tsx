@@ -21,7 +21,7 @@ const CASE_STUDIES = [
     image: "/case-studies/daynit.webp",
     imageFit: "cover" as const,
     description:
-      "An independent import and export business connecting global markets — exporting fresh produce, spices, grains, pulses, and eco-friendly tableware. The site showcases their product range, sourcing-to-delivery process, and latest trade news for buyers worldwide.",
+      "An independent import and export business connecting global markets - exporting fresh produce, spices, grains, pulses, and eco-friendly tableware. The site showcases their product range, sourcing-to-delivery process, and latest trade news for buyers worldwide.",
     tags: ["Web Development", "Export & Trade", "Global Sourcing"],
     link: "https://daynitenterprises.com",
     isPrototype: false,
@@ -63,7 +63,7 @@ const CASE_STUDIES = [
     image: "/case-studies/fitforce.webp",
     imageFit: "cover" as const,
     description:
-      "A personal fitness coaching brand offering online training plans, nutrition guidance, and trainer certifications — built with a full enrollment and plan-selection experience for clients.",
+      "A personal fitness coaching brand offering online training plans, nutrition guidance, and trainer certifications - built with a full enrollment and plan-selection experience for clients.",
     tags: ["Web Development", "Fitness", "Coaching"],
     link: "https://getfitwith-abhi.netlify.app",
     isPrototype: false,
@@ -77,7 +77,7 @@ const CASE_STUDIES = [
     image: "/case-studies/matrusneha.webp",
     imageFit: "contain" as const,
     description:
-      "A bilingual (Kannada/English) maternal health companion app for tracking pregnancy — featuring a kick counter, checkup countdown with appointment tracking, weekly baby growth updates, a daily nutrition checklist, and a health alerts system for recognizing pregnancy danger signs.",
+      "A bilingual (Kannada/English) maternal health companion app for tracking pregnancy - featuring a kick counter, checkup countdown with appointment tracking, weekly baby growth updates, a daily nutrition checklist, and a health alerts system for recognizing pregnancy danger signs.",
     tags: ["App Development", "Maternal Health", "Mobile UI"],
     link: null,
     isPrototype: true,
@@ -157,7 +157,7 @@ function CaseStudyCard({
                 priority={index < 2}
               />
 
-              {/* Dark vignette / gradient overlay for badges & text contrast — darkens on hover */}
+              {/* Dark vignette / gradient overlay for badges & text contrast - darkens on hover */}
               <div
                 className="absolute inset-0 pointer-events-none transition-opacity duration-300"
                 style={{

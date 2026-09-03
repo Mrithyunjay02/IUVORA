@@ -3,11 +3,11 @@ import { ScrollThemeProvider } from "@/components/scroll/ScrollThemeProvider";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — NEST",
+  title: "Privacy Policy - NEST",
   description:
     "Privacy Policy for the NEST pregnancy companion application developed by Iuvora. Learn how we collect, use, and protect your information.",
   openGraph: {
-    title: "Privacy Policy — NEST | Iuvora",
+    title: "Privacy Policy - NEST | Iuvora",
     description:
       "Privacy Policy for the NEST pregnancy companion application developed by Iuvora.",
     url: "https://www.iuvora.com/nest-privacy-policy",
@@ -39,7 +39,7 @@ export default function NestPrivacyPolicyPage() {
                 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-4"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Privacy Policy — NEST
+                Privacy Policy - NEST
               </h1>
               <p className="text-sm font-mono text-zinc-400">
                 Last updated: August 16, 2026
@@ -113,13 +113,13 @@ export default function NestPrivacyPolicyPage() {
                 </h2>
                 <ul className="list-disc pl-6 space-y-2.5 text-zinc-300">
                   <li>
-                    <strong className="text-white">Supabase</strong> — securely stores your account and app data
+                    <strong className="text-white">Supabase</strong> - securely stores your account and app data
                   </li>
                   <li>
-                    <strong className="text-white">Google</strong> — used only if you choose to sign in with your Google account
+                    <strong className="text-white">Google</strong> - used only if you choose to sign in with your Google account
                   </li>
                   <li>
-                    <strong className="text-white">Google Gemini API</strong> — powers the NEST Guide educational assistant; messages you send to NEST Guide are processed by this service to generate a response
+                    <strong className="text-white">Google Gemini API</strong> - powers the NEST Guide educational assistant; messages you send to NEST Guide are processed by this service to generate a response
                   </li>
                 </ul>
               </section>

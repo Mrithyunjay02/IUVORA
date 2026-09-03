@@ -12,7 +12,7 @@ interface CardHeroProps {
  * CardHero
  *
  * TYPOGRAPHY:
- * - Name: Libre Baskerville (serif) — carries the primary visual weight with classical authority.
+ * - Name: Libre Baskerville (serif) - carries the primary visual weight with classical authority.
  * - Title, location, bio, links: Montserrat (clean geometric sans).
  *
  * COLOR:
@@ -61,7 +61,7 @@ export function CardHero({ profile }: CardHeroProps) {
 
         {/* Name and Role Cluster */}
         <div className="min-w-0">
-          {/* Name in Baskerville (serif) — carrying primary visual weight */}
+          {/* Name in Baskerville (serif) - carrying primary visual weight */}
           <h1
             className="text-[23px] sm:text-[25px] font-bold tracking-tight text-[#FBF7EE] leading-[1.15]"
             style={{ fontFamily: "'Libre Baskerville', Baskerville, Georgia, serif" }}
@@ -108,7 +108,7 @@ export function CardHero({ profile }: CardHeroProps) {
           </p>
         )}
 
-        {/* Featured Work Link (Montserrat, neutral hover) — omitted if no workUrl provided */}
+        {/* Featured Work Link (Montserrat, neutral hover) - omitted if no workUrl provided */}
         {profile.workUrl && (
           <div className="pt-1">
             <a

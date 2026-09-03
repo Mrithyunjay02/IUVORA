@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about Iuvora — our founding story, mission, and the team behind the work.",
+    "Learn about Iuvora - our founding story, mission, and the team behind the work.",
   openGraph: {
     title: "About | Iuvora",
     description: "The team, mission, and story behind Iuvora.",
@@ -30,12 +30,12 @@ const VALUES = [
   {
     title: "Clarity over cleverness",
     description:
-      "We communicate plainly — in proposals, in code comments, and in client meetings.",
+      "We communicate plainly - in proposals, in code comments, and in client meetings.",
   },
   {
     title: "Craft in the details",
     description:
-      "Performance budgets, accessibility audits, responsive edge cases — we care about the full picture.",
+      "Performance budgets, accessibility audits, responsive edge cases - we care about the full picture.",
   },
   {
     title: "Long-term thinking",
@@ -94,7 +94,7 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col gap-6">
               <p className="text-base leading-relaxed" style={{ color: "var(--fg-muted)" }}>
-                Iuvora started as a group of friends who kept ending up on the same side of every project — one of us building the product, another shaping how it looked and felt, another figuring out how to get it in front of people. We noticed we worked better together than apart, and that the skills we&apos;d each been building separately — development, design, marketing — covered exactly what small businesses and startups actually need but rarely find under one roof.
+                Iuvora started as a group of friends who kept ending up on the same side of every project - one of us building the product, another shaping how it looked and felt, another figuring out how to get it in front of people. We noticed we worked better together than apart, and that the skills we&apos;d each been building separately - development, design, marketing - covered exactly what small businesses and startups actually need but rarely find under one roof.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--fg-muted)" }}>
                 We&apos;re a small team, which is deliberate. It means no handoffs between departments that don&apos;t talk to each other, no work getting diluted across five layers of account managers. Whether it&apos;s a website, an app, a marketing push, or the IT groundwork behind it, the same people who understand your project from day one are the ones building it through to launch.

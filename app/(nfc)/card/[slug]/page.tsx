@@ -31,7 +31,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${profile.name} — Digital Visiting Card | Iuvora`,
+    title: `${profile.name} - Digital Visiting Card | Iuvora`,
     description: `${profile.name} • ${profile.title}. Contact details and vCard.`,
     // Strict privacy: no search engine indexation or caching
     robots: {
@@ -48,7 +48,7 @@ export async function generateMetadata({
     },
     // OpenGraph still enabled for clean private preview cards when sharing link directly via chat
     openGraph: {
-      title: `${profile.name} — ${profile.title}`,
+      title: `${profile.name} - ${profile.title}`,
       description: profile.oneLineBio || "Digital Visiting Card by Iuvora",
       siteName: "Iuvora Digital Card",
     },

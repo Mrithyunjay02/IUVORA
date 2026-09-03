@@ -10,7 +10,7 @@ export function Preloader() {
   const textRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // 1. Session check — only show once per session
+    // 1. Session check - only show once per session
     const hasShown = sessionStorage.getItem("iuvora_preloader_shown");
     if (hasShown) {
       setIsMounted(false);

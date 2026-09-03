@@ -76,7 +76,7 @@ export function CtaBand() {
             style={{ color: "var(--fg-muted)", maxWidth: "45ch" }}
           >
             Tell us about your project. We&apos;ll respond within one business
-            day with a clear next step — no sales runaround.
+            day with a clear next step - no sales runaround.
           </p>
 
           <div className="cta-anim-item flex flex-wrap gap-4 justify-center">

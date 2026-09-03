@@ -12,7 +12,7 @@ interface SectionWrapperProps {
  * SectionWrapper
  *
  * Wraps a full-width section with data-theme attribute.
- * Background is TRANSPARENT — color lives on body.
+ * Background is TRANSPARENT - color lives on body.
  * IntersectionObserver in ScrollThemeProvider reads data-theme
  * to flip --bg/--fg on <html>.
  */

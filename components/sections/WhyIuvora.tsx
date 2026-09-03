@@ -50,7 +50,7 @@ export function WhyIuvora() {
     <SectionWrapper theme="dark" id="why-iuvora">
       <div className="container-grid" ref={containerRef}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          {/* Left — sticky headline */}
+          {/* Left - sticky headline */}
           <div className="lg:sticky lg:top-32">
             <p className=" eyebrow mb-4">
               Why Iuvora
@@ -67,7 +67,7 @@ export function WhyIuvora() {
               className=" text-base leading-relaxed"
               style={{ color: "var(--fg-muted)" }}
             >
-              We obsess over the things most agencies skip — performance,
+              We obsess over the things most agencies skip - performance,
               accessibility, long-term maintainability, and honest reporting.
             </p>
 
@@ -82,7 +82,7 @@ export function WhyIuvora() {
             />
           </div>
 
-          {/* Right — differentiator cards */}
+          {/* Right - differentiator cards */}
           <div className="why-list-container flex flex-col gap-0">
             {WHY_IUVORA.map((item, i) => (
               <div

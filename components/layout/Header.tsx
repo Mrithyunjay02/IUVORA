@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { NAV_LINKS } from "@/lib/constants";
 
 /**
- * Header — Sticky nav that reads --fg/--bg from the live CSS custom props
+ * Header - Sticky nav that reads --fg/--bg from the live CSS custom props
  * so it naturally inverts with the section theme. No hardcoded colors.
  */
 export function Header() {
@@ -49,7 +49,7 @@ export function Header() {
           aria-label="Main navigation"
         >
           {/* Logo */}
-          <Link href="/" aria-label="Iuvora — Home">
+          <Link href="/" aria-label="Iuvora - Home">
             <IuvoraLogo width={120} priority={true} />
           </Link>
 

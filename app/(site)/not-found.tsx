@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/Button";
 
 export const metadata = {
-  title: "404 — Page Not Found",
+  title: "404 - Page Not Found",
   description: "The page you are looking for does not exist.",
 };
 
@@ -10,7 +10,7 @@ export default function NotFound() {
     <section
       className="relative flex flex-col items-center justify-center min-h-[75vh] md:min-h-[85vh] text-center container-grid overflow-hidden"
       style={{ paddingTop: "8rem", paddingBottom: "6rem" }}
-      aria-label="404 — Page not found"
+      aria-label="404 - Page not found"
     >
       {/* Background grid pattern */}
       <div

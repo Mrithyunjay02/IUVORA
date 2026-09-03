@@ -29,7 +29,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   primary: [
     "bg-[var(--color-accent)] text-white",
     "hover:bg-[var(--color-accent-dim)]",
-    // Glow added via CSS class — see globals.css .btn-primary-glow
+    // Glow added via CSS class - see globals.css .btn-primary-glow
     "btn-primary-glow",
     "focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2",
     "focus-visible:ring-offset-[var(--bg)]",
@@ -37,7 +37,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   outline: [
     "bg-transparent border border-[var(--fg)] text-[var(--fg)]",
     "hover:bg-[var(--fg)] hover:text-[var(--bg)]",
-    // Glow added via CSS class — see globals.css .btn-outline-glow
+    // Glow added via CSS class - see globals.css .btn-outline-glow
     "btn-outline-glow",
     "focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2",
     "focus-visible:ring-offset-[var(--bg)]",

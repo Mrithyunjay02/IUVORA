@@ -10,11 +10,11 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Marquee } from "@/components/ui/Marquee";
 
 export const metadata: Metadata = {
-  title: "Iuvora — Web, App, Marketing & IT Services",
+  title: "Iuvora - Web, App, Marketing & IT Services",
   description:
     "Iuvora is your partner for Web, App, Marketing and IT solutions that drive growth.",
   openGraph: {
-    title: "Iuvora — Web, App, Marketing & IT Services",
+    title: "Iuvora - Web, App, Marketing & IT Services",
     description:
       "Iuvora is your partner for Web, App, Marketing and IT solutions that drive growth.",
     url: "https://www.iuvora.com",
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
         url: "https://www.iuvora.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Iuvora — Web, App, Marketing & IT Services",
+        alt: "Iuvora - Web, App, Marketing & IT Services",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Iuvora — Web, App, Marketing & IT Services",
+    title: "Iuvora - Web, App, Marketing & IT Services",
     description:
       "Iuvora is your partner for Web, App, Marketing and IT solutions that drive growth.",
     images: ["https://www.iuvora.com/og-image.png"],
@@ -47,10 +47,10 @@ export default function HomePage() {
       {/* IntersectionObserver scroll-invert engine */}
       <ScrollThemeProvider />
 
-      {/* Section sequence — alternates dark → light → dark → light → dark → light → dark */}
+      {/* Section sequence - alternates dark → light → dark → light → dark → light → dark */}
       <Hero />
       <ServicesOverview />
-      {/* 9.2 — Capabilities word marquee: not part of the invert cycle, 
+      {/* 9.2 - Capabilities word marquee: not part of the invert cycle, 
           always-dark divider strip between light services and dark process */}
       <Marquee />
       <Process />

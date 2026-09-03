@@ -201,7 +201,7 @@ export function ServicePageTemplate({ service }: ServicePageTemplateProps) {
             </h2>
             <p className="text-base leading-relaxed mb-10 text-center mx-auto" style={{ color: "var(--fg-muted)", maxWidth: "48ch" }}>
               Tell us about your project and we&apos;ll come back with a clear
-              proposal — scoped, costed, and ready to start.
+              proposal - scoped, costed, and ready to start.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button href="/contact" size="lg" id={`${service.slug}-cta-bottom`}>

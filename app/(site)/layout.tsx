@@ -8,7 +8,7 @@ import { Preloader } from "@/components/ui/Preloader";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.iuvora.com"),
   title: {
-    default: "Iuvora — Web, App, Marketing & IT Services",
+    default: "Iuvora - Web, App, Marketing & IT Services",
     template: "%s | Iuvora",
   },
   description:
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.iuvora.com",
     siteName: "Iuvora",
-    title: "Iuvora — Web, App, Marketing & IT Services",
+    title: "Iuvora - Web, App, Marketing & IT Services",
     description:
       "Iuvora is your partner for Web, App, Marketing and IT solutions that drive growth.",
     images: [
@@ -54,14 +54,14 @@ export const metadata: Metadata = {
         url: "https://www.iuvora.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Iuvora — Web, App, Marketing & IT Services",
+        alt: "Iuvora - Web, App, Marketing & IT Services",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Iuvora — Web, App, Marketing & IT Services",
+    title: "Iuvora - Web, App, Marketing & IT Services",
     description:
       "Iuvora is your partner for Web, App, Marketing and IT solutions that drive growth.",
     images: ["https://www.iuvora.com/og-image.png"],

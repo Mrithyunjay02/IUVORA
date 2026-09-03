@@ -12,7 +12,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// ── Section 9.3 — Geometric hover-reveal visuals ──────────────────────────────
+// ── Section 9.3 - Geometric hover-reveal visuals ──────────────────────────────
 const GEOMETRIC_VISUALS: Record<string, React.ReactNode> = {
   "web-development": (
     <svg viewBox="0 0 100 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -107,7 +107,7 @@ function ServiceCard({
       <Link
         href={`/services/${slug}`}
         className="group block h-full no-underline"
-        aria-label={`${title} — learn more`}
+        aria-label={`${title} - learn more`}
         id={`service-card-${slug}`}
       >
         <div
@@ -222,7 +222,7 @@ export function ServicesOverview() {
             className=" text-base leading-relaxed"
             style={{ color: "var(--fg-muted)" }}
           >
-            From your first website to a full-scale growth engine — we cover the
+            From your first website to a full-scale growth engine - we cover the
             complete stack so you never need to coordinate between three different
             agencies.
           </p>

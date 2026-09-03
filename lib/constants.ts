@@ -1,4 +1,4 @@
-// Shared constants — services, nav, process steps, etc.
+// Shared constants - services, nav, process steps, etc.
 
 export const NAV_LINKS = [
   { label: "Services", href: "/services/web-development" },
@@ -12,7 +12,7 @@ export const SERVICES = [
     title: "Web Development",
     tagline: "Crafting fast, scalable digital experiences.",
     description:
-      "From marketing sites to complex web apps — we design and build with performance and conversion at the core.",
+      "From marketing sites to complex web apps - we design and build with performance and conversion at the core.",
     icon: "⬡",
     capabilities: [
       "Custom website design & development",
@@ -30,7 +30,7 @@ export const SERVICES = [
     title: "App Development",
     tagline: "Native-quality apps. Cross-platform reach.",
     description:
-      "iOS and Android applications built for speed and usability — from MVP to full-scale product.",
+      "iOS and Android applications built for speed and usability - from MVP to full-scale product.",
     icon: "◈",
     capabilities: [
       "iOS & Android development",
@@ -92,7 +92,7 @@ export const PROCESS_STEPS = [
     number: "02",
     title: "Design",
     description:
-      "Wireframes, prototypes, and design systems — validated with real users before a line of code is written.",
+      "Wireframes, prototypes, and design systems - validated with real users before a line of code is written.",
   },
   {
     number: "03",
@@ -104,7 +104,7 @@ export const PROCESS_STEPS = [
     number: "04",
     title: "Launch",
     description:
-      "Staged rollouts, QA testing, performance audits, and a smooth handoff — or we stay on as your team.",
+      "Staged rollouts, QA testing, performance audits, and a smooth handoff - or we stay on as your team.",
   },
   {
     number: "05",
@@ -123,7 +123,7 @@ export const WHY_IUVORA = [
   {
     title: "Transparent by default",
     description:
-      "Weekly reports, live dashboards, and direct Slack access — you always know what's happening.",
+      "Weekly reports, live dashboards, and direct Slack access - you always know what's happening.",
   },
   {
     title: "No cookie-cutter solutions",
@@ -133,6 +133,6 @@ export const WHY_IUVORA = [
   {
     title: "Speed without shortcuts",
     description:
-      "We move fast — but we don't skip accessibility, performance, or security to do it.",
+      "We move fast - but we don't skip accessibility, performance, or security to do it.",
   },
 ];

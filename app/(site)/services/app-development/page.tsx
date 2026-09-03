@@ -7,7 +7,7 @@ const service = SERVICES.find((s) => s.slug === "app-development")!;
 export const metadata: Metadata = {
   title: "App Development",
   description:
-    "iOS and Android applications built for speed and usability — from MVP to full-scale product.",
+    "iOS and Android applications built for speed and usability - from MVP to full-scale product.",
   openGraph: {
     title: "App Development | Iuvora",
     description:

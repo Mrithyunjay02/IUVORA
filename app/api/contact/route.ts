@@ -62,7 +62,7 @@ export async function POST(req: Request) {
     const toEmail = process.env.CONTACT_RECEIVER_EMAIL || "info@iuvora.com";
     const fromEmail = "Iuvora <info@iuvora.com>";
 
-    const subject = `New Inquiry: ${cleanName} — ${cleanProjectType}`;
+    const subject = `New Inquiry: ${cleanName} - ${cleanProjectType}`;
 
     const htmlContent = `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #111827; background-color: #ffffff; border-radius: 8px; border: 1px solid #e5e7eb;">

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 interface IuvoraLogoProps {
   className?: string;
-  /** Width in px — height scales proportionally */
+  /** Width in px - height scales proportionally */
   width?: number;
   /** Pass priority=true for above-the-fold instances like Header */
   priority?: boolean;

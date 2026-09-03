@@ -25,7 +25,7 @@ export function Process() {
       onEnter: () => {
         const tl = gsap.timeline();
 
-        // Animate connector line — reveal from top with gradient effect
+        // Animate connector line - reveal from top with gradient effect
         tl.fromTo(
           ".process-connector-line",
           { opacity: 0 },
@@ -33,7 +33,7 @@ export function Process() {
           0
         );
 
-        // Animate step nodes — scale pulse + fade in
+        // Animate step nodes - scale pulse + fade in
         const stepRows = containerRef.current?.querySelectorAll(".process-step-row");
         if (stepRows) {
           tl.fromTo(
@@ -106,7 +106,7 @@ export function Process() {
                 key={step.number}
                 className="process-step-row flex gap-8 lg:gap-12"
               >
-                {/* Step number — acts as a node on the connector line */}
+                {/* Step number - acts as a node on the connector line */}
                 <div className="flex-none flex flex-col items-center">
                   <div
                     className="process-node relative z-10 w-10 h-10 flex items-center justify-center rounded-sm border text-xs font-bold font-[var(--font-display)] shrink-0"
