@@ -129,6 +129,23 @@ export function Footer() {
                   +91 87924 00712
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://maps.google.com/?q=IUVORA+PVT+LIMITED+Shivamogga"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm transition-colors duration-200 hover:text-[var(--color-accent)] no-underline"
+                  style={{ color: "var(--color-gray-mid)" }}
+                >
+                  IUVORA PVT LIMITED
+                  <br />
+                  WHQ8+5H6, Kuvempu Rd
+                  <br />
+                  Mission Compound
+                  <br />
+                  Shivamogga, Karnataka 577201
+                </a>
+              </li>
             </ul>
           </div>
         </div>
