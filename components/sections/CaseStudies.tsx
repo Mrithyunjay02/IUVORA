@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -91,6 +91,7 @@ function CaseStudyCard({
   item: (typeof CASE_STUDIES)[number];
   index: number;
 }) {
+  const [isHovered, setIsHovered] = useState(false);
   const isGold = item.accent === "gold";
   const isAppDev = item.category === "App Development";
   const accentColor = isGold ? "#C9A227" : isAppDev ? "#38bdf8" : "var(--color-accent)";
@@ -100,27 +101,30 @@ function CaseStudyCard({
     ? "rgba(56,189,248,0.35)"
     : "rgba(47,123,255,0.3)";
 
+  const getGlowStyle = () => {
+    if (isGold) {
+      return "0 0 0 1px rgba(201,162,39,0.2), 0 0 32px rgba(201,162,39,0.15), 0 0 8px rgba(201,162,39,0.3)";
+    } else if (isAppDev) {
+      return "0 0 0 1px rgba(56,189,248,0.2), 0 0 32px rgba(56,189,248,0.12), 0 0 8px rgba(56,189,248,0.25)";
+    } else {
+      return "0 0 0 1px rgba(47,123,255,0.2), 0 0 32px rgba(47,123,255,0.1), 0 0 8px rgba(47,123,255,0.2)";
+    }
+  };
+
   return (
     <article
-      className="group flex flex-col justify-between p-6 md:p-8 rounded-sm card-border transition-all duration-300"
+      className="group flex flex-col justify-between p-6 md:p-8 rounded-sm card-border"
       aria-label={item.title}
       id={`case-study-${item.id}`}
       style={{
         backgroundColor: "color-mix(in srgb, var(--fg) 2%, transparent)",
+        transform: isHovered ? "translateY(-4px)" : "translateY(0)",
+        boxShadow: isHovered ? getGlowStyle() : "none",
+        borderColor: isHovered ? accentBorder : undefined,
+        transition: "all 300ms cubic-bezier(0.16, 1, 0.3, 1)",
       }}
-      onMouseEnter={(e) => {
-        if (isGold) {
-          e.currentTarget.style.borderColor = "rgba(201,162,39,0.35)";
-          e.currentTarget.style.boxShadow =
-            "0 0 0 1px rgba(201,162,39,0.2), 0 0 24px rgba(201,162,39,0.12), 0 0 4px rgba(201,162,39,0.25)";
-        }
-      }}
-      onMouseLeave={(e) => {
-        if (isGold) {
-          e.currentTarget.style.borderColor = "";
-          e.currentTarget.style.boxShadow = "";
-        }
-      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div>
         {/* Visual Header */}
