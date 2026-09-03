@@ -26,22 +26,32 @@ export function DeviceMascot({ className = "", delay = 0 }: DeviceMascotProps) {
     );
 
     // Screen glow animation
-    gsap.to(screenRef.current, {
-      opacity: [0.6, 1, 0.6],
-      duration: 3,
-      ease: "sine.inOut",
-      repeat: -1,
-      delay: delay + 0.5,
-    });
+    gsap.fromTo(
+      screenRef.current,
+      { opacity: 0.6 },
+      {
+        opacity: 1,
+        duration: 1.5,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: delay + 0.5,
+      }
+    );
 
     // Keyboard typing animation
-    gsap.to(keysRef.current, {
-      opacity: [0.3, 0.8, 0.3],
-      duration: 2.5,
-      ease: "power1.inOut",
-      repeat: -1,
-      delay: delay + 0.8,
-    });
+    gsap.fromTo(
+      keysRef.current,
+      { opacity: 0.3 },
+      {
+        opacity: 0.8,
+        duration: 1.25,
+        ease: "power1.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: delay + 0.8,
+      }
+    );
 
     // Subtle float animation
     gsap.to(containerRef.current, {

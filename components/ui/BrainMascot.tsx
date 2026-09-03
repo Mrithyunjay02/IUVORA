@@ -26,32 +26,47 @@ export function BrainMascot({ className = "", delay = 0 }: BrainMascotProps) {
     );
 
     // Nodes pulsing animation
-    gsap.to(nodesRef.current, {
-      opacity: [0.5, 1, 0.5],
-      duration: 2.5,
-      ease: "sine.inOut",
-      repeat: -1,
-      delay: delay + 0.4,
-    });
+    gsap.fromTo(
+      nodesRef.current,
+      { opacity: 0.5 },
+      {
+        opacity: 1,
+        duration: 1.25,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: delay + 0.4,
+      }
+    );
 
     // Connection lines glow
-    gsap.to(linesRef.current, {
-      opacity: [0.4, 0.9, 0.4],
-      duration: 3,
-      ease: "sine.inOut",
-      repeat: -1,
-      delay: delay + 0.3,
-    });
+    gsap.fromTo(
+      linesRef.current,
+      { opacity: 0.4 },
+      {
+        opacity: 0.9,
+        duration: 1.5,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: delay + 0.3,
+      }
+    );
 
     // Rotating brain effect (slight rotation)
-    gsap.to(containerRef.current, {
-      rotationZ: [-2, 2, -2],
-      duration: 5,
-      ease: "sine.inOut",
-      repeat: -1,
-      delay: delay + 0.5,
-      transformOrigin: "50% 50%",
-    });
+    gsap.fromTo(
+      containerRef.current,
+      { rotation: -2 },
+      {
+        rotation: 2,
+        duration: 2.5,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: delay + 0.5,
+        transformOrigin: "50% 50%",
+      }
+    );
 
     // Subtle float animation
     gsap.to(containerRef.current, {
