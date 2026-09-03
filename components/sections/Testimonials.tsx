@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { GeometricAccent } from "@/components/ui/GeometricAccent";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -57,6 +58,18 @@ export function Testimonials() {
           { opacity: 0, y: 40 },
           { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.12 }
         );
+
+        // Animate geometric accents
+        const accents = containerRef.current?.querySelectorAll(".testimonial-accent");
+        if (accents) {
+          gsap.to(accents, {
+            opacity: 1,
+            duration: 0.6,
+            ease: "power2.out",
+            stagger: 0.12,
+            delay: 0.1,
+          });
+        }
       },
     });
   }, { scope: containerRef });
@@ -84,13 +97,25 @@ export function Testimonials() {
           {TESTIMONIALS.map((t) => (
             <div
               key={t.id}
-              className="card-border rounded-sm p-8 flex flex-col gap-6"
+              className="card-border rounded-sm p-8 flex flex-col gap-6 relative overflow-hidden"
               style={{
                 backgroundColor: "color-mix(in srgb, var(--fg) 3%, transparent)",
               }}
               id={`testimonial-${t.id}`}
               aria-label={`Testimonial from ${t.name || t.title}`}
             >
+              {/* Geometric accent corner */}
+              <div
+                className="absolute top-4 right-4 pointer-events-none opacity-0 testimonial-accent"
+                style={{ width: 80, height: 80 }}
+              >
+                <GeometricAccent
+                  shape="circle"
+                  size={80}
+                  opacity={0.12}
+                  trigger="scroll"
+                />
+              </div>
               {/* Quote mark */}
               <span
                 className="text-5xl font-black leading-none font-[var(--font-display)]"

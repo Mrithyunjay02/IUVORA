@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { AccentLine } from "@/components/ui/AccentLine";
 import { WHY_IUVORA } from "@/lib/constants";
 
 if (typeof window !== "undefined") {
@@ -72,14 +73,9 @@ export function WhyIuvora() {
             </p>
 
             {/* Decorative accent line */}
-            <div
-              className="why-accent-line mt-10 h-[2px] w-16"
-              style={{
-                backgroundColor: "var(--color-accent)",
-                transformOrigin: "left",
-                transform: "scaleX(0)",
-              }}
-            />
+            <div className="mt-10 w-16">
+              <AccentLine className="why-accent-line" trigger="scroll" />
+            </div>
           </div>
 
           {/* Right - differentiator cards */}

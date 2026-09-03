@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { Button } from "@/components/ui/Button";
+import { GeometricAccent } from "@/components/ui/GeometricAccent";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -85,11 +86,20 @@ export function Hero() {
 
     const tl = gsap.timeline();
 
-    // Hero headline: word-by-word reveal
-    tl.to(
+    // Hero headline: word-by-word reveal with scale
+    tl.fromTo(
       ".hero-headline-word",
-      { opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.08 },
+      { opacity: 0, scale: 0.9 },
+      { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out", stagger: 0.08 },
       0
+    );
+
+    // Geometric accent circle
+    tl.fromTo(
+      ".geometric-accent-hero",
+      { opacity: 0, scale: 0.8 },
+      { opacity: 0.25, scale: 1, duration: 0.8, ease: "power2.out" },
+      0.2
     );
 
     // Eyebrow
@@ -158,6 +168,26 @@ export function Hero() {
             filter: "blur(60px)",
           }}
         />
+
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute geometric-accent-hero"
+          style={{
+            top: "15%",
+            right: "8%",
+            width: "clamp(250px, 30vw, 450px)",
+            height: "clamp(250px, 30vw, 450px)",
+            opacity: 0,
+          }}
+        >
+          <GeometricAccent
+            shape="circle"
+            size={300}
+            opacity={0.25}
+            trigger="load"
+            delay={0.4}
+          />
+        </div>
 
         <div className="relative z-10 flex-1 max-w-3xl">
           <p className="hero-animate eyebrow mb-6">
