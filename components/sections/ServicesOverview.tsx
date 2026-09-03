@@ -114,6 +114,7 @@ function ServiceCard({
           className="card-border rounded-sm h-full p-8 relative overflow-hidden"
           style={{
             backgroundColor: "color-mix(in srgb, var(--fg) 4%, transparent)",
+            borderLeft: "3px solid var(--color-accent)",
             transform: hovered ? "translateY(-4px)" : "translateY(0px)",
             transition: "transform 300ms cubic-bezier(0.16, 1, 0.3, 1)",
           }}

@@ -51,7 +51,13 @@ function StatItem({
   }, { scope: ref });
 
   return (
-    <div ref={ref}>
+    <div
+      ref={ref}
+      className="card-border rounded-lg px-4 py-3"
+      style={{
+        borderRadius: "8px",
+      }}
+    >
       <p
         className="text-4xl font-extrabold font-[var(--font-display)] leading-none mb-1"
         style={{ color: "var(--color-white)" }}
