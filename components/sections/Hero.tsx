@@ -8,7 +8,6 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { Button } from "@/components/ui/Button";
 import { GeometricAccent } from "@/components/ui/GeometricAccent";
 import { CodeTerminalMascot } from "@/components/ui/CodeTerminalMascot";
-import { BrainMascot } from "@/components/ui/BrainMascot";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -238,16 +237,10 @@ export function Hero() {
           </span>
         </div>
 
-        {/* Mascots section - right side */}
-        <div className="hidden md:flex flex-1 items-center justify-between shrink-0 relative" style={{ minHeight: "280px", paddingRight: "2rem" }}>
-          {/* Code/Terminal mascot - left side */}
-          <div className="w-40 lg:w-48 opacity-85 flex-shrink-0">
-            <CodeTerminalMascot delay={0.3} />
-          </div>
-
-          {/* Brain/AI mascot - right side */}
-          <div className="w-44 lg:w-52 flex-shrink-0">
-            <BrainMascot delay={0.5} />
+        {/* Code/Terminal mascot - full right side */}
+        <div className="hidden lg:flex flex-1 items-center justify-end shrink-0" style={{ minHeight: "400px" }}>
+          <div className="w-full max-w-md lg:max-w-lg">
+            <CodeTerminalMascot delay={0.4} />
           </div>
         </div>
       </div>
