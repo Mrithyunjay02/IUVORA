@@ -213,6 +213,11 @@ a.accent-link:hover {
   border: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);
 }
 
+/* ─── Button arrow animation ──────────────────────────────────────── */
+#cta-band-primary:hover span {
+  transform: translateX(4px);
+}
+
 /* ─── Marquee strip (Section 9.2) ───────────────────────────────────── */
 @keyframes marquee-scroll {
   from { transform: translateX(0%); }

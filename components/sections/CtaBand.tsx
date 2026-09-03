@@ -81,7 +81,16 @@ export function CtaBand() {
 
           <div className="cta-anim-item flex flex-wrap gap-4 justify-center">
             <Button href="/contact" size="lg" id="cta-band-primary">
-              Start a Project →
+              Start a Project{" "}
+              <span
+                style={{
+                  display: "inline-block",
+                  transition: "transform 200ms cubic-bezier(0.16, 1, 0.3, 1)",
+                }}
+                className="group-hover:translate-x-1"
+              >
+                →
+              </span>
             </Button>
             <Button href="mailto:info@iuvora.com" size="lg" variant="outline" id="cta-band-email">
               Email us directly

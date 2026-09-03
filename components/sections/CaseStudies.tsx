@@ -157,7 +157,7 @@ function CaseStudyCard({
                 priority={index < 2}
               />
 
-              {/* Dark vignette / gradient overlay for badges & text contrast */}
+              {/* Dark vignette / gradient overlay for badges & text contrast — darkens on hover */}
               <div
                 className="absolute inset-0 pointer-events-none transition-opacity duration-300"
                 style={{
@@ -165,6 +165,16 @@ function CaseStudyCard({
                     item.imageFit === "contain"
                       ? "linear-gradient(180deg, rgba(8,12,20,0.5) 0%, transparent 40%, rgba(8,12,20,0.7) 100%)"
                       : "linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.15) 45%, rgba(10,10,10,0.85) 100%)",
+                  opacity: isHovered ? 1 : 0.7,
+                }}
+              />
+
+              {/* Hover darkening overlay */}
+              <div
+                className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+                style={{
+                  background: "rgba(0, 0, 0, 0.25)",
+                  opacity: isHovered ? 1 : 0,
                 }}
               />
             </>
