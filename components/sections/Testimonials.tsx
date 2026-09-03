@@ -40,6 +40,27 @@ const TESTIMONIALS = [
 export function Testimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  useGSAP(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 60%",
+      once: true,
+      onEnter: () => {
+        const cards = containerRef.current?.querySelectorAll(".testimonials-grid > div");
+        if (!cards) return;
+
+        gsap.fromTo(
+          cards,
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.12 }
+        );
+      },
+    });
+  }, { scope: containerRef });
+
   return (
     <SectionWrapper theme="light" id="testimonials">
       <div className="container-grid" ref={containerRef}>

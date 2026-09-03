@@ -14,6 +14,52 @@ if (typeof window !== "undefined") {
 export function Process() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  useGSAP(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 60%",
+      once: true,
+      onEnter: () => {
+        const tl = gsap.timeline();
+
+        // Animate connector line — reveal from top with gradient effect
+        tl.fromTo(
+          ".process-connector-line",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.8, ease: "power2.out" },
+          0
+        );
+
+        // Animate step nodes — scale pulse + fade in
+        const stepRows = containerRef.current?.querySelectorAll(".process-step-row");
+        if (stepRows) {
+          tl.fromTo(
+            stepRows,
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.15 },
+            0.2
+          );
+
+          // Node pulse animation on each step
+          stepRows.forEach((row) => {
+            const nodeDiv = row.querySelector(".process-node");
+            if (nodeDiv) {
+              tl.fromTo(
+                nodeDiv,
+                { scale: 0.8 },
+                { scale: 1, duration: 0.4, ease: "back.out" },
+                0.2
+              );
+            }
+          });
+        }
+      },
+    });
+  }, { scope: containerRef });
+
   return (
     <SectionWrapper theme="dark" id="process">
       <div className="container-grid" ref={containerRef}>
@@ -44,7 +90,7 @@ export function Process() {
           {/* Vertical connector line */}
           <div
             aria-hidden="true"
-            className="hidden lg:block absolute top-0 bottom-0"
+            className="process-connector-line hidden lg:block absolute top-0 bottom-0"
             style={{
               left: "calc(2.5rem)",
               width: "1px",
@@ -58,12 +104,12 @@ export function Process() {
             {PROCESS_STEPS.map((step, i) => (
               <div
                 key={step.number}
-                className=" flex gap-8 lg:gap-12 opacity-0"
+                className="process-step-row flex gap-8 lg:gap-12"
               >
                 {/* Step number — acts as a node on the connector line */}
                 <div className="flex-none flex flex-col items-center">
                   <div
-                    className="relative z-10 w-10 h-10 flex items-center justify-center rounded-sm border text-xs font-bold font-[var(--font-display)] shrink-0"
+                    className="process-node relative z-10 w-10 h-10 flex items-center justify-center rounded-sm border text-xs font-bold font-[var(--font-display)] shrink-0"
                     style={{
                       borderColor: "var(--color-accent)",
                       color: "var(--color-accent)",
