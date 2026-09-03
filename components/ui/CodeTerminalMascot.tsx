@@ -85,34 +85,34 @@ export function CodeTerminalMascot({ className = "", delay = 0 }: CodeTerminalMa
           <circle cx="65" cy="35" r="3" opacity="0.4" />
 
           {/* Code lines - left angle bracket */}
-          <g ref={codeRef} style={{ opacity: 1 }}>
+          <g ref={codeRef} style={{ opacity: 1 }} textRendering="optimizeLegibility">
             {/* Line 1: <div> */}
-            <text x="35" y="75" fontSize="12" fontFamily="monospace" fill="url(#codeGradient)" opacity="1">
+            <text x="35" y="75" fontSize="12" fontFamily="monospace" fill="url(#codeGradient)" opacity="1" stroke="none">
               &lt;div&gt;
             </text>
 
             {/* Line 2: className */}
-            <text x="45" y="95" fontSize="11" fontFamily="monospace" fill="var(--color-accent)" opacity="0.9">
+            <text x="45" y="95" fontSize="11" fontFamily="monospace" fill="var(--color-accent)" opacity="0.9" stroke="none">
               className=
             </text>
 
             {/* Line 3: indented content */}
-            <text x="55" y="115" fontSize="11" fontFamily="monospace" fill="var(--color-accent)" opacity="0.85">
+            <text x="55" y="115" fontSize="11" fontFamily="monospace" fill="var(--color-accent)" opacity="0.85" stroke="none">
               "build"
             </text>
 
             {/* Line 4: closing tag */}
-            <text x="35" y="135" fontSize="12" fontFamily="monospace" fill="url(#codeGradient)" opacity="1">
+            <text x="35" y="135" fontSize="12" fontFamily="monospace" fill="url(#codeGradient)" opacity="1" stroke="none">
               &lt;/div&gt;
             </text>
 
             {/* Line 5: another tag */}
-            <text x="35" y="160" fontSize="12" fontFamily="monospace" fill="url(#codeGradient)" opacity="0.9">
+            <text x="35" y="160" fontSize="12" fontFamily="monospace" fill="url(#codeGradient)" opacity="0.9" stroke="none">
               &lt;span&gt;...&lt;/span&gt;
             </text>
 
             {/* Line 6: closing */}
-            <text x="35" y="185" fontSize="12" fontFamily="monospace" fill="url(#codeGradient)" opacity="0.85">
+            <text x="35" y="185" fontSize="12" fontFamily="monospace" fill="url(#codeGradient)" opacity="0.85" stroke="none">
               &lt;/&gt;
             </text>
           </g>
