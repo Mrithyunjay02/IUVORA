@@ -61,70 +61,7 @@ export function Button({
   disabled = false,
   id,
 }: ButtonProps) {
-  const isMagnetic = variant === "primary" && !disabled;
   const buttonRef = useRef<any>(null);
-
-  useEffect(() => {
-    if (!isMagnetic) return;
-
-    // Respect reduced motion
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    
-    // Only apply on fine pointers (desktop)
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-
-    const btn = buttonRef.current;
-    if (!btn) return;
-
-    // GSAP quickTo using Tailwind's transform variables to avoid clashing with hover:scale
-    const xTo = gsap.quickTo(btn, "--tw-translate-x", { duration: 0.8, ease: "elastic.out(1, 0.3)", unit: "px" });
-    const yTo = gsap.quickTo(btn, "--tw-translate-y", { duration: 0.8, ease: "elastic.out(1, 0.3)", unit: "px" });
-
-    // Lock the bounding box when the mouse enters the radius to prevent vibration feedback loops
-    let restingRect: DOMRect | null = null;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!restingRect) {
-        // Only sample rect when resting to prevent reading moving coordinates
-        restingRect = btn.getBoundingClientRect();
-      }
-
-      const { clientX, clientY } = e;
-      const { left, top, width, height } = restingRect!;
-      const centerX = left + width / 2;
-      const centerY = top + height / 2;
-      
-      const distanceX = clientX - centerX;
-      const distanceY = clientY - centerY;
-      const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-      
-      // Pull radius: ~80px beyond boundaries
-      const maxPullRadius = Math.max(width, height) / 2 + 80;
-      
-      if (distance < maxPullRadius) {
-        xTo(distanceX * 0.15);
-        yTo(distanceY * 0.15);
-      } else {
-        // Outside radius, release and reset the lock
-        xTo(0);
-        yTo(0);
-        restingRect = null;
-      }
-    };
-
-    const handleScroll = () => {
-      // Invalidate the resting rect if the user scrolls
-      restingRect = null;
-    };
-
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [isMagnetic]);
 
   const base = [
     "inline-flex items-center justify-center gap-2",

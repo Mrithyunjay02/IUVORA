@@ -22,8 +22,8 @@
   --color-white: #fafafa;
   --color-gray-mid: #6b6b6b;
   --color-accent: #2f7bff;
-  --font-display: "Inter Tight", sans-serif;
-  --font-body: "Inter", sans-serif;
+  --font-display: "Geist", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
   --breakpoint-xs: 360px;
 }
 
@@ -242,30 +242,6 @@ a.accent-link:hover {
   }
 }
 
-/* ─── Custom Cursor ──────────────────────────────────────────────────── */
-
-/*
- * Suppress native cursor on all elements once the custom cursor is active.
- * JS sets cursor: none on <html>; this reinforces it at higher specificity
- * for interactive elements which have their own cursor rules.
- */
-@media (hover: hover) and (pointer: fine) {
-  html:has(#custom-cursor) *,
-  html:has(#custom-cursor) a,
-  html:has(#custom-cursor) button {
-    cursor: none !important;
-  }
-}
-
-/*
- * Hover ring state — JS adds/removes .cursor--hover class.
- * Width/height stay at 10px; JS handles the scale(2.5) via transform.
- * Border replaces the solid fill to create the ring effect.
- */
-.custom-cursor.cursor--hover {
-  background-color: transparent !important;
-  border: 1.5px solid var(--color-accent);
-}
 
 /* ─── Glow hover on cards and buttons ───────────────────────────────── */
 

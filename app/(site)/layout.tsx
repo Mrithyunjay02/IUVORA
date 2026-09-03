@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { GrainOverlay } from "@/components/ui/GrainOverlay";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 import { SmoothScrollProvider } from "@/components/scroll/SmoothScrollProvider";
 import { Preloader } from "@/components/ui/Preloader";
 
@@ -96,23 +94,19 @@ export default function SiteLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
           rel="stylesheet"
         />
       </head>
       <body>
         <Preloader />
         <SmoothScrollProvider>
-          {/* Grain texture overlay — fixed, pointer-events none, 3% opacity */}
-          <GrainOverlay />
           <Header />
           <main id="main-content">
             {children}
           </main>
           <Footer />
         </SmoothScrollProvider>
-        {/* Custom spring cursor — desktop only, progressive enhancement */}
-        <CustomCursor />
       </body>
     </html>
   );

@@ -185,7 +185,6 @@ function CaseStudyCard({
                   : "rgba(8,16,32,0.88)",
                 border: `1px solid ${accentBorder}`,
                 color: accentColor,
-                backdropFilter: "blur(6px)",
               }}
             >
               {isAppDev && (
@@ -207,7 +206,6 @@ function CaseStudyCard({
                   backgroundColor: "rgba(18,15,8,0.88)",
                   border: "1px solid rgba(201,162,39,0.55)",
                   color: "#C9A227",
-                  backdropFilter: "blur(6px)",
                 }}
               >
                 <span
