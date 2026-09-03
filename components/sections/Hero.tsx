@@ -239,7 +239,7 @@ export function Hero() {
 
         {/* Code/Terminal mascot - full right side, aligned with "that" */}
         <div className="hidden lg:flex flex-1 items-start justify-end shrink-0 -mt-64" style={{ minHeight: "400px" }}>
-          <div className="w-full max-w-md lg:max-w-lg">
+          <div className="w-full max-w-4xl lg:max-w-6xl">
             <CodeTerminalMascot delay={0.4} />
           </div>
         </div>
