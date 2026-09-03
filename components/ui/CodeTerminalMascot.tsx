@@ -58,8 +58,8 @@ export function CodeTerminalMascot({ className = "", delay = 0 }: CodeTerminalMa
     <div ref={containerRef} className={className} style={{ opacity: 0 }}>
       <svg
         viewBox="0 0 240 280"
-        width="280"
-        height="326"
+        width="500"
+        height="583"
         xmlns="http://www.w3.org/2000/svg"
         className="drop-shadow-lg"
         aria-hidden="true"
