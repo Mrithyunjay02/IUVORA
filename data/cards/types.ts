@@ -19,4 +19,6 @@ export interface CardProfile {
   socials: CardSocials;
   location: string;
   company?: string;
+  workUrl?: string;
+  borderAccent?: "gold" | "blue" | string;
 }

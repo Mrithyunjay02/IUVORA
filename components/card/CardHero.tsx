@@ -53,7 +53,7 @@ export function CardHero({ profile }: CardHeroProps) {
                 className="text-[17px] font-bold tracking-wider text-zinc-300"
                 style={{ fontFamily: "'Libre Baskerville', Baskerville, Georgia, serif" }}
               >
-                MJ
+                {profile.initials || profile.name.slice(0, 2).toUpperCase()}
               </span>
             </div>
           )}
@@ -108,19 +108,21 @@ export function CardHero({ profile }: CardHeroProps) {
           </p>
         )}
 
-        {/* Featured Work Link (Montserrat, neutral hover) */}
-        <div className="pt-1">
-          <a
-            href="https://www.iuvora.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            id="card-link-work"
-            className="group inline-flex items-center gap-1.5 text-[12.5px] font-medium text-zinc-400 hover:text-[#FBF7EE] transition-colors"
-          >
-            <span>View my work</span>
-            <span className="transition-transform duration-150 group-hover:translate-x-0.5">→</span>
-          </a>
-        </div>
+        {/* Featured Work Link (Montserrat, neutral hover) — omitted if no workUrl provided */}
+        {profile.workUrl && (
+          <div className="pt-1">
+            <a
+              href={profile.workUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="card-link-work"
+              className="group inline-flex items-center gap-1.5 text-[12.5px] font-medium text-zinc-400 hover:text-[#FBF7EE] transition-colors"
+            >
+              <span>View my work</span>
+              <span className="transition-transform duration-150 group-hover:translate-x-0.5">→</span>
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -33,6 +33,28 @@ interface CardContainerProps {
  * - Varied radii: card (16px/0px), button (8px), avatar (12px).
  * - No soft glows, no glassmorphism, no telemetry HUD gimmicks.
  */
+/**
+ * Resolves borderAccent token or hex to a subtle hairline border color:
+ * - "blue" (Co-Founder tier): Iuvora brand blue hairline (rgba(47, 123, 255, 0.30))
+ * - "gold" (Founder tier): Subtle Iuvora-adjacent gold hairline (rgba(197, 160, 89, 0.35))
+ * - hex value: Custom hex applied with hairline opacity
+ */
+function getBorderAccentStyle(accent?: string): { borderColor: string } {
+  if (accent === "gold") {
+    return { borderColor: "rgba(197, 160, 89, 0.35)" };
+  }
+  if (!accent || accent === "blue" || accent === "#2F7BFF") {
+    return { borderColor: "rgba(47, 123, 255, 0.30)" };
+  }
+  if (accent.startsWith("#")) {
+    if (accent.length === 7) {
+      return { borderColor: `${accent}4D` }; // ~30% alpha for consistent hairline weight
+    }
+    return { borderColor: accent };
+  }
+  return { borderColor: accent };
+}
+
 export function CardContainer({ profile }: CardContainerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -87,7 +109,10 @@ export function CardContainer({ profile }: CardContainerProps) {
       </div>
 
       {/* ── Physical Visiting Card: exactly ONE asymmetric signature detail (chamfered top-right corner) ── */}
-      <div className="relative z-10 w-full max-w-[390px] rounded-2xl rounded-tr-none bg-[#0D0D11] border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.85)] px-6 py-7 sm:px-7 sm:py-8 space-y-6 my-auto">
+      <div
+        className="relative z-10 w-full max-w-[390px] rounded-2xl rounded-tr-none bg-[#0D0D11] border shadow-[0_20px_50px_rgba(0,0,0,0.85)] px-6 py-7 sm:px-7 sm:py-8 space-y-6 my-auto transition-colors duration-200"
+        style={getBorderAccentStyle(profile.borderAccent)}
+      >
         {/* 1. Hero (Baskerville name + Montserrat title/bio) */}
         <div className="card-anim-item opacity-0">
           <CardHero profile={profile} />

@@ -16,4 +16,6 @@ export const mjProfile: CardProfile = {
   },
   location: "Shimoga, Karnataka",
   company: "Iuvora",
+  workUrl: "https://www.iuvora.com",
+  borderAccent: "blue",
 };

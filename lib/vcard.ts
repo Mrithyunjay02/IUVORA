@@ -107,6 +107,8 @@ export function generateVCardString(profile: CardProfile): string {
 
   if (profile.socials?.website) {
     lines.push(`URL;TYPE=WORK:${profile.socials.website.trim()}`);
+  } else if (profile.workUrl) {
+    lines.push(`URL;TYPE=WORK:${profile.workUrl.trim()}`);
   } else if (profile.company?.toLowerCase() === "iuvora") {
     lines.push(`URL;TYPE=WORK:https://www.iuvora.com`);
   }

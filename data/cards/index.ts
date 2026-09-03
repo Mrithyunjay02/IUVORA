@@ -1,8 +1,10 @@
 import { CardProfile } from "./types";
 import { mjProfile } from "./mj";
+import { akshayProfile } from "./akshay";
 
 const cardProfiles: Record<string, CardProfile> = {
   [mjProfile.slug]: mjProfile,
+  [akshayProfile.slug]: akshayProfile,
 };
 
 export function getCardProfile(slug: string): CardProfile | null {
