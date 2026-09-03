@@ -137,7 +137,7 @@ export function Hero() {
     <SectionWrapper theme="dark" id="hero" noPad>
       <div
         ref={container}
-        className="relative flex flex-col lg:flex-row lg:items-center justify-center min-h-screen container-grid gap-16 lg:gap-20"
+        className="relative flex flex-col lg:flex-row lg:items-center justify-between min-h-screen container-grid gap-8 lg:gap-16"
         style={{ paddingTop: "8rem", paddingBottom: "6rem" }}
       >
         <div
@@ -183,7 +183,7 @@ export function Hero() {
           />
         </div>
 
-        <div className="relative z-10 flex-1 max-w-3xl">
+        <div className="relative z-10 flex-1 max-w-xl lg:max-w-2xl">
           <p className="hero-animate eyebrow mb-6">
             Digital Studio
           </p>
@@ -238,8 +238,10 @@ export function Hero() {
         </div>
 
         {/* Geometric device mascot - right side */}
-        <div className="absolute right-6 md:right-12 lg:right-0 top-1/2 -translate-y-1/2 opacity-60 lg:opacity-100">
-          <DeviceMascot delay={0.6} />
+        <div className="hidden md:flex flex-1 items-center justify-end shrink-0 relative" style={{ minHeight: "400px" }}>
+          <div className="relative w-full max-w-xs lg:max-w-sm">
+            <DeviceMascot delay={0.4} />
+          </div>
         </div>
       </div>
     </SectionWrapper>

@@ -11,16 +11,47 @@ interface DeviceMascotProps {
 
 export function DeviceMascot({ className = "", delay = 0 }: DeviceMascotProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const screenRef = useRef<SVGGElement>(null);
+  const keysRef = useRef<SVGGElement>(null);
 
   useGSAP(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReduced) return;
 
+    // Entrance animation
     gsap.fromTo(
       containerRef.current,
       { opacity: 0, scale: 0.8, y: 40 },
       { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "power2.out", delay }
     );
+
+    // Screen glow animation
+    gsap.to(screenRef.current, {
+      opacity: [0.6, 1, 0.6],
+      duration: 3,
+      ease: "sine.inOut",
+      repeat: -1,
+      delay: delay + 0.5,
+    });
+
+    // Keyboard typing animation
+    gsap.to(keysRef.current, {
+      opacity: [0.3, 0.8, 0.3],
+      duration: 2.5,
+      ease: "power1.inOut",
+      repeat: -1,
+      delay: delay + 0.8,
+    });
+
+    // Subtle float animation
+    gsap.to(containerRef.current, {
+      y: -10,
+      duration: 4,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+      delay: delay + 0.3,
+    });
   }, { scope: containerRef });
 
   return (
@@ -42,16 +73,18 @@ export function DeviceMascot({ className = "", delay = 0 }: DeviceMascotProps) {
           <rect x="30" y="35" width="140" height="70" rx="4" opacity="0.6" />
 
           {/* Screen lines - representing content */}
-          <line x1="40" y1="50" x2="160" y2="50" opacity="0.3" strokeWidth="1.5" />
-          <line x1="40" y1="60" x2="140" y2="60" opacity="0.25" strokeWidth="1.5" />
-          <line x1="40" y1="70" x2="150" y2="70" opacity="0.25" strokeWidth="1.5" />
-          <line x1="40" y1="80" x2="130" y2="80" opacity="0.3" strokeWidth="1.5" />
+          <g ref={screenRef} style={{ opacity: 0.6 }}>
+            <line x1="40" y1="50" x2="160" y2="50" opacity="0.3" strokeWidth="1.5" />
+            <line x1="40" y1="60" x2="140" y2="60" opacity="0.25" strokeWidth="1.5" />
+            <line x1="40" y1="70" x2="150" y2="70" opacity="0.25" strokeWidth="1.5" />
+            <line x1="40" y1="80" x2="130" y2="80" opacity="0.3" strokeWidth="1.5" />
+          </g>
 
           {/* Keyboard base */}
           <rect x="15" y="125" width="170" height="50" rx="4" opacity="0.5" />
 
           {/* Keyboard keys hint */}
-          <g opacity="0.3">
+          <g ref={keysRef} style={{ opacity: 0.3 }}>
             <circle cx="35" cy="140" r="2.5" />
             <circle cx="55" cy="140" r="2.5" />
             <circle cx="75" cy="140" r="2.5" />
