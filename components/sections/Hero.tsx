@@ -7,6 +7,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { Button } from "@/components/ui/Button";
 import { GeometricAccent } from "@/components/ui/GeometricAccent";
+import { DeviceMascot } from "@/components/ui/DeviceMascot";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -234,6 +235,11 @@ export function Hero() {
           <span className="text-[10px] tracking-widest uppercase" style={{ color: "var(--color-gray-mid)" }}>
             scroll
           </span>
+        </div>
+
+        {/* Geometric device mascot - right side */}
+        <div className="absolute right-6 md:right-12 lg:right-0 top-1/2 -translate-y-1/2 opacity-60 lg:opacity-100">
+          <DeviceMascot delay={0.6} />
         </div>
       </div>
     </SectionWrapper>
