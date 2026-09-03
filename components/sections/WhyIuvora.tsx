@@ -14,6 +14,38 @@ if (typeof window !== "undefined") {
 export function WhyIuvora() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  useGSAP(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 70%",
+      once: true,
+      onEnter: () => {
+        // Animate accent line reveal
+        gsap.fromTo(
+          ".why-accent-line",
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.6, ease: "power2.out" }
+        );
+
+        // Animate list items cascade
+        const items = containerRef.current?.querySelectorAll(".why-list-container > div");
+        if (items) {
+          gsap.to(items, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out",
+            stagger: 0.1,
+            delay: 0.15,
+          });
+        }
+      },
+    });
+  }, { scope: containerRef });
+
   return (
     <SectionWrapper theme="dark" id="why-iuvora">
       <div className="container-grid" ref={containerRef}>
@@ -42,7 +74,11 @@ export function WhyIuvora() {
             {/* Decorative accent line */}
             <div
               className="why-accent-line mt-10 h-[2px] w-16"
-              style={{ backgroundColor: "var(--color-accent)", transformOrigin: "left" }}
+              style={{
+                backgroundColor: "var(--color-accent)",
+                transformOrigin: "left",
+                transform: "scaleX(0)",
+              }}
             />
           </div>
 
@@ -51,9 +87,11 @@ export function WhyIuvora() {
             {WHY_IUVORA.map((item, i) => (
               <div
                 key={item.title}
-                className=" flex gap-6 py-8 border-b opacity-0"
+                className=" flex gap-6 py-8 border-b"
                 style={{
                   borderColor: "color-mix(in srgb, var(--fg) 12%, transparent)",
+                  opacity: 0,
+                  transform: "translateY(20px)",
                 }}
               >
                 {/* Accent number */}
