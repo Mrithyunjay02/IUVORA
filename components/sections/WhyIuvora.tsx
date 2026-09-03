@@ -14,53 +14,17 @@ if (typeof window !== "undefined") {
 export function WhyIuvora() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    // Header reveal
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top 75%",
-      once: true,
-      onEnter: () => {
-        gsap.fromTo(
-          ".why-header-anim",
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.1 }
-        );
-        
-        gsap.fromTo(
-          ".why-accent-line",
-          { scaleX: 0 },
-          { scaleX: 1, duration: 0.6, ease: "power2.out", delay: 0.4 }
-        );
-      },
-    });
-
-    // List items reveal
-    ScrollTrigger.create({
-      trigger: ".why-list-container",
-      start: "top 75%",
-      once: true,
-      onEnter: () => {
-        gsap.fromTo(
-          ".why-list-item",
-          { opacity: 0, x: 30 },
-          { opacity: 1, x: 0, duration: 0.5, ease: "power2.out", stagger: 0.08 }
-        );
-      },
-    });
-  }, { scope: containerRef });
-
   return (
     <SectionWrapper theme="dark" id="why-iuvora">
       <div className="container-grid" ref={containerRef}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left — sticky headline */}
           <div className="lg:sticky lg:top-32">
-            <p className="why-header-anim eyebrow mb-4">
+            <p className=" eyebrow mb-4">
               Why Iuvora
             </p>
             <h2
-              className="why-header-anim section-headline mb-6"
+              className=" section-headline mb-6"
               style={{ color: "var(--fg)" }}
             >
               The difference
@@ -68,7 +32,7 @@ export function WhyIuvora() {
               is in the details.
             </h2>
             <p
-              className="why-header-anim text-base leading-relaxed"
+              className=" text-base leading-relaxed"
               style={{ color: "var(--fg-muted)" }}
             >
               We obsess over the things most agencies skip — performance,
@@ -87,7 +51,7 @@ export function WhyIuvora() {
             {WHY_IUVORA.map((item, i) => (
               <div
                 key={item.title}
-                className="why-list-item flex gap-6 py-8 border-b opacity-0"
+                className=" flex gap-6 py-8 border-b opacity-0"
                 style={{
                   borderColor: "color-mix(in srgb, var(--fg) 12%, transparent)",
                 }}

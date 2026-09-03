@@ -40,46 +40,16 @@ const TESTIMONIALS = [
 export function Testimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    // Header reveal
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top 75%",
-      once: true,
-      onEnter: () => {
-        gsap.fromTo(
-          ".test-header-anim",
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.1 }
-        );
-      },
-    });
-
-    // Cards stagger reveal
-    ScrollTrigger.create({
-      trigger: ".testimonials-grid",
-      start: "top 75%",
-      once: true,
-      onEnter: () => {
-        gsap.fromTo(
-          ".testimonial-card",
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.1 }
-        );
-      },
-    });
-  }, { scope: containerRef });
-
   return (
     <SectionWrapper theme="light" id="testimonials">
       <div className="container-grid" ref={containerRef}>
         {/* Header */}
         <div className="max-w-xl mb-16">
-          <p className="test-header-anim eyebrow mb-4">
+          <p className=" eyebrow mb-4">
             What clients say
           </p>
           <h2
-            className="test-header-anim section-headline"
+            className=" section-headline"
             style={{ color: "var(--fg)" }}
           >
             Trusted by founders
@@ -93,7 +63,7 @@ export function Testimonials() {
           {TESTIMONIALS.map((t) => (
             <div
               key={t.id}
-              className="testimonial-card card-border rounded-sm p-8 flex flex-col gap-6 opacity-0"
+              className="card-border rounded-sm p-8 flex flex-col gap-6"
               style={{
                 backgroundColor: "color-mix(in srgb, var(--fg) 3%, transparent)",
               }}

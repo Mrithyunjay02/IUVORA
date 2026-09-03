@@ -178,47 +178,15 @@ function ServiceCard({
 export function ServicesOverview() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    // Header text reveal
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top 75%",
-      once: true,
-      onEnter: () => {
-        gsap.fromTo(
-          ".services-header-anim",
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.1 }
-        );
-      },
-    });
-
-    // Cards grid stagger
-    // Target the outer container to trigger the inner cards
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top 50%", // wait until section is higher up to start staggering cards
-      once: true,
-      onEnter: () => {
-        gsap.fromTo(
-          ".service-card",
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.65, ease: "power2.out", stagger: 0.1, delay: 0.3 }
-        );
-      }
-    });
-
-  }, { scope: containerRef });
-
   return (
     <SectionWrapper theme="light" id="services">
       <div className="container-grid" ref={containerRef}>
         <div className="max-w-2xl mb-16">
-          <p className="services-header-anim eyebrow mb-4">
+          <p className=" eyebrow mb-4">
             What we do
           </p>
           <h2
-            className="services-header-anim section-headline mb-5"
+            className=" section-headline mb-5"
             style={{ color: "var(--fg)" }}
           >
             Every service your
@@ -226,7 +194,7 @@ export function ServicesOverview() {
             business needs.
           </h2>
           <p
-            className="services-header-anim text-base leading-relaxed"
+            className=" text-base leading-relaxed"
             style={{ color: "var(--fg-muted)" }}
           >
             From your first website to a full-scale growth engine — we cover the

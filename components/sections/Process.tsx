@@ -14,46 +14,16 @@ if (typeof window !== "undefined") {
 export function Process() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    // Header reveal
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top 75%",
-      once: true,
-      onEnter: () => {
-        gsap.fromTo(
-          ".process-header-anim",
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.1 }
-        );
-      },
-    });
-
-    // Steps stagger reveal
-    ScrollTrigger.create({
-      trigger: ".process-steps-container",
-      start: "top 75%",
-      once: true,
-      onEnter: () => {
-        gsap.fromTo(
-          ".process-step",
-          { opacity: 0, x: -30 },
-          { opacity: 1, x: 0, duration: 0.6, ease: "power2.out", stagger: 0.08 }
-        );
-      },
-    });
-  }, { scope: containerRef });
-
   return (
     <SectionWrapper theme="dark" id="process">
       <div className="container-grid" ref={containerRef}>
         {/* Header */}
         <div className="max-w-2xl mb-20">
-          <p className="process-header-anim eyebrow mb-4">
+          <p className=" eyebrow mb-4">
             How we work
           </p>
           <h2
-            className="process-header-anim section-headline mb-5"
+            className=" section-headline mb-5"
             style={{ color: "var(--fg)" }}
           >
             A process built for
@@ -61,7 +31,7 @@ export function Process() {
             real outcomes.
           </h2>
           <p
-            className="process-header-anim text-base leading-relaxed"
+            className=" text-base leading-relaxed"
             style={{ color: "var(--fg-muted)" }}
           >
             No black boxes. Every phase is visible, trackable, and designed so
@@ -70,7 +40,7 @@ export function Process() {
         </div>
 
         {/* Steps */}
-        <div className="process-steps-container relative">
+        <div className="s-container relative">
           {/* Vertical connector line */}
           <div
             aria-hidden="true"
@@ -88,7 +58,7 @@ export function Process() {
             {PROCESS_STEPS.map((step, i) => (
               <div
                 key={step.number}
-                className="process-step flex gap-8 lg:gap-12 opacity-0"
+                className=" flex gap-8 lg:gap-12 opacity-0"
               >
                 {/* Step number — acts as a node on the connector line */}
                 <div className="flex-none flex flex-col items-center">

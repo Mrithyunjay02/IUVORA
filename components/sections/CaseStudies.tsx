@@ -102,7 +102,7 @@ function CaseStudyCard({
 
   return (
     <article
-      className="case-study-card group opacity-0 flex flex-col justify-between p-6 md:p-8 rounded-sm card-border transition-all duration-300"
+      className="group flex flex-col justify-between p-6 md:p-8 rounded-sm card-border transition-all duration-300"
       aria-label={item.title}
       id={`case-study-${item.id}`}
       style={{
@@ -310,53 +310,23 @@ function CaseStudyCard({
 export function CaseStudies() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    // Header reveal
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top 75%",
-      once: true,
-      onEnter: () => {
-        gsap.fromTo(
-          ".case-studies-header-anim",
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.1 }
-        );
-      },
-    });
-
-    // Cards stagger reveal
-    ScrollTrigger.create({
-      trigger: ".case-studies-grid",
-      start: "top 75%",
-      once: true,
-      onEnter: () => {
-        gsap.fromTo(
-          ".case-study-card",
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.1 }
-        );
-      },
-    });
-  }, { scope: containerRef });
-
   return (
     <SectionWrapper theme="light" id="work">
       <div className="container-grid" ref={containerRef}>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
           <div>
-            <p className="case-studies-header-anim eyebrow mb-4">
+            <p className=" eyebrow mb-4">
               Our work
             </p>
             <h2
-              className="case-studies-header-anim section-headline"
+              className=" section-headline"
               style={{ color: "var(--fg)" }}
             >
               Selected projects.
             </h2>
           </div>
           <p
-            className="case-studies-header-anim text-sm pb-1"
+            className=" text-sm pb-1"
             style={{ color: "var(--fg-muted)" }}
           >
             Recent deliverables &amp; client partnerships
