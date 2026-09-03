@@ -118,13 +118,6 @@ export function Hero() {
       0.4
     );
 
-    // Video/asset with parallax setup
-    tl.fromTo(
-      ".hero-video",
-      { opacity: 0, y: 32 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-      0.2
-    );
 
     // Scroll cue pulse
     gsap.to(".scroll-cue", {
@@ -229,32 +222,6 @@ export function Hero() {
           </div>
         </div>
 
-        <div
-          className="hero-video w-full lg:w-[45%] relative z-10 shrink-0 rounded-2xl overflow-hidden"
-          style={{ 
-            boxShadow: "0 20px 40px -10px rgba(0,0,0,0.5)",
-            aspectRatio: "4/5",
-            maxHeight: "75vh"
-          }}
-        >
-          <video
-            id="hero-video-element"
-            ref={(el) => {
-              if (el) {
-                el.defaultMuted = true;
-                el.muted = true;
-              }
-            }}
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/videos/hero-explainer-poster.webp"
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src="/videos/hero-explainer.mp4" type="video/mp4" />
-          </video>
-        </div>
 
         <div
           className="scroll-cue absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
