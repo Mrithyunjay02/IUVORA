@@ -237,18 +237,18 @@ export function Hero() {
           </span>
         </div>
 
-        {/* Code/Terminal mascot - full right side, aligned with "that" */}
-        <div className="hidden lg:flex flex-1 items-start justify-end shrink-0 -mt-64" style={{ minHeight: "400px" }}>
-          <div className="w-full max-w-4xl lg:max-w-6xl">
+        {/* Production Systems Console */}
+        <div className="hidden lg:flex flex-1 items-center justify-end shrink-0" style={{ minHeight: "400px" }}>
+          <div className="w-full max-w-2xl flex justify-end">
             <CodeTerminalMascot
               delay={0.4}
               codeLines={{
-                line1: "// my code works",
-                line2: "// i have no idea",
-                line3: "// how?",
-                line4: "if (works) {",
-                line5: '  return "ship it";',
-                line6: "}"
+                line1: "// Iuvora Production Engine",
+                line2: "const sys = await compile({",
+                line3: '  runtime: "Next.js · V8 Edge",',
+                line4: "  uptime: '99.98%',",
+                line5: '  status: "verified"',
+                line6: "});"
               }}
             />
           </div>

@@ -156,16 +156,20 @@ export function Footer() {
             © {currentYear} Iuvora. All rights reserved.
           </p>
           <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service"].map((l) => (
-              <a
-                key={l}
-                href="#"
-                className="text-xs transition-colors duration-200 hover:text-[var(--color-accent)] no-underline"
-                style={{ color: "var(--color-gray-mid)" }}
-              >
-                {l}
-              </a>
-            ))}
+            <Link
+              href="/privacy-policy"
+              className="text-xs transition-colors duration-200 hover:text-[var(--color-accent)] no-underline"
+              style={{ color: "var(--color-gray-mid)" }}
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms"
+              className="text-xs transition-colors duration-200 hover:text-[var(--color-accent)] no-underline"
+              style={{ color: "var(--color-gray-mid)" }}
+            >
+              Terms of Service
+            </Link>
           </div>
         </div>
       </div>

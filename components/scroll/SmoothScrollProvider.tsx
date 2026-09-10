@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, Suspense } from "react";
+import { useEffect, useRef, useState, Suspense } from "react";
 import { ReactLenis, useLenis, type LenisRef } from "lenis/react";
 import { usePathname, useSearchParams } from "next/navigation";
 import gsap from "gsap";
@@ -12,8 +12,19 @@ if (typeof window !== "undefined") {
 
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<LenisRef | null>(null);
+  const [prefersReduced, setPrefersReduced] = useState(false);
 
   useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReduced(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReduced(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    if (prefersReduced) return;
+
     function update(time: number) {
       lenisRef.current?.lenis?.raf(time * 1000);
     }
@@ -38,10 +49,23 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       resizeObserver.disconnect();
       clearTimeout(resizeTimer);
     };
-  }, []);
+  }, [prefersReduced]);
+
+  if (prefersReduced) {
+    return <>{children}</>;
+  }
 
   return (
-    <ReactLenis root options={{ lerp: 0.1, duration: 1.2, syncTouch: true }} autoRaf={false} ref={lenisRef}>
+    <ReactLenis
+      root
+      options={{
+        lerp: 0.1,
+        duration: 1.2,
+        syncTouch: false, // Never hijack native touch scrolling on mobile (Section 42 & 47)
+      }}
+      autoRaf={false}
+      ref={lenisRef}
+    >
       <Suspense fallback={null}>
         <RouteScrollReset />
       </Suspense>
