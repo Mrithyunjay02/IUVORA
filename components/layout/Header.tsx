@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { IuvoraLogo } from "@/components/icons/IuvoraLogo";
 import { Button } from "@/components/ui/Button";
 import { NAV_LINKS } from "@/lib/constants";
+import { SiteThemeToggle } from "./SiteThemeToggle";
 
 /**
  * Header - Sticky nav that reads --fg/--bg from the live CSS custom props
@@ -83,11 +84,14 @@ export function Header() {
             })}
           </ul>
 
-          {/* CTA + Mobile Toggle */}
-          <div className="flex items-center gap-4">
+          {/* CTA + Theme Toggle + Mobile Toggle */}
+          <div className="flex items-center gap-3">
             <Button href="/contact" size="sm" id="nav-cta-btn">
               Start a Project
             </Button>
+
+            {/* Dark / Light toggle */}
+            <SiteThemeToggle />
 
             {/* Hamburger */}
             <button

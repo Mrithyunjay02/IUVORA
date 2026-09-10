@@ -34,6 +34,12 @@ export function ScrollThemeProvider() {
   useGSAP(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    // ── If user has locked the site to light mode, skip scroll wipes ──────
+    // The SiteThemeProvider pins --bg / --fg via inline style.setProperty,
+    // so scroll-wipe calls would fight those values. Bail out entirely.
+    const isSiteLightLocked = document.documentElement.classList.contains("light");
+    if (isSiteLightLocked) return;
+
     // ── Overlay element ──────────────────────────────────────────────────────
     const overlay = document.createElement("div");
     overlay.setAttribute("aria-hidden", "true");
@@ -60,6 +66,9 @@ export function ScrollThemeProvider() {
     };
 
     const applyTheme = (theme: Theme, goingDown: boolean) => {
+      // If user has locked site to light mode, do not override with scroll wipes
+      if (document.documentElement.classList.contains("light")) return;
+
       const t = THEMES[theme];
 
       if (prefersReduced) {

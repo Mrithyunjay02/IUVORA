@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScrollProvider } from "@/components/scroll/SmoothScrollProvider";
 import { Preloader } from "@/components/ui/Preloader";
+import { SiteThemeProvider } from "@/components/layout/SiteThemeProvider";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -96,28 +97,56 @@ export const metadata: Metadata = {
   },
 };
 
+// Inline FOUC-prevention script: reads localStorage before first paint
+// and sets the correct html class so the toggle starts in the right state.
+const themeInitScript = `
+(function(){
+  try {
+    var s = localStorage.getItem('iuvora_site_theme');
+    if (s === 'light') {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+      document.documentElement.style.colorScheme = 'light';
+      document.documentElement.style.setProperty('--bg', '#ffffff');
+      document.documentElement.style.setProperty('--fg', '#0a0a0a');
+    } else {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+      document.documentElement.style.colorScheme = 'dark';
+    }
+  } catch(e) {}
+})();
+`.trim();
+
 export default function SiteLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${geist.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
-      <body>
+    <html lang="en" className={`dark ${geist.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
+      <head>
+        {/* FOUC prevention — must run before first paint */}
+        {/* eslint-disable-next-line react/no-danger */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body suppressHydrationWarning>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#2563eb] focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-white text-sm font-semibold"
         >
           Skip to content
         </a>
-        <Preloader />
-        <SmoothScrollProvider>
-          <Header />
-          <main id="main-content">
-            {children}
-          </main>
-          <Footer />
-        </SmoothScrollProvider>
+        <SiteThemeProvider>
+          <Preloader />
+          <SmoothScrollProvider>
+            <Header />
+            <main id="main-content">
+              {children}
+            </main>
+            <Footer />
+          </SmoothScrollProvider>
+        </SiteThemeProvider>
       </body>
     </html>
   );
