@@ -24,28 +24,28 @@ export function CardFooter({ borderAccent }: CardFooterProps) {
 
   return (
     <footer className="pt-2" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
-      {/* ── HAIRLINE RULE: Dynamic accent (#d9b266 for gold, #2563eb for blue) ── */}
-      <div className={`border-t ${isGold ? "border-[#d9b266]/35" : "border-[#2563eb]/30"} pt-4 space-y-3`}>
+      {/* ── HAIRLINE RULE: Dynamic accent ── */}
+      <div className={`border-t ${isGold ? "dark:border-[#d9b266]/35 light:border-[#b48c3c]/30" : "dark:border-[#2563eb]/30 light:border-[#2563eb]/25"} pt-4 space-y-3`}>
         <div className="flex items-center justify-between">
           <Link
             href="https://www.iuvora.com"
             target="_blank"
             rel="noopener noreferrer"
             id="card-footer-iuvora"
-            className="group flex flex-col items-start gap-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/30 rounded"
+            className="group flex flex-col items-start gap-0.5 focus-visible:outline-none focus-visible:ring-1 dark:focus-visible:ring-white/30 light:focus-visible:ring-black/20 rounded"
           >
-            <span className="text-[10px] text-zinc-400 font-medium">Powered by</span>
-            <span className="text-[12.5px] font-bold tracking-[0.2em] uppercase text-zinc-300 group-hover:text-white transition-colors">
+            <span className="text-[10px] dark:text-zinc-400 light:text-zinc-500 font-medium">Powered by</span>
+            <span className="text-[12.5px] font-bold tracking-[0.2em] uppercase dark:text-zinc-300 light:text-zinc-600 dark:group-hover:text-white light:group-hover:text-black transition-colors">
               IUVORA
             </span>
           </Link>
 
-          {/* Show QR fallback toggle with WCAG 2.5.8 compliant touch target */}
+          {/* QR toggle — WCAG 2.5.8 compliant touch target */}
           <button
             onClick={() => setQrOpen(!qrOpen)}
             id="card-toggle-qr"
             type="button"
-            className="py-1.5 px-3 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-zinc-300 hover:text-white transition-colors cursor-pointer text-[11.5px] font-medium active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]"
+            className="py-1.5 px-3 rounded-lg dark:bg-white/[0.04] light:bg-black/[0.04] dark:hover:bg-white/[0.08] light:hover:bg-black/[0.07] border dark:border-white/[0.08] light:border-black/[0.08] dark:text-zinc-300 light:text-zinc-600 dark:hover:text-white light:hover:text-black transition-colors cursor-pointer text-[11.5px] font-medium active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]"
             aria-expanded={qrOpen}
             aria-controls="card-qr-panel"
           >
@@ -57,7 +57,7 @@ export function CardFooter({ borderAccent }: CardFooterProps) {
         {qrOpen && cardUrl && (
           <div
             id="card-qr-panel"
-            className="flex flex-col items-center gap-2 py-3 bg-[#141419] rounded-xl border border-white/10 animate-in fade-in duration-150"
+            className="flex flex-col items-center gap-2 py-3 dark:bg-[#141419] light:bg-[#EEECE8] rounded-xl border dark:border-white/10 light:border-black/10 animate-in fade-in duration-150"
           >
             <div className="bg-white p-2.5 rounded-lg">
               <QRCodeSVG
@@ -68,7 +68,7 @@ export function CardFooter({ borderAccent }: CardFooterProps) {
                 fgColor="#070709"
               />
             </div>
-            <p className="text-[11px] text-zinc-500 text-center font-medium">
+            <p className="text-[11px] dark:text-zinc-500 light:text-zinc-400 text-center font-medium">
               Scan to open card
             </p>
           </div>
