@@ -1,11 +1,24 @@
 import type { Metadata, Viewport } from "next";
+import { Libre_Baskerville, Montserrat } from "next/font/google";
 import "../globals.css";
+
+const libreBaskerville = Libre_Baskerville({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-baskerville",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   themeColor: "#070709",
 };
 
@@ -31,16 +44,8 @@ export default function NfcRootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300..800;1,300..800&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="bg-[#070709] text-[#FBF7EE] antialiased min-h-screen overflow-x-hidden selection:bg-[#2F7BFF] selection:text-white">
+    <html lang="en" className={`dark ${libreBaskerville.variable} ${montserrat.variable}`}>
+      <body className="bg-[#070709] text-[#FBF7EE] antialiased min-h-screen overflow-x-hidden selection:bg-[#2563eb] selection:text-white">
         {children}
       </body>
     </html>

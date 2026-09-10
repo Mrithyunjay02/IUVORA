@@ -18,29 +18,29 @@ export function CardFooter() {
   const cardUrl = typeof window !== "undefined" ? window.location.href : "";
 
   return (
-    <footer className="pt-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-      {/* ── BLUE ACCENT 2 OF 2: Single Hairline Rule (#2F7BFF) ── */}
-      <div className="border-t border-[#2F7BFF]/30 pt-4 space-y-3">
+    <footer className="pt-2" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+      {/* ── BLUE ACCENT 2 OF 2: Single Hairline Rule (#2563eb) ── */}
+      <div className="border-t border-[#2563eb]/30 pt-4 space-y-3">
         <div className="flex items-center justify-between">
           <Link
             href="https://www.iuvora.com"
             target="_blank"
             rel="noopener noreferrer"
             id="card-footer-iuvora"
-            className="group flex flex-col items-start gap-0.5 opacity-60 hover:opacity-100 transition-opacity"
+            className="group flex flex-col items-start gap-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/30 rounded"
           >
-            <span className="text-[10px] text-zinc-500 font-medium">Powered by</span>
+            <span className="text-[10px] text-zinc-400 font-medium">Powered by</span>
             <span className="text-[12.5px] font-bold tracking-[0.2em] uppercase text-zinc-300 group-hover:text-white transition-colors">
               IUVORA
             </span>
           </Link>
 
-          {/* Show QR fallback toggle (Neutral text link) */}
+          {/* Show QR fallback toggle with WCAG 2.5.8 compliant touch target */}
           <button
             onClick={() => setQrOpen(!qrOpen)}
             id="card-toggle-qr"
             type="button"
-            className="text-[11.5px] font-medium text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer bg-transparent border-0 p-0"
+            className="py-1.5 px-3 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-zinc-300 hover:text-white transition-colors cursor-pointer text-[11.5px] font-medium active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]"
             aria-expanded={qrOpen}
             aria-controls="card-qr-panel"
           >

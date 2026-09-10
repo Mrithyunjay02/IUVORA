@@ -29,7 +29,7 @@ export function CardHero({ profile }: CardHeroProps) {
   const coFounderPart = titleParts.length > 1 ? titleParts[1] : null;
 
   return (
-    <div className="space-y-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+    <div className="space-y-4" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
       {/* ── Header: Avatar + Typography ── */}
       <div className="flex items-center gap-4">
         {/* Avatar: varied radius (rounded-xl / 12px) */}
@@ -47,11 +47,11 @@ export function CardHero({ profile }: CardHeroProps) {
               />
             </div>
           ) : (
-            /* Neutral cardstock placeholder block */
-            <div className="w-16 h-16 rounded-xl bg-[#16161B] border border-white/10 flex items-center justify-center select-none">
+            /* Neutral cardstock placeholder block with classical serif monogram */
+            <div className="w-16 h-16 rounded-xl bg-[#16161B] border border-white/10 flex items-center justify-center select-none shadow-inner">
               <span
-                className="text-[17px] font-bold tracking-wider text-zinc-300"
-                style={{ fontFamily: "'Libre Baskerville', Baskerville, Georgia, serif" }}
+                className="text-[18px] font-bold tracking-wider text-zinc-200"
+                style={{ fontFamily: "var(--font-baskerville), Georgia, serif" }}
               >
                 {profile.initials || profile.name.slice(0, 2).toUpperCase()}
               </span>
@@ -64,7 +64,7 @@ export function CardHero({ profile }: CardHeroProps) {
           {/* Name in Baskerville (serif) - carrying primary visual weight */}
           <h1
             className="text-[23px] sm:text-[25px] font-bold tracking-tight text-[#FBF7EE] leading-[1.15]"
-            style={{ fontFamily: "'Libre Baskerville', Baskerville, Georgia, serif" }}
+            style={{ fontFamily: "var(--font-baskerville), Georgia, serif" }}
           >
             {profile.name}
           </h1>
@@ -80,7 +80,7 @@ export function CardHero({ profile }: CardHeroProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   id="card-chip-iuvora"
-                  className="text-zinc-300 hover:text-white transition-colors underline-offset-2 hover:underline"
+                  className="text-zinc-300 hover:text-white transition-colors underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/30 rounded"
                 >
                   {coFounderPart}
                 </a>
@@ -116,7 +116,7 @@ export function CardHero({ profile }: CardHeroProps) {
               target="_blank"
               rel="noopener noreferrer"
               id="card-link-work"
-              className="group inline-flex items-center gap-1.5 text-[12.5px] font-medium text-zinc-400 hover:text-[#FBF7EE] transition-colors"
+              className="group inline-flex items-center gap-1.5 text-[12.5px] font-medium text-zinc-400 hover:text-[#FBF7EE] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/30 rounded"
             >
               <span>View my work</span>
               <span className="transition-transform duration-150 group-hover:translate-x-0.5">→</span>

@@ -5,7 +5,6 @@ export const mjProfile: CardProfile = {
   name: "D K Mrithyunjay",
   title: "Software Engineer & Co-Founder",
   initials: "MJ",
-  photoUrl: "/cards/mj.webp",
   oneLineBio: "Co-founding Iuvora. Building real products for real clients, start to finish.",
   phone: "+91 9844324024",
   whatsapp: "919844324024",

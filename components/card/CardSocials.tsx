@@ -62,7 +62,7 @@ export function CardSocials({ socials }: CardSocialsProps) {
           rel="noopener noreferrer"
           id={`card-social-${link.key}`}
           aria-label={link.label}
-          className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] hover:border-white/20 text-zinc-400 hover:text-white transition-colors"
+          className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] hover:border-white/20 text-zinc-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0D11]"
         >
           {link.icon}
         </a>

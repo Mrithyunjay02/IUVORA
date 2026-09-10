@@ -43,8 +43,8 @@ function getBorderAccentStyle(accent?: string): { borderColor: string } {
   if (accent === "gold") {
     return { borderColor: "rgba(197, 160, 89, 0.35)" };
   }
-  if (!accent || accent === "blue" || accent === "#2F7BFF") {
-    return { borderColor: "rgba(47, 123, 255, 0.30)" };
+  if (!accent || accent === "blue" || accent === "#2F7BFF" || accent === "#2563eb") {
+    return { borderColor: "rgba(37, 99, 235, 0.35)" };
   }
   if (accent.startsWith("#")) {
     if (accent.length === 7) {
@@ -86,8 +86,8 @@ export function CardContainer({ profile }: CardContainerProps) {
   return (
     <main
       ref={containerRef}
-      className="relative min-h-screen w-full flex items-center justify-center p-4 sm:p-6 bg-[#070709] overflow-x-hidden selection:bg-[#2F7BFF] selection:text-white"
-      style={{ fontFamily: "'Montserrat', sans-serif" }}
+      className="relative min-h-screen w-full flex items-center justify-center p-4 sm:p-6 bg-[#070709] overflow-x-hidden selection:bg-[#2563eb] selection:text-white"
+      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
     >
       {/* ── Subtle SVG Paper Grain / Noise Texture (No flat black, no gradients, no glows) ── */}
       <div
