@@ -113,17 +113,17 @@ export default function ContactPage() {
             className="pointer-events-none absolute inset-0 opacity-[0.04]"
             style={{
               backgroundImage:
-                "repeating-linear-gradient(0deg, var(--color-white) 0, var(--color-white) 1px, transparent 1px, transparent 80px), repeating-linear-gradient(90deg, var(--color-white) 0, var(--color-white) 1px, transparent 1px, transparent 80px)",
+                "repeating-linear-gradient(0deg, var(--fg) 0, var(--fg) 1px, transparent 1px, transparent 80px), repeating-linear-gradient(90deg, var(--fg) 0, var(--fg) 1px, transparent 1px, transparent 80px)",
             }}
           />
           <div className="relative z-10 max-w-3xl">
             <p className="eyebrow mb-5">Contact</p>
-            <h1 className="hero-headline mb-6" style={{ color: "var(--color-white)" }}>
+            <h1 className="hero-headline mb-6" style={{ color: "var(--fg)" }}>
               Let&apos;s talk.
             </h1>
             <p
               className="text-lg leading-relaxed"
-              style={{ color: "var(--color-gray-mid)", maxWidth: "48ch" }}
+              style={{ color: "var(--fg-muted)", maxWidth: "48ch" }}
             >
               Fill in the form and we&apos;ll get back to you within one
               business day with a clear, no-fluff next step.
@@ -322,7 +322,7 @@ export default function ContactPage() {
               </h2>
 
               <div className="flex flex-col gap-8">
-                {[
+                {([
                   {
                     label: "Email",
                     value: "info@iuvora.com",
@@ -336,11 +336,17 @@ export default function ContactPage() {
                   {
                     label: "Location",
                     value: "IUVORA PVT LIMITED\nWHQ8+5H6, Kuvempu Rd\nMission Compound\nShivamogga, Karnataka 577201",
-                    href: "https://maps.google.com/?q=IUVORA+PVT+LIMITED+Shivamogga+Karnataka",
-                    target: "_blank",
-                    rel: "noopener noreferrer",
+                    href: "#office-location",
+                    actionText: "View on map ↓",
                   },
-                ].map((info) => (
+                ] as Array<{
+                  label: string;
+                  value: string;
+                  href?: string;
+                  target?: string;
+                  rel?: string;
+                  actionText?: string;
+                }>).map((info) => (
                   <div
                     key={info.label}
                     className="pb-8 border-b"
@@ -352,7 +358,7 @@ export default function ContactPage() {
                         href={info.href}
                         target={info.target}
                         rel={info.rel}
-                        className="text-base font-semibold transition-colors duration-200 hover:text-[var(--color-accent)] no-underline"
+                        className="text-base font-semibold transition-colors duration-200 hover:text-[var(--color-accent)] no-underline block"
                         style={{ color: "var(--fg)", whiteSpace: "pre-wrap" }}
                       >
                         {info.value}
@@ -361,6 +367,14 @@ export default function ContactPage() {
                       <p className="text-base font-semibold" style={{ color: "var(--fg)" }}>
                         {info.value}
                       </p>
+                    )}
+                    {info.actionText && (
+                      <a
+                        href={info.href}
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-accent)] mt-2.5 hover:underline no-underline"
+                      >
+                        {info.actionText}
+                      </a>
                     )}
                   </div>
                 ))}
@@ -399,6 +413,57 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* ── Live Office Location Map ──────────────── */}
+          <div
+            id="office-location"
+            className="mt-16 pt-12 border-t scroll-mt-24"
+            style={{ borderColor: "color-mix(in srgb, var(--fg) 12%, transparent)" }}
+          >
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+              <div>
+                <p className="eyebrow mb-2">Our Office</p>
+                <h2
+                  className="text-2xl font-bold"
+                  style={{ color: "var(--fg)", fontFamily: "var(--font-display)" }}
+                >
+                  Visit our headquarters
+                </h2>
+                <p className="text-sm mt-1" style={{ color: "var(--fg-muted)" }}>
+                  WHQ8+5H6, Kuvempu Rd, Mission Compound, Shivamogga, Karnataka 577201
+                </p>
+              </div>
+              <a
+                href="https://maps.google.com/?q=IUVORA+PVT+LIMITED+Shivamogga+Karnataka"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-accent)] hover:underline underline-offset-4 shrink-0 no-underline"
+              >
+                <span>Open in Google Maps</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div
+              className="relative w-full h-[360px] sm:h-[450px] rounded-xl overflow-hidden border shadow-sm"
+              style={{
+                borderColor: "color-mix(in srgb, var(--fg) 15%, transparent)",
+                backgroundColor: "color-mix(in srgb, var(--fg) 4%, transparent)",
+              }}
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3872.3479446994525!2d75.56380997388557!3d13.937876392960654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbba90002c51f61%3A0x15a7621907b41b02!2sIUVORA%20PVT%20LIMITED!5e0!3m2!1sen!2sin!4v1789037847725!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                title="IUVORA PVT LIMITED Office Location Map"
+                className="w-full h-full"
+              />
             </div>
           </div>
         </div>
