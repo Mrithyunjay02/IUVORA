@@ -72,7 +72,7 @@ export function CardHero({ profile }: CardHeroProps) {
           {/* Title in Montserrat (sans-serif) */}
           <div className="flex flex-wrap items-center gap-1.5 mt-1 text-[12.5px] text-zinc-400 font-medium">
             <span>{mainTitle}</span>
-            {coFounderPart && (
+            {coFounderPart ? (
               <>
                 <span className="text-zinc-600">·</span>
                 <a
@@ -85,7 +85,20 @@ export function CardHero({ profile }: CardHeroProps) {
                   {coFounderPart}
                 </a>
               </>
-            )}
+            ) : profile.company ? (
+              <>
+                <span className="text-zinc-600">·</span>
+                <a
+                  href={profile.workUrl || "https://www.iuvora.com"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  id="card-chip-iuvora"
+                  className="text-zinc-300 hover:text-white transition-colors underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/30 rounded"
+                >
+                  {profile.company}
+                </a>
+              </>
+            ) : null}
           </div>
         </div>
       </div>

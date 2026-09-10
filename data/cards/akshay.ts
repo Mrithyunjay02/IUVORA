@@ -14,5 +14,6 @@ export const akshayProfile: CardProfile = {
   },
   location: "Shimoga, Karnataka",
   company: "Iuvora & Daynit Enterprises",
-  borderAccent: "gold",
+  workUrl: "https://www.iuvora.com",
+  borderAccent: "blue",
 };
