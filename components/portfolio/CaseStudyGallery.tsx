@@ -61,7 +61,7 @@ export default function CaseStudyGallery({
           <div
             key={idx}
             onClick={() => openLightbox(idx)}
-            className="group relative rounded-3xl bg-white dark:bg-[#14151e] border border-black/10 dark:border-white/10 hover:border-[#3b82f6]/40 dark:hover:border-[#60a5fa]/40 overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-2xl transition-all duration-500 cursor-zoom-in"
+            className="card-border group relative rounded-3xl bg-black/[0.02] dark:bg-white/[0.03] hover:border-[#3b82f6]/40 dark:hover:border-[#60a5fa]/40 overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-2xl transition-all duration-500 cursor-zoom-in"
           >
             {isPrototype ? (
               <div className="relative w-full py-16 sm:py-24 px-4 bg-[#f5f6fa] dark:bg-[#050507] flex items-center justify-center overflow-hidden">
@@ -95,7 +95,7 @@ export default function CaseStudyGallery({
             )}
 
             {/* Hover Expand Cue */}
-            <div className="absolute bottom-5 right-5 flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/90 dark:bg-[#14151e]/80 backdrop-blur-md border border-black/10 dark:border-white/15 text-xs font-medium text-zinc-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <div className="absolute bottom-5 right-5 flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/90 dark:bg-black/80 backdrop-blur-md border border-black/10 dark:border-white/15 text-xs font-medium text-zinc-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
               <Maximize2 className="w-3.5 h-3.5 text-[#3b82f6] dark:text-[#93c5fd]" />
               <span>Fullscreen Preview</span>
             </div>
@@ -106,7 +106,7 @@ export default function CaseStudyGallery({
       {/* Fullscreen Lightbox Modal */}
       {selectedIdx !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 dark:bg-[#0c0d12]/95 backdrop-blur-2xl p-4 sm:p-8 animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 dark:bg-[#0a0a0a]/95 backdrop-blur-2xl p-4 sm:p-8 animate-in fade-in duration-200"
           role="dialog"
           aria-modal="true"
           aria-label="Image Lightbox"

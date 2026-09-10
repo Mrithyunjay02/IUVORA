@@ -102,17 +102,21 @@ export const metadata: Metadata = {
 const themeInitScript = `
 (function(){
   try {
-    var s = localStorage.getItem('iuvora_site_theme');
+    var s = localStorage.getItem('iuvora_site_theme') || localStorage.getItem('iuvora_theme');
     if (s === 'light') {
       document.documentElement.classList.add('light');
       document.documentElement.classList.remove('dark');
       document.documentElement.style.colorScheme = 'light';
       document.documentElement.style.setProperty('--bg', '#ffffff');
       document.documentElement.style.setProperty('--fg', '#0a0a0a');
+      document.documentElement.style.setProperty('--fg-muted', '#52525b');
     } else {
       document.documentElement.classList.add('dark');
       document.documentElement.classList.remove('light');
       document.documentElement.style.colorScheme = 'dark';
+      document.documentElement.style.setProperty('--bg', '#0a0a0a');
+      document.documentElement.style.setProperty('--fg', '#fafafa');
+      document.documentElement.style.setProperty('--fg-muted', '#6b6b6b');
     }
   } catch(e) {}
 })();

@@ -49,7 +49,7 @@ export default function MobileQuickConnect() {
       aria-label="Quick contact actions for NFC visitors"
       className="fixed bottom-[max(0.75rem,env(safe-area-inset-bottom,0.75rem))] left-3 right-3 sm:left-auto sm:right-6 sm:max-w-md z-40 lg:hidden transition-all duration-300"
     >
-      <div className="relative rounded-2xl bg-white/95 dark:bg-[#14151e]/95 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.18)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.7)] p-3">
+      <div className="relative rounded-2xl bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.18)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.7)] p-3">
         {/* Header Bar */}
         <div className="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-black/5 dark:border-white/5">
           <div className="flex items-center gap-2 min-w-0">

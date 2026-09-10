@@ -59,16 +59,26 @@ export default function EditorialMetrics() {
   return (
     <section
       ref={metricsRef}
-      className="relative py-24 lg:py-32 bg-white dark:bg-[#0c0d12] border-t border-black/5 dark:border-white/5 transition-colors duration-200"
+      className="relative py-20 sm:py-28 lg:py-36 bg-[var(--bg)] border-t transition-colors duration-200"
+      style={{ borderColor: "color-mix(in srgb, var(--fg) 8%, transparent)" }}
     >
       <div className="portfolio-container">
         {/* Intro Narrative */}
         <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white mb-6 leading-[1.08]">
+          <p className="eyebrow mb-3">
+            Verified Impact
+          </p>
+          <h2
+            className="section-headline mb-4"
+            style={{ color: "var(--fg)" }}
+          >
             Built for real operations. <br />
-            <span className="text-zinc-500 dark:text-zinc-400">Engineered to perform.</span>
+            <span style={{ color: "var(--fg-muted)" }}>Engineered to perform.</span>
           </h2>
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base max-w-md mx-auto leading-relaxed font-light">
+          <p
+            className="text-base leading-relaxed max-w-xl mx-auto"
+            style={{ color: "var(--fg-muted)" }}
+          >
             A transparent look at delivered builds, active client platforms, and industry disciplines backed by genuine production code.
           </p>
         </div>
@@ -76,19 +86,20 @@ export default function EditorialMetrics() {
         {/* Metrics - Editorial Layout (No Borders/Boxes) */}
         <div className="space-y-12">
           {/* Divider Line */}
-          <div className="border-t border-black/10 dark:border-white/10" />
+          <div className="w-full h-px" style={{ backgroundColor: "color-mix(in srgb, var(--fg) 10%, transparent)" }} />
 
           {/* Metrics Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-12 px-4 sm:px-0">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-8 px-4 sm:px-0">
             {/* Metric 1: Total Builds */}
             <div className="text-center space-y-2">
               <span
                 data-counter-target={totalBuilds}
-                className="block text-5xl sm:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white"
+                className="block text-5xl sm:text-6xl font-extrabold tracking-[-0.04em]"
+                style={{ color: "var(--fg)", fontFamily: "var(--font-display)" }}
               >
                 0{totalBuilds}
               </span>
-              <div className="text-xs tracking-wider text-[#3b82f6] dark:text-[#60a5fa] uppercase font-semibold">
+              <div className="eyebrow text-[11px]" style={{ color: "var(--color-accent)" }}>
                 Selected Builds
               </div>
             </div>
@@ -97,11 +108,12 @@ export default function EditorialMetrics() {
             <div className="text-center space-y-2">
               <span
                 data-counter-target={liveDeployments}
-                className="block text-5xl sm:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white"
+                className="block text-5xl sm:text-6xl font-extrabold tracking-[-0.04em]"
+                style={{ color: "var(--fg)", fontFamily: "var(--font-display)" }}
               >
                 0{liveDeployments}
               </span>
-              <div className="text-xs tracking-wider text-[#3b82f6] dark:text-[#60a5fa] uppercase font-semibold">
+              <div className="eyebrow text-[11px]" style={{ color: "var(--color-accent)" }}>
                 Live Platforms
               </div>
             </div>
@@ -109,11 +121,12 @@ export default function EditorialMetrics() {
             {/* Metric 3: Production Delivery */}
             <div className="text-center space-y-2">
               <span
-                className="block text-5xl sm:text-6xl font-bold tracking-tight text-emerald-600 dark:text-emerald-400"
+                className="block text-5xl sm:text-6xl font-extrabold tracking-[-0.04em] text-emerald-500"
+                style={{ fontFamily: "var(--font-display)" }}
               >
                 100%
               </span>
-              <div className="text-xs tracking-wider text-emerald-600 dark:text-emerald-400 uppercase font-semibold">
+              <div className="eyebrow text-[11px] text-emerald-500">
                 Production Deployed
               </div>
             </div>
@@ -122,18 +135,19 @@ export default function EditorialMetrics() {
             <div className="text-center space-y-2">
               <span
                 data-counter-target={industrySectorsCount}
-                className="block text-5xl sm:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white"
+                className="block text-5xl sm:text-6xl font-extrabold tracking-[-0.04em]"
+                style={{ color: "var(--fg)", fontFamily: "var(--font-display)" }}
               >
                 0{industrySectorsCount}
               </span>
-              <div className="text-xs tracking-wider text-[#3b82f6] dark:text-[#60a5fa] uppercase font-semibold">
+              <div className="eyebrow text-[11px]" style={{ color: "var(--color-accent)" }}>
                 Industry Sectors
               </div>
             </div>
           </div>
 
           {/* Divider Line */}
-          <div className="border-t border-black/10 dark:border-white/10" />
+          <div className="w-full h-px" style={{ backgroundColor: "color-mix(in srgb, var(--fg) 10%, transparent)" }} />
         </div>
       </div>
     </section>

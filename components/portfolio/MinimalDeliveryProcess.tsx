@@ -42,19 +42,26 @@ export default function MinimalDeliveryProcess() {
   return (
     <section
       id="process"
-      className="relative py-20 sm:py-28 lg:py-36 bg-[#f8f9fc] dark:bg-[#0c0d12] border-t border-black/5 dark:border-white/5 transition-colors duration-200 scroll-mt-20"
+      className="relative py-20 sm:py-28 lg:py-36 bg-[var(--bg)] border-t transition-colors duration-200 scroll-mt-20"
+      style={{ borderColor: "color-mix(in srgb, var(--fg) 8%, transparent)" }}
     >
       <div className="portfolio-container">
         {/* Section Header */}
         <div className="max-w-2xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs font-semibold text-[#3b82f6] dark:text-[#60a5fa] mb-4 uppercase tracking-wider">
+          <div className="eyebrow mb-4 inline-flex items-center gap-2">
             <Cpu className="w-3.5 h-3.5" />
             <span>Delivery Discipline</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          <h2
+            className="section-headline mb-4"
+            style={{ color: "var(--fg)" }}
+          >
             Disciplined Execution
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
+          <p
+            className="text-base leading-relaxed max-w-xl"
+            style={{ color: "var(--fg-muted)" }}
+          >
             Predictable, milestone-driven engineering ensuring strict technical rigor, performance benchmarks, and verified production delivery.
           </p>
         </div>
@@ -64,36 +71,52 @@ export default function MinimalDeliveryProcess() {
           {PHASES.map((phase) => (
             <div
               key={phase.step}
-              className="relative rounded-2xl bg-white dark:bg-[#14151e] border border-black/10 dark:border-white/10 p-6 sm:p-8 flex flex-col justify-between hover:border-[#3b82f6]/40 dark:hover:border-[#60a5fa]/40 transition-all duration-300 shadow-sm"
+              className="card-border relative rounded-2xl bg-black/[0.02] dark:bg-white/[0.03] p-6 sm:p-8 flex flex-col justify-between hover:border-[var(--color-accent)]/50 transition-all duration-300"
             >
               <div>
                 {/* Step Marker */}
-                <div className="flex items-center justify-between mb-6 pb-4 border-b border-black/5 dark:border-white/5">
-                  <span className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-300 dark:text-zinc-700">
+                <div
+                  className="flex items-center justify-between mb-6 pb-4 border-b"
+                  style={{ borderColor: "color-mix(in srgb, var(--fg) 8%, transparent)" }}
+                >
+                  <span
+                    className="text-3xl sm:text-4xl font-extrabold tracking-tight"
+                    style={{ color: "var(--fg-muted)", opacity: 0.5, fontFamily: "var(--font-display)" }}
+                  >
                     {phase.step}
                   </span>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-[#3b82f6] dark:text-[#60a5fa] px-3 py-1 rounded-md bg-[#3b82f6]/10 dark:bg-[#60a5fa]/10">
+                  <span className="eyebrow text-[11px] px-2.5 py-1 rounded-md bg-[#3b82f6]/10 dark:bg-[#60a5fa]/10 text-[var(--color-accent)]">
                     {phase.subtitle}
                   </span>
                 </div>
 
                 {/* Phase Title */}
-                <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-3">
+                <h3
+                  className="text-xl font-bold mb-3 tracking-tight"
+                  style={{ color: "var(--fg)", fontFamily: "var(--font-display)" }}
+                >
                   {phase.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light mb-6">
+                <p
+                  className="text-sm leading-relaxed mb-6"
+                  style={{ color: "var(--fg-muted)" }}
+                >
                   {phase.description}
                 </p>
               </div>
 
               {/* Deliverable Checkmarks */}
-              <div className="pt-4 border-t border-black/5 dark:border-white/5 space-y-2">
+              <div
+                className="pt-4 border-t space-y-2"
+                style={{ borderColor: "color-mix(in srgb, var(--fg) 8%, transparent)" }}
+              >
                 {phase.deliverables.map((item) => (
                   <div
                     key={item}
-                    className="flex items-center gap-2 text-xs font-medium text-zinc-700 dark:text-zinc-300"
+                    className="flex items-center gap-2 text-xs font-medium"
+                    style={{ color: "var(--fg)" }}
                   >
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                     <span>{item}</span>

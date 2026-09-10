@@ -71,7 +71,8 @@ function getServerSnapshot(): boolean {
 export function SiteThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<SiteTheme>(() => {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(STORAGE_KEY) as SiteTheme | null;
+      const saved = (localStorage.getItem(STORAGE_KEY) ||
+        localStorage.getItem("iuvora_theme")) as SiteTheme | null;
       if (saved === "light" || saved === "dark") return saved;
       return "dark"; // Default is ALWAYS dark
     }
@@ -89,6 +90,7 @@ export function SiteThemeProvider({ children }: { children: React.ReactNode }) {
       const next: SiteTheme = prev === "dark" ? "light" : "dark";
       if (typeof window !== "undefined") {
         localStorage.setItem(STORAGE_KEY, next);
+        localStorage.setItem("iuvora_theme", next);
         applySiteTheme(next);
       }
       return next;

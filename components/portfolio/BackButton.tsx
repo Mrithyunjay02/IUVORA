@@ -13,7 +13,7 @@ interface BackButtonProps {
 }
 
 export default function BackButton({
-  href = "/#gallery",
+  href = "/work#gallery",
   label = "Back to Works Archive",
   className = "",
   deterministic = true,

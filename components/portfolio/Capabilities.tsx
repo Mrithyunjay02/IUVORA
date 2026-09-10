@@ -147,7 +147,7 @@ export default function Capabilities() {
               return (
                 <article
                   key={project.id}
-                  className="project-visual-card group lg:col-span-2 rounded-3xl bg-[#f8f9fc] dark:bg-[#14151e] border border-black/10 dark:border-white/10 overflow-hidden hover:border-[#3b82f6]/40 dark:hover:border-[#60a5fa]/40 transition-all duration-300 shadow-sm hover:shadow-xl"
+                  className="project-visual-card group lg:col-span-2 rounded-3xl card-border bg-black/[0.02] dark:bg-white/[0.03] overflow-hidden hover:border-[#3b82f6]/40 dark:hover:border-[#60a5fa]/40 transition-all duration-300 shadow-sm hover:shadow-xl"
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center p-4 sm:p-6 lg:p-8">
                     {/* Media Preview Column (7 cols) */}
@@ -255,7 +255,7 @@ export default function Capabilities() {
             return (
               <article
                 key={project.id}
-                className="project-visual-card group rounded-3xl bg-[#f8f9fc] dark:bg-[#14151e] border border-black/10 dark:border-white/10 overflow-hidden hover:border-[#3b82f6]/40 dark:hover:border-[#60a5fa]/40 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between"
+                className="project-visual-card group rounded-3xl card-border bg-black/[0.02] dark:bg-white/[0.03] overflow-hidden hover:border-[#3b82f6]/40 dark:hover:border-[#60a5fa]/40 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between"
               >
                 {/* Media Preview Area */}
                 <div className="relative p-3 sm:p-4 pb-0">

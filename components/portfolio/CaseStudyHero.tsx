@@ -81,82 +81,88 @@ export default function CaseStudyHero({ project }: CaseStudyHeroProps) {
       ref={containerRef}
       className="relative pt-36 sm:pt-44 lg:pt-48 pb-16 lg:pb-28 overflow-hidden bg-grid-pattern hero-radial-glow"
     >
-      <div className="portfolio-container relative z-10 max-w-5xl mx-auto">
-        {/* Navigation Breadcrumb using BackButton */}
-        <div ref={backBtnWrapperRef} className="mb-10 sm:mb-12">
-          <BackButton href="/#gallery" label="Back to Works Archive" />
-        </div>
+      <div className="portfolio-container relative z-10 w-full">
+        <div className="max-w-4xl">
+          {/* Navigation Breadcrumb using BackButton */}
+          <div ref={backBtnWrapperRef} className="mb-10 sm:mb-12">
+            <BackButton href="/work#gallery" label="Back to Works Archive" />
+          </div>
 
-        {/* Eyebrow & Category Info */}
-        <div ref={badgeRef} className="flex flex-wrap items-center gap-3.5 mb-6 sm:mb-8">
-          <span className="text-sm font-bold tracking-tight text-[#3b82f6] dark:text-[#60a5fa]">
-            {project.number}
-          </span>
-          <span className="text-zinc-400 dark:text-zinc-700 text-xs">/</span>
-          <span className="px-3 py-1 rounded-md bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-            {project.category}
-          </span>
-          {project.status && (
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#3b82f6]/10 dark:bg-[#60a5fa]/10 border border-[#3b82f6]/20 dark:border-[#60a5fa]/25 text-xs font-medium text-[#3b82f6] dark:text-[#93c5fd]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#3b82f6] dark:bg-[#60a5fa]" />
-              <span>{project.status}</span>
+          {/* Eyebrow & Category Info */}
+          <div ref={badgeRef} className="flex flex-wrap items-center gap-3.5 mb-6 sm:mb-8">
+            <span className="text-sm font-bold tracking-tight text-[var(--color-accent)]">
+              {project.number}
             </span>
-          )}
-        </div>
-
-        {/* Oversized Display Title */}
-        <h1
-          ref={titleRef}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-zinc-900 dark:text-white leading-[1.04] mb-8"
-        >
-          {project.title}
-        </h1>
-
-        {/* Restrained Editorial Description */}
-        <p
-          ref={descRef}
-          className="text-lg sm:text-xl md:text-2xl text-zinc-600 dark:text-zinc-300 font-light leading-relaxed max-w-3xl mb-10"
-        >
-          {project.description}
-        </p>
-
-        {/* Minimal Tags */}
-        <div ref={tagsRef} className="flex flex-wrap gap-2 sm:gap-2.5 mb-12">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-xs font-medium text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-md bg-black/[0.04] dark:bg-white/[0.03] border border-black/10 dark:border-white/10"
-            >
-              #{tag}
+            <span className="text-[var(--fg-muted)] opacity-50 text-xs">/</span>
+            <span className="px-3 py-1 rounded-md bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs font-medium text-[var(--fg)]">
+              {project.category}
             </span>
-          ))}
-        </div>
+            {project.status && (
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#3b82f6]/10 dark:bg-[#60a5fa]/10 border border-[#3b82f6]/20 dark:border-[#60a5fa]/25 text-xs font-medium text-[#3b82f6] dark:text-[#93c5fd]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#3b82f6] dark:bg-[#60a5fa]" />
+                <span>{project.status}</span>
+              </span>
+            )}
+          </div>
 
-        {/* Primary Actions */}
-        <div ref={actionsRef} className="flex flex-wrap items-center gap-4 mb-16 lg:mb-24">
-          {project.liveUrl ? (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-7 py-4 rounded-xl font-semibold text-sm bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-[#3b82f6] dark:hover:bg-[#60a5fa] hover:text-white transition-all duration-300 shadow-md dark:shadow-[0_4px_25px_rgba(255,255,255,0.15)] group cursor-pointer rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]"
-            >
-              <span>Visit Live Platform</span>
-              <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-          ) : (
-            <div className="inline-flex items-center gap-2.5 px-6 py-4 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-zinc-600 dark:text-zinc-300 text-xs font-medium">
-              <ShieldCheck className="w-4 h-4 text-zinc-500" />
-              <span>Production Platform</span>
-            </div>
-          )}
-
-          <Link
-            href="/#gallery"
-            className="inline-flex items-center gap-2 px-6 py-4 rounded-xl font-semibold text-xs tracking-wide bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 transition-all duration-300 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]"
+          {/* Oversized Display Title */}
+          <h1
+            ref={titleRef}
+            className="hero-headline mb-8"
+            style={{ color: "var(--fg)" }}
           >
-            <span>All Projects</span>
-          </Link>
+            {project.title}
+          </h1>
+
+          {/* Restrained Editorial Description */}
+          <p
+            ref={descRef}
+            className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed max-w-3xl mb-10"
+            style={{ color: "var(--fg-muted)" }}
+          >
+            {project.description}
+          </p>
+
+          {/* Minimal Tags */}
+          <div ref={tagsRef} className="flex flex-wrap gap-2 sm:gap-2.5 mb-12">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-xs font-medium px-3 py-1 rounded-md bg-black/[0.04] dark:bg-white/[0.03] border border-black/10 dark:border-white/10"
+                style={{ color: "var(--fg-muted)" }}
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Primary Actions */}
+          <div ref={actionsRef} className="flex flex-wrap items-center gap-4 mb-16 lg:mb-20">
+            {project.liveUrl ? (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 px-7 py-4 rounded-xl font-semibold text-sm bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-[#3b82f6] dark:hover:bg-[#60a5fa] hover:text-white transition-all duration-300 shadow-md dark:shadow-[0_4px_25px_rgba(255,255,255,0.15)] group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]"
+              >
+                <span>Visit Live Platform</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            ) : (
+              <div className="inline-flex items-center gap-2.5 px-6 py-4 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs font-medium" style={{ color: "var(--fg-muted)" }}>
+                <ShieldCheck className="w-4 h-4 text-zinc-500" />
+                <span>Production Platform</span>
+              </div>
+            )}
+
+            <Link
+              href="/work#gallery"
+              className="inline-flex items-center gap-2 px-6 py-4 rounded-xl font-semibold text-xs tracking-wide bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]"
+              style={{ color: "var(--fg)" }}
+            >
+              <span>All Projects</span>
+            </Link>
+          </div>
         </div>
 
         {/* Showcase Centerpiece - Clean Editorial Frame without fake browser dots */}

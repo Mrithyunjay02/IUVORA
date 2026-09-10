@@ -55,60 +55,62 @@ export default function Hero() {
       className="relative min-h-[90vh] flex flex-col justify-between pt-32 pb-12 overflow-hidden bg-grid-pattern hero-radial-glow"
     >
       {/* Main Content */}
-      <div className="portfolio-container relative z-10 my-auto flex flex-col items-start max-w-5xl">
-        {/* Eyebrow matching main site standard */}
-        <p className="eyebrow mb-6">
-          Selected Works &amp; Portfolio
-        </p>
+      <div className="portfolio-container relative z-10 my-auto flex flex-col items-start w-full">
+        <div className="w-full max-w-4xl">
+          {/* Eyebrow matching main site standard */}
+          <p className="eyebrow mb-6">
+            Selected Works &amp; Portfolio
+          </p>
 
-        {/* Hero Title - Identical typography, tracking, line-height to main site .hero-headline */}
-        <h1
-          ref={titleRef}
-          className="hero-headline mb-8"
-          style={{ color: "var(--fg)" }}
-        >
-          <span className="block font-semibold" style={{ color: "var(--fg-muted)" }}>
-            Crafted for scale.
-          </span>
-          <span className="block font-extrabold" style={{ color: "var(--fg)" }}>
-            Built for impact.
-          </span>
-        </h1>
+          {/* Hero Title - Identical typography, tracking, line-height to main site .hero-headline */}
+          <h1
+            ref={titleRef}
+            className="hero-headline mb-8"
+            style={{ color: "var(--fg)" }}
+          >
+            <span className="block font-semibold" style={{ color: "var(--fg-muted)" }}>
+              Crafted for scale.
+            </span>
+            <span className="block font-extrabold" style={{ color: "var(--fg)" }}>
+              Built for impact.
+            </span>
+          </h1>
 
-        {/* Description matching main site text hierarchy */}
-        <p
-          ref={descRef}
-          className="text-lg md:text-xl mb-10 leading-relaxed font-normal"
-          style={{ color: "var(--fg-muted)", maxWidth: "52ch" }}
-        >
-          An editorial showcase of 5 production web platforms, technical case studies, and commercial digital systems engineered with craft and performance.
-        </p>
+          {/* Description matching main site text hierarchy */}
+          <p
+            ref={descRef}
+            className="text-lg md:text-xl mb-10 leading-relaxed font-normal"
+            style={{ color: "var(--fg-muted)", maxWidth: "52ch" }}
+          >
+            An editorial showcase of 5 production web platforms, technical case studies, and commercial digital systems engineered with craft and performance.
+          </p>
 
-        {/* Quick Scope Specs */}
-        <div
-          ref={metaRef}
-          className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t w-full max-w-2xl text-xs"
-          style={{ borderColor: "color-mix(in srgb, var(--fg) 10%, transparent)" }}
-        >
-          <div className="flex items-center gap-2.5">
-            <Layers className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
-            <div>
-              <div className="font-semibold" style={{ color: "var(--fg)" }}>5 Production Builds</div>
-              <div className="text-[11px]" style={{ color: "var(--fg-muted)" }}>Commercial &amp; Institutional</div>
+          {/* Quick Scope Specs */}
+          <div
+            ref={metaRef}
+            className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t w-full max-w-2xl text-xs"
+            style={{ borderColor: "color-mix(in srgb, var(--fg) 10%, transparent)" }}
+          >
+            <div className="flex items-center gap-2.5">
+              <Layers className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
+              <div>
+                <div className="font-semibold" style={{ color: "var(--fg)" }}>5 Production Builds</div>
+                <div className="text-[11px]" style={{ color: "var(--fg-muted)" }}>Commercial &amp; Institutional</div>
+              </div>
             </div>
-          </div>
-          <div className="flex items-center gap-2.5">
-            <Globe className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
-            <div>
-              <div className="font-semibold" style={{ color: "var(--fg)" }}>100% Live Deployments</div>
-              <div className="text-[11px]" style={{ color: "var(--fg-muted)" }}>Deployed Globally</div>
+            <div className="flex items-center gap-2.5">
+              <Globe className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
+              <div>
+                <div className="font-semibold" style={{ color: "var(--fg)" }}>100% Live Deployments</div>
+                <div className="text-[11px]" style={{ color: "var(--fg-muted)" }}>Deployed Globally</div>
+              </div>
             </div>
-          </div>
-          <div className="hidden sm:flex items-center gap-2.5">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
-            <div>
-              <div className="font-semibold" style={{ color: "var(--fg)" }}>Verified Clients</div>
-              <div className="text-[11px]" style={{ color: "var(--fg-muted)" }}>Active Production Systems</div>
+            <div className="hidden sm:flex items-center gap-2.5">
+              <div className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+              <div>
+                <div className="font-semibold" style={{ color: "var(--fg)" }}>Verified Clients</div>
+                <div className="text-[11px]" style={{ color: "var(--fg-muted)" }}>Active Production Systems</div>
+              </div>
             </div>
           </div>
         </div>
