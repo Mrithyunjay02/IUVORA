@@ -28,6 +28,8 @@ export function CardHero({ profile }: CardHeroProps) {
   const mainTitle = titleParts[0] || profile.title;
   const coFounderPart = titleParts.length > 1 ? titleParts[1] : null;
 
+  const isGold = profile.borderAccent === "gold";
+
   return (
     <div className="space-y-4" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
       {/* ── Header: Avatar + Typography ── */}
@@ -48,9 +50,9 @@ export function CardHero({ profile }: CardHeroProps) {
             </div>
           ) : (
             /* Neutral cardstock placeholder block with classical serif monogram */
-            <div className="w-16 h-16 rounded-xl bg-[#16161B] border border-white/10 flex items-center justify-center select-none shadow-inner">
+            <div className={`w-16 h-16 rounded-xl bg-[#16161B] ${isGold ? "border border-[#d9b266]/40 shadow-[0_0_18px_rgba(217,178,102,0.12)]" : "border border-white/10"} flex items-center justify-center select-none shadow-inner`}>
               <span
-                className="text-[18px] font-bold tracking-wider text-zinc-200"
+                className={`text-[18px] font-bold tracking-wider ${isGold ? "text-[#F5E6C8]" : "text-zinc-200"}`}
                 style={{ fontFamily: "var(--font-baskerville), Georgia, serif" }}
               >
                 {profile.initials || profile.name.slice(0, 2).toUpperCase()}

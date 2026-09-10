@@ -11,16 +11,21 @@ import { QRCodeSVG } from "qrcode.react";
  * The single hairline rule separating the body of the card from the footer (#2F7BFF/30).
  * All text is set in Montserrat and strictly neutral monochrome.
  */
-export function CardFooter() {
+interface CardFooterProps {
+  borderAccent?: "gold" | "blue" | string;
+}
+
+export function CardFooter({ borderAccent }: CardFooterProps) {
   const [qrOpen, setQrOpen] = useState(false);
+  const isGold = borderAccent === "gold";
 
   // Build current card URL on client
   const cardUrl = typeof window !== "undefined" ? window.location.href : "";
 
   return (
     <footer className="pt-2" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
-      {/* ── BLUE ACCENT 2 OF 2: Single Hairline Rule (#2563eb) ── */}
-      <div className="border-t border-[#2563eb]/30 pt-4 space-y-3">
+      {/* ── HAIRLINE RULE: Dynamic accent (#d9b266 for gold, #2563eb for blue) ── */}
+      <div className={`border-t ${isGold ? "border-[#d9b266]/35" : "border-[#2563eb]/30"} pt-4 space-y-3`}>
         <div className="flex items-center justify-between">
           <Link
             href="https://www.iuvora.com"

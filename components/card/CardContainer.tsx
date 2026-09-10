@@ -39,20 +39,17 @@ interface CardContainerProps {
  * - "gold" (Founder tier): Subtle Iuvora-adjacent gold hairline (rgba(197, 160, 89, 0.35))
  * - hex value: Custom hex applied with hairline opacity
  */
-function getBorderAccentStyle(accent?: string): { borderColor: string } {
+function getBorderAccentStyle(accent?: string): { borderColor: string; boxShadow: string } {
   if (accent === "gold") {
-    return { borderColor: "rgba(197, 160, 89, 0.35)" };
+    return {
+      borderColor: "rgba(217, 178, 102, 0.48)",
+      boxShadow: "0 0 0 1px rgba(217, 178, 102, 0.18), 0 20px 50px rgba(0, 0, 0, 0.85)",
+    };
   }
-  if (!accent || accent === "blue" || accent === "#2F7BFF" || accent === "#2563eb") {
-    return { borderColor: "rgba(37, 99, 235, 0.35)" };
-  }
-  if (accent.startsWith("#")) {
-    if (accent.length === 7) {
-      return { borderColor: `${accent}4D` }; // ~30% alpha for consistent hairline weight
-    }
-    return { borderColor: accent };
-  }
-  return { borderColor: accent };
+  return {
+    borderColor: "rgba(37, 99, 235, 0.38)",
+    boxShadow: "0 0 0 1px rgba(37, 99, 235, 0.14), 0 20px 50px rgba(0, 0, 0, 0.85)",
+  };
 }
 
 export function CardContainer({ profile }: CardContainerProps) {
@@ -130,9 +127,9 @@ export function CardContainer({ profile }: CardContainerProps) {
           </div>
         )}
 
-        {/* 4. Footer (contains Iuvora Blue Accent #2: single hairline rule) */}
+        {/* 4. Footer */}
         <div className="card-anim-item opacity-0">
-          <CardFooter />
+          <CardFooter borderAccent={profile.borderAccent} />
         </div>
       </div>
     </main>
