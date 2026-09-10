@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ─── Design Tokens ──────────────────────────────────────────────── */
 :root {
   --color-black: #0a0a0a;
@@ -11,10 +13,24 @@
   --section-transition-duration: 1100ms;
   --section-transition-easing: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Live theme vars - mutated by ScrollThemeProvider */
+  /* Live theme vars - mutated by ScrollThemeProvider or theme classes */
   --bg: var(--color-black);
   --fg: var(--color-white);
   --fg-muted: var(--color-gray-mid);
+}
+
+html.light {
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --fg-muted: #52525b;
+  color-scheme: light;
+}
+
+html.dark {
+  --bg: var(--color-black);
+  --fg: var(--color-white);
+  --fg-muted: var(--color-gray-mid);
+  color-scheme: dark;
 }
 
 @theme inline {
