@@ -1,4 +1,18 @@
-import { CardProfile } from "@/data/cards/types";
+import { CardProfile, CardSocials } from "@/data/cards/types";
+
+export interface ContactProfile {
+  name: string;
+  title: string;
+  company?: string;
+  phone: string;
+  email: string;
+  website?: string;
+  location?: string;
+  oneLineBio?: string;
+  slug: string;
+  socials?: CardSocials;
+  workUrl?: string;
+}
 
 /**
  * Escapes characters per RFC 6350 / vCard 3.0
@@ -55,7 +69,7 @@ export function foldVCardLine(line: string, maxBytes: number = 75): string {
  * Generates an RFC 6350 / vCard 3.0 string compliant with iOS Contacts and Android.
  * Guarantees CRLF (\r\n) line endings and 75-octet line folding.
  */
-export function generateVCardString(profile: CardProfile): string {
+export function generateVCardString(profile: CardProfile | ContactProfile): string {
   const CRLF = "\r\n";
   const lines: string[] = [];
 
@@ -141,7 +155,7 @@ export function generateVCardString(profile: CardProfile): string {
  * Client-side trigger to download the .vcf contact card.
  * Works across iOS Safari (opens contact import directly) and Android/Chrome.
  */
-export function downloadVCard(profile: CardProfile): void {
+export function downloadVCard(profile: CardProfile | ContactProfile): void {
   if (typeof window === "undefined") return;
 
   const vcardString = generateVCardString(profile);

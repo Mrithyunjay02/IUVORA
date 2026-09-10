@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, Suspense } from "react";
-import { ReactLenis, useLenis } from "lenis/react";
+import { ReactLenis, useLenis, type LenisRef } from "lenis/react";
 import { usePathname, useSearchParams } from "next/navigation";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -11,7 +11,7 @@ if (typeof window !== "undefined") {
 }
 
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
-  const lenisRef = useRef<any>(null);
+  const lenisRef = useRef<LenisRef | null>(null);
 
   useEffect(() => {
     function update(time: number) {

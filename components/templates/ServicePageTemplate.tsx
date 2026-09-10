@@ -137,7 +137,7 @@ export function ServicePageTemplate({ service }: ServicePageTemplateProps) {
             </div>
 
             <ul className="grid grid-cols-1 gap-4 list-none m-0 p-0 mt-2">
-              {service.capabilities.map((cap, i) => (
+              {service.capabilities.map((cap) => (
                 <li
                   key={cap}
                   className="service-capability-item flex gap-4 items-start py-4 border-b opacity-0"
@@ -172,7 +172,7 @@ export function ServicePageTemplate({ service }: ServicePageTemplateProps) {
             </h2>
           </div>
           <div className="flex flex-wrap gap-3">
-            {service.tools.map((tool, i) => (
+            {service.tools.map((tool) => (
               <span
                 key={tool}
                 className="service-tool-item px-5 py-3 rounded-sm text-sm font-semibold font-[var(--font-display)] opacity-0"

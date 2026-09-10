@@ -126,7 +126,7 @@ export function Testimonials() {
                 style={{ color: "var(--color-accent)" }}
                 aria-hidden="true"
               >
-                "
+                &ldquo;
               </span>
 
               <blockquote>

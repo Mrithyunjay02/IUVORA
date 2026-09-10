@@ -13,7 +13,7 @@ export function Preloader() {
     // 1. Session check - only show once per session
     const hasShown = sessionStorage.getItem("iuvora_preloader_shown");
     if (hasShown) {
-      setIsMounted(false);
+      setTimeout(() => setIsMounted(false), 0);
       return;
     }
     sessionStorage.setItem("iuvora_preloader_shown", "true");

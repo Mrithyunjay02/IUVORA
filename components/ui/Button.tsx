@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
-import gsap from "gsap";
 
 type ButtonVariant = "primary" | "outline" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
@@ -61,8 +60,6 @@ export function Button({
   disabled = false,
   id,
 }: ButtonProps) {
-  const buttonRef = useRef<any>(null);
-
   const base = [
     "inline-flex items-center justify-center gap-2",
     "font-semibold font-[var(--font-display)]",
@@ -85,7 +82,7 @@ export function Button({
 
   if (href) {
     return (
-      <Link href={href} className={base} id={id} ref={buttonRef}>
+      <Link href={href} className={base} id={id}>
         {children}
       </Link>
     );
@@ -98,7 +95,6 @@ export function Button({
       className={base}
       disabled={disabled}
       id={id}
-      ref={buttonRef}
     >
       {children}
     </button>
