@@ -1,7 +1,7 @@
 // Shared constants - services, nav, process steps, etc.
 
 export const NAV_LINKS = [
-  { label: "Work", href: "/work" },
+  { label: "Work", href: "/#work" },
   { label: "Services", href: "/services/web-development" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

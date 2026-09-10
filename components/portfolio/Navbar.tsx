@@ -1,36 +1,22 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { IuvoraLogo } from "@/components/icons/IuvoraLogo";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pt-[max(0.75rem,env(safe-area-inset-top,0.75rem))] pb-2 px-3 sm:px-8 pointer-events-none flex items-center justify-between sm:justify-center">
-      {/* Top Left: Standalone Brand Identity */}
-      <div className="pointer-events-auto sm:absolute sm:left-6 md:left-8 sm:top-[max(0.75rem,env(safe-area-inset-top,0.75rem))]">
-        <a
-          href="https://iuvora.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="apple-liquid-glass flex items-center gap-2.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6] touch-press transition-all duration-300 shadow-sm"
-          aria-label="Iuvora Company Platform"
+    <header className="fixed top-0 left-0 right-0 z-50 pt-[max(0.75rem,env(safe-area-inset-top,0.75rem))] pb-2 px-4 sm:px-8 pointer-events-none flex items-center justify-between sm:justify-center">
+      {/* Top Left: Official Iuvora Brand Logo */}
+      <div className="pointer-events-auto sm:absolute sm:left-6 md:left-8 sm:top-[max(0.75rem,env(safe-area-inset-top,0.75rem))] flex items-center">
+        <Link
+          href="/"
+          className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6] rounded transition-opacity hover:opacity-85"
+          aria-label="Iuvora - Home"
         >
-          <div className="relative w-6 h-6 overflow-hidden rounded-md flex items-center justify-center bg-white/15 dark:bg-white/20 backdrop-blur-md border border-white/30 dark:border-white/35 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] group-hover:scale-105 transition-transform">
-            <Image
-              src="/logo/iuvora-logo.png"
-              alt="Iuvora"
-              width={24}
-              height={24}
-              className="object-contain"
-              priority
-            />
-          </div>
-          <span className="font-bold text-sm tracking-tight text-white group-hover:text-[#60a5fa] transition-colors">
-            iuvora
-          </span>
-        </a>
+          <IuvoraLogo width={120} priority={true} />
+        </Link>
       </div>
 
       {/* Centered Liquid Glass Navigation Pill */}
@@ -47,19 +33,13 @@ export default function Navbar() {
         {/* Quick Links */}
         <div className="relative z-10 flex items-center gap-1 text-xs sm:text-sm font-medium text-white/90">
           <Link
-            href="/#gallery"
+            href="/#work"
             className="px-3 py-1.5 sm:px-3.5 rounded-full hover:text-white hover:bg-white/15 dark:hover:bg-white/20 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]"
           >
-            Works
+            Work
           </Link>
           <Link
-            href="/#process"
-            className="hidden sm:inline-flex px-3.5 py-1.5 rounded-full hover:text-white hover:bg-white/15 dark:hover:bg-white/20 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]"
-          >
-            Discipline
-          </Link>
-          <Link
-            href="/#contact"
+            href="/contact"
             className="px-3 py-1.5 sm:px-3.5 rounded-full hover:text-white hover:bg-white/15 dark:hover:bg-white/20 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]"
           >
             Inquire
