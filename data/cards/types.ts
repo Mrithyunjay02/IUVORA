@@ -21,4 +21,5 @@ export interface CardProfile {
   company?: string;
   workUrl?: string;
   borderAccent?: "gold" | "blue" | string;
+  theme?: "code" | "design" | "executive";
 }

@@ -8,6 +8,7 @@ import { CardHero } from "./CardHero";
 import { CardActions } from "./CardActions";
 import { CardSocials } from "./CardSocials";
 import { CardFooter } from "./CardFooter";
+import { CardWatermark } from "./CardWatermark";
 
 interface CardContainerProps {
   profile: CardProfile;
@@ -107,9 +108,21 @@ export function CardContainer({ profile }: CardContainerProps) {
 
       {/* ── Physical Visiting Card: exactly ONE asymmetric signature detail (chamfered top-right corner) ── */}
       <div
-        className="relative z-10 w-full max-w-[390px] rounded-2xl rounded-tr-none bg-[#0D0D11] border shadow-[0_20px_50px_rgba(0,0,0,0.85)] px-6 py-7 sm:px-7 sm:py-8 space-y-6 my-auto transition-colors duration-200"
+        className="relative z-10 w-full max-w-[390px] rounded-2xl rounded-tr-none bg-[#0D0D11] border shadow-[0_20px_50px_rgba(0,0,0,0.85)] px-6 py-7 sm:px-7 sm:py-8 space-y-6 my-auto transition-colors duration-200 overflow-hidden"
         style={getBorderAccentStyle(profile.borderAccent)}
       >
+        {/* Role-Specific Background Watermark */}
+        <CardWatermark
+          theme={
+            profile.theme ||
+            (profile.borderAccent === "gold"
+              ? "executive"
+              : profile.title.toLowerCase().includes("design")
+              ? "design"
+              : "code")
+          }
+        />
+
         {/* 1. Hero (Baskerville name + Montserrat title/bio) */}
         <div className="card-anim-item opacity-0">
           <CardHero profile={profile} />

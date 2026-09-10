@@ -16,4 +16,5 @@ export const akshayProfile: CardProfile = {
   company: "Iuvora & Daynit Enterprises",
   workUrl: "https://www.iuvora.com",
   borderAccent: "gold",
+  theme: "executive",
 };

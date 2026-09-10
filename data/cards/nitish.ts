@@ -14,4 +14,5 @@ export const nitishProfile: CardProfile = {
   company: "Iuvora",
   workUrl: "https://www.iuvora.com/work",
   borderAccent: "blue",
+  theme: "design",
 };

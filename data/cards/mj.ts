@@ -17,4 +17,5 @@ export const mjProfile: CardProfile = {
   company: "Iuvora",
   workUrl: "https://www.iuvora.com",
   borderAccent: "blue",
+  theme: "code",
 };
