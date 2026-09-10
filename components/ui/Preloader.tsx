@@ -10,7 +10,14 @@ export function Preloader() {
   const textRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // 1. Session check - only show once per session
+    // 1. Reduced motion check - exit immediately if requested
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) {
+      setTimeout(() => setIsMounted(false), 0);
+      return;
+    }
+
+    // 2. Session check - only show once per session
     const hasShown = sessionStorage.getItem("iuvora_preloader_shown");
     if (hasShown) {
       setTimeout(() => setIsMounted(false), 0);
@@ -18,58 +25,32 @@ export function Preloader() {
     }
     sessionStorage.setItem("iuvora_preloader_shown", "true");
 
-    // 2. Prefers reduced motion check
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
     let currentProgress = 0;
-    let targetProgress = 0;
+    let targetProgress = 50;
     let rafId: number;
     let forceComplete = false;
 
-    // Hard cap timeout
-    const maxTime = prefersReduced ? 400 : 1500;
+    // Hard cap timeout: max 450ms (never stall the user for 1.5s)
     const timeoutId = setTimeout(() => {
       forceComplete = true;
-    }, maxTime);
+    }, 450);
 
-    // Track assets
-    let fontsReady = false;
-    let videoReady = false;
-    
-    // Fonts
+    // Track fonts
     document.fonts.ready.then(() => {
-      fontsReady = true;
+      targetProgress = 100;
     });
 
     // Animation Loop
     const tick = () => {
-      // Calculate target progress based on actual readiness
       if (forceComplete) {
         targetProgress = 100;
-      } else if (prefersReduced) {
-        targetProgress = 100; // Will complete quickly based on hard cap
-      } else {
-        let newTarget = 33; // DOM is ready by virtue of this running
-
-        if (fontsReady) newTarget += 33;
-
-        if (!videoReady) {
-          const videoEl = document.getElementById("hero-video-element") as HTMLVideoElement | null;
-          // If video isn't on this page or is ready
-          if (!videoEl || videoEl.readyState >= 3) {
-            videoReady = true;
-          }
-        }
-        if (videoReady) newTarget += 34;
-        
-        targetProgress = Math.max(targetProgress, newTarget);
       }
 
-      // Lerp (lowered from 0.15 to 0.03 to make it readable on fast loads)
-      currentProgress += (targetProgress - currentProgress) * 0.03;
-      
+      // Responsive lerp (0.18 instead of artificial 0.03 stall)
+      currentProgress += (targetProgress - currentProgress) * 0.18;
+
       // Snap to 100 if close
-      if (targetProgress === 100 && currentProgress > 99.5) {
+      if (targetProgress === 100 && currentProgress > 98) {
         currentProgress = 100;
       }
 
@@ -77,7 +58,7 @@ export function Preloader() {
       if (progressRef.current) {
         progressRef.current.style.width = `${currentProgress}%`;
       }
-      if (textRef.current && !prefersReduced) {
+      if (textRef.current) {
         textRef.current.textContent = Math.round(currentProgress).toString();
       }
 
@@ -85,7 +66,7 @@ export function Preloader() {
       if (currentProgress >= 100) {
         clearTimeout(timeoutId);
         setIsExiting(true);
-        setTimeout(() => setIsMounted(false), 400); // Wait for CSS transition
+        setTimeout(() => setIsMounted(false), 250); // Fast CSS transition
         return;
       }
 
@@ -104,12 +85,12 @@ export function Preloader() {
 
   return (
     <div
-      className="fixed inset-0 z-[99999] flex flex-col items-center justify-center pointer-events-none"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center pointer-events-none"
       style={{
         backgroundColor: "var(--color-black)",
         opacity: isExiting ? 0 : 1,
         transform: isExiting ? "scale(1.05)" : "scale(1)",
-        transition: "opacity 400ms ease-out, transform 400ms ease-out",
+        transition: "opacity 250ms ease-out, transform 250ms ease-out",
       }}
     >
       <div className="flex flex-col items-center gap-6">

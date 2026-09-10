@@ -32,9 +32,9 @@ const TESTIMONIALS = [
   {
     id: 3,
     quote:
-      "Clean, professional work from start to finish. Iuvora took our requirements and turned them into a site that genuinely fits our business.",
-    name: null,
-    title: "Founder, MH Developers",
+      "Clean, professional execution from architectural layout to buyer inquiry pipeline. The site genuinely fits our property development brand.",
+    name: "Leadership Team",
+    title: "MH Developers",
     initial: "MH",
   },
 ];
@@ -76,7 +76,7 @@ export function Testimonials() {
   }, { scope: containerRef });
 
   return (
-    <SectionWrapper theme="light" id="testimonials">
+    <SectionWrapper theme="dark" id="testimonials">
       <div className="container-grid" ref={containerRef}>
         {/* Header */}
         <div className="max-w-xl mb-16">

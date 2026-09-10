@@ -10,6 +10,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Marquee } from "@/components/ui/Marquee";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.iuvora.com"),
   title: "Iuvora - Web, App, Marketing & IT Services",
   description:
     "Iuvora is your partner for Web, App, Marketing and IT solutions that drive growth.",

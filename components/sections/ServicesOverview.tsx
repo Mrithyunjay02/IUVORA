@@ -205,7 +205,7 @@ export function ServicesOverview() {
   }, { scope: containerRef });
 
   return (
-    <SectionWrapper theme="light" id="services">
+    <SectionWrapper theme="dark" id="services">
       <div className="container-grid" ref={containerRef}>
         <div className="max-w-2xl mb-16">
           <p className=" eyebrow mb-4">
