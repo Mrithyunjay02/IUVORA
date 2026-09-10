@@ -56,23 +56,30 @@ export default function Hero() {
     >
       {/* Main Content */}
       <div className="portfolio-container relative z-10 my-auto flex flex-col items-start max-w-5xl">
-        {/* Hero Title - Dual-tone contrast and hierarchy */}
+        {/* Eyebrow matching main site standard */}
+        <p className="eyebrow mb-6">
+          Selected Works &amp; Portfolio
+        </p>
+
+        {/* Hero Title - Identical typography, tracking, line-height to main site .hero-headline */}
         <h1
           ref={titleRef}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[1.05] mb-8"
+          className="hero-headline mb-8"
+          style={{ color: "var(--fg)" }}
         >
-          <span className="text-zinc-500 dark:text-zinc-400 block font-semibold">
+          <span className="block font-semibold" style={{ color: "var(--fg-muted)" }}>
             Crafted for scale.
           </span>
-          <span className="text-zinc-900 dark:text-white font-black">
+          <span className="block font-extrabold" style={{ color: "var(--fg)" }}>
             Built for impact.
           </span>
         </h1>
 
-        {/* Description */}
+        {/* Description matching main site text hierarchy */}
         <p
           ref={descRef}
-          className="text-lg sm:text-xl md:text-2xl text-zinc-600 dark:text-zinc-300 leading-relaxed max-w-3xl mb-10 font-light"
+          className="text-lg md:text-xl mb-10 leading-relaxed font-normal"
+          style={{ color: "var(--fg-muted)", maxWidth: "52ch" }}
         >
           An editorial showcase of 5 production web platforms, technical case studies, and commercial digital systems engineered with craft and performance.
         </p>
@@ -80,27 +87,28 @@ export default function Hero() {
         {/* Quick Scope Specs */}
         <div
           ref={metaRef}
-          className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-black/10 dark:border-white/10 w-full max-w-2xl text-xs"
+          className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t w-full max-w-2xl text-xs"
+          style={{ borderColor: "color-mix(in srgb, var(--fg) 10%, transparent)" }}
         >
-          <div className="flex items-center gap-2.5 text-zinc-600 dark:text-zinc-400">
-            <Layers className="w-4 h-4 text-[#3b82f6] dark:text-[#60a5fa] shrink-0" />
+          <div className="flex items-center gap-2.5">
+            <Layers className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
             <div>
-              <div className="font-semibold text-zinc-900 dark:text-white">5 Production Builds</div>
-              <div className="text-zinc-500 text-[11px]">Commercial &amp; Institutional</div>
+              <div className="font-semibold" style={{ color: "var(--fg)" }}>5 Production Builds</div>
+              <div className="text-[11px]" style={{ color: "var(--fg-muted)" }}>Commercial &amp; Institutional</div>
             </div>
           </div>
-          <div className="flex items-center gap-2.5 text-zinc-600 dark:text-zinc-400">
-            <Globe className="w-4 h-4 text-[#3b82f6] dark:text-[#60a5fa] shrink-0" />
+          <div className="flex items-center gap-2.5">
+            <Globe className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
             <div>
-              <div className="font-semibold text-zinc-900 dark:text-white">100% Live Deployments</div>
-              <div className="text-zinc-500 text-[11px]">Deployed Globally</div>
+              <div className="font-semibold" style={{ color: "var(--fg)" }}>100% Live Deployments</div>
+              <div className="text-[11px]" style={{ color: "var(--fg-muted)" }}>Deployed Globally</div>
             </div>
           </div>
-          <div className="hidden sm:flex items-center gap-2.5 text-zinc-600 dark:text-zinc-400">
+          <div className="hidden sm:flex items-center gap-2.5">
             <div className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
             <div>
-              <div className="font-semibold text-zinc-900 dark:text-white">Verified Clients</div>
-              <div className="text-zinc-500 text-[11px]">Active Production Systems</div>
+              <div className="font-semibold" style={{ color: "var(--fg)" }}>Verified Clients</div>
+              <div className="text-[11px]" style={{ color: "var(--fg-muted)" }}>Active Production Systems</div>
             </div>
           </div>
         </div>

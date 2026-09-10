@@ -92,20 +92,26 @@ export default function Capabilities() {
     <section
       id="gallery"
       ref={containerRef}
-      className="relative py-20 sm:py-28 lg:py-36 bg-white dark:bg-[#0c0d12] border-t border-black/5 dark:border-white/5 transition-colors duration-200 scroll-mt-20"
+      className="relative py-20 sm:py-28 lg:py-36 bg-[var(--bg)] border-t transition-colors duration-200 scroll-mt-24"
+      style={{ borderColor: "color-mix(in srgb, var(--fg) 8%, transparent)" }}
     >
       <div className="portfolio-container">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs font-semibold text-[#3b82f6] dark:text-[#60a5fa] mb-4 uppercase tracking-wider">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              <span>05 Live Platforms</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white">
+            <p className="eyebrow mb-3">
+              Case Studies &amp; Platforms
+            </p>
+            <h2
+              className="section-headline mb-4"
+              style={{ color: "var(--fg)" }}
+            >
               Selected Works
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-light max-w-xl">
+            <p
+              className="text-base leading-relaxed max-w-xl"
+              style={{ color: "var(--fg-muted)" }}
+            >
               Production web applications, institutional platforms, and commercial systems engineered for verified clients.
             </p>
           </div>
@@ -120,7 +126,7 @@ export default function Capabilities() {
                   onClick={() => setActiveCategory(cat.id)}
                   className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-medium transition-all whitespace-nowrap cursor-pointer touch-press ${
                     isActive
-                      ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-950 shadow-sm font-semibold"
+                      ? "bg-[var(--fg)] text-[var(--bg)] shadow-sm font-semibold"
                       : "bg-black/[0.04] dark:bg-white/[0.05] text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-black/10 dark:hover:bg-white/10"
                   }`}
                   aria-pressed={isActive}

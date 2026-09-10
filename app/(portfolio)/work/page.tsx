@@ -9,7 +9,7 @@ import MobileQuickConnect from "@/components/portfolio/MobileQuickConnect";
 
 export default function WorkPage() {
   return (
-    <main id="main-content" className="relative min-h-screen bg-white dark:bg-[#0c0d12] text-zinc-900 dark:text-white flex flex-col transition-colors duration-200">
+    <main id="main-content" className="relative min-h-screen bg-[var(--bg)] text-[var(--fg)] flex flex-col transition-colors duration-200">
       <Navbar />
       <Hero />
       <Capabilities />

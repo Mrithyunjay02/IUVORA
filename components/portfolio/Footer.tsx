@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="relative bg-[#f8f9fc] dark:bg-[#0c0d12] border-t border-black/10 dark:border-white/10 pt-20 pb-16 sm:pb-12 safe-area-bottom overflow-hidden transition-colors duration-200 scroll-mt-16"
+      className="relative bg-[#f8f9fc] dark:bg-[var(--color-black)] border-t border-black/10 dark:border-white/10 pt-20 pb-16 sm:pb-12 safe-area-bottom overflow-hidden transition-colors duration-200 scroll-mt-16"
     >
       {/* Subtle top light gradient */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-[#3b82f6]/30 dark:via-[#60a5fa]/40 to-transparent pointer-events-none" />

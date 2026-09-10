@@ -28,10 +28,18 @@ function applyThemeClass(newTheme: Theme) {
     root.classList.add("dark");
     root.classList.remove("light");
     root.style.colorScheme = "dark";
+    root.style.setProperty("--bg", "#0a0a0a");
+    root.style.setProperty("--fg", "#fafafa");
+    root.style.setProperty("--fg-muted", "#6b6b6b");
+    root.style.backgroundColor = "#0a0a0a";
   } else {
     root.classList.add("light");
     root.classList.remove("dark");
     root.style.colorScheme = "light";
+    root.style.setProperty("--bg", "#ffffff");
+    root.style.setProperty("--fg", "#0a0a0a");
+    root.style.setProperty("--fg-muted", "#52525b");
+    root.style.backgroundColor = "#ffffff";
   }
 }
 
@@ -50,12 +58,12 @@ function getServerSnapshot(): boolean {
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("iuvora_theme") as Theme | null;
+      const saved = (localStorage.getItem("iuvora_theme") ||
+        localStorage.getItem("iuvora_site_theme")) as Theme | null;
       if (saved === "light" || saved === "dark") {
         return saved;
       }
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      return prefersDark ? "dark" : "light";
+      return "dark"; // Default is ALWAYS dark
     }
     return "dark";
   });
@@ -70,6 +78,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setThemeState(newTheme);
     if (typeof window !== "undefined") {
       localStorage.setItem("iuvora_theme", newTheme);
+      localStorage.setItem("iuvora_site_theme", newTheme);
       applyThemeClass(newTheme);
     }
   }, []);
@@ -79,6 +88,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       const nextTheme: Theme = prev === "dark" ? "light" : "dark";
       if (typeof window !== "undefined") {
         localStorage.setItem("iuvora_theme", nextTheme);
+        localStorage.setItem("iuvora_site_theme", nextTheme);
         applyThemeClass(nextTheme);
       }
       return nextTheme;

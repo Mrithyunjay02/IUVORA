@@ -11,8 +11,8 @@ export default function Navbar() {
   const isWorkHome = pathname === "/work";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pt-[max(0.75rem,env(safe-area-inset-top,0.75rem))] pb-2 pointer-events-none">
-      <div className="portfolio-container relative flex items-center justify-between sm:justify-start">
+    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+      <div className="portfolio-container relative flex items-center justify-between sm:justify-start h-16 md:h-20">
         {/* Top Left: Official Iuvora Brand Logo (aligned with container / "Crafted for scale") */}
         <div className="pointer-events-auto flex items-center">
           <Link
