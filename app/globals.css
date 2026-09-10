@@ -67,6 +67,19 @@ body {
 }
 
 /*
+ * Hard rule: NEVER allow a blinking text caret on non-editable website text.
+ * Disables browser caret across all ordinary elements on website, portfolio, and NFC cards.
+ * Only genuine form inputs/textareas show carets.
+ */
+*:not(input):not(textarea):not([contenteditable="true"]) {
+  caret-color: transparent !important;
+}
+
+input, textarea, [contenteditable="true"] {
+  caret-color: auto;
+}
+
+/*
  * Motion-respectful transition.
  * background-color is NOT transitioned here - the clip-path wipe overlay
  * in ScrollThemeProvider handles that visually.

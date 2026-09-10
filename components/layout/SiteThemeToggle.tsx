@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useSiteTheme } from "./SiteThemeProvider";
 
@@ -21,19 +21,24 @@ export function SiteThemeToggle() {
     <button
       onClick={toggleTheme}
       type="button"
+      id="site-theme-toggle"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 active:scale-95"
-      style={{
-        backgroundColor: "color-mix(in srgb, var(--fg) 8%, transparent)",
-        border: "1px solid color-mix(in srgb, var(--fg) 14%, transparent)",
-        color: "var(--fg)",
-      }}
+      className={`
+        flex items-center justify-center w-9 h-9 rounded-full border
+        transition-all duration-200 cursor-pointer
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb] focus-visible:ring-offset-2
+        active:scale-95
+        ${isDark
+          ? "bg-white/[0.08] border-white/15 text-zinc-200 hover:text-white hover:bg-white/[0.14] focus-visible:ring-offset-[#0a0a0a]"
+          : "bg-black/[0.06] border-black/12 text-zinc-700 hover:text-black hover:bg-black/[0.1] focus-visible:ring-offset-white"
+        }
+      `}
     >
       {isDark ? (
         /* Sun: switch to light */
         <svg
-          className="w-[15px] h-[15px]"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -53,7 +58,7 @@ export function SiteThemeToggle() {
       ) : (
         /* Moon: switch to dark */
         <svg
-          className="w-[15px] h-[15px]"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

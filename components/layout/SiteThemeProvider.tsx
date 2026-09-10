@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, {
   createContext,
@@ -43,7 +43,6 @@ function applySiteTheme(newTheme: SiteTheme) {
     root.classList.add("light");
     root.classList.remove("dark");
     root.style.colorScheme = "light";
-    // Override inline --bg/--fg so ScrollThemeProvider can't mutate them
     root.style.setProperty("--bg", "#ffffff");
     root.style.setProperty("--fg", "#0a0a0a");
     root.style.setProperty("--fg-muted", "#52525b");
@@ -52,11 +51,10 @@ function applySiteTheme(newTheme: SiteTheme) {
     root.classList.add("dark");
     root.classList.remove("light");
     root.style.colorScheme = "dark";
-    // Remove overrides — ScrollThemeProvider drives --bg/--fg in dark mode
-    root.style.removeProperty("--bg");
-    root.style.removeProperty("--fg");
-    root.style.removeProperty("--fg-muted");
-    root.style.removeProperty("background-color");
+    root.style.setProperty("--bg", "#0a0a0a");
+    root.style.setProperty("--fg", "#fafafa");
+    root.style.setProperty("--fg-muted", "#6b6b6b");
+    root.style.backgroundColor = "#0a0a0a";
   }
 }
 
@@ -75,10 +73,7 @@ export function SiteThemeProvider({ children }: { children: React.ReactNode }) {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem(STORAGE_KEY) as SiteTheme | null;
       if (saved === "light" || saved === "dark") return saved;
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      return prefersDark ? "dark" : "light";
+      return "dark"; // Default is ALWAYS dark
     }
     return "dark";
   });

@@ -62,7 +62,7 @@ function StatItem({
     >
       <p
         className="text-4xl font-extrabold font-[var(--font-display)] leading-none mb-1"
-        style={{ color: "var(--color-white)" }}
+        style={{ color: "var(--fg)" }}
         aria-live="polite"
         aria-label={`${count}${suffix} ${label}`}
       >
@@ -71,7 +71,7 @@ function StatItem({
           {suffix}
         </span>
       </p>
-      <p className="text-sm" style={{ color: "var(--color-gray-mid)" }}>
+      <p className="text-sm" style={{ color: "var(--fg-muted)" }}>
         {label}
       </p>
     </div>
@@ -145,7 +145,7 @@ export function Hero() {
           className="pointer-events-none absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
-              "repeating-linear-gradient(0deg, var(--color-white) 0, var(--color-white) 1px, transparent 1px, transparent 80px), repeating-linear-gradient(90deg, var(--color-white) 0, var(--color-white) 1px, transparent 1px, transparent 80px)",
+              "repeating-linear-gradient(0deg, var(--fg) 0, var(--fg) 1px, transparent 1px, transparent 80px), repeating-linear-gradient(90deg, var(--fg) 0, var(--fg) 1px, transparent 1px, transparent 80px)",
           }}
         />
 
@@ -190,7 +190,7 @@ export function Hero() {
 
           <h1
             className="hero-headline mb-8"
-            style={{ color: "var(--color-white)" }}
+            style={{ color: "var(--fg)" }}
           >
             <span className="hero-headline-word" style={{ display: "inline-block", opacity: 0 }}>We</span>{" "}
             <span className="hero-headline-word" style={{ display: "inline-block", opacity: 0 }}>build</span>{" "}
@@ -201,7 +201,7 @@ export function Hero() {
 
           <p
             className="hero-animate text-lg md:text-xl mb-10 leading-relaxed"
-            style={{ color: "var(--color-gray-mid)", maxWidth: "52ch" }}
+            style={{ color: "var(--fg-muted)", maxWidth: "52ch" }}
           >
             Iuvora delivers web development, app development, digital marketing,
             and IT services - everything you need to launch and grow online.
