@@ -27,17 +27,17 @@ const TEAM_MEMBERS = [
     isFounder: true,
   },
   {
-    name: "Nitish",
+    name: "Nitish Jogi",
     role: (
       <>
-        Web Designer &middot;{" "}
+        Product Designer &middot;{" "}
         <a href="https://www.iuvora.com/work" target="_blank" rel="noopener noreferrer" className="hover:underline">
           Iuvora
         </a>
       </>
     ),
-    location: "Shimoga, Karnataka",
-    bio: "Web Designer at Iuvora · Crafting modern digital interfaces and visual brand experiences.",
+    location: "India",
+    bio: "Product Designer at Iuvora · Crafting modern digital interfaces and visual brand experiences.",
     initial: "N",
     isFounder: false,
   },

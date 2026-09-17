@@ -70,9 +70,9 @@ export default async function CardPage({ params }: CardPageProps) {
     return (
       <div className="flex min-h-screen w-full flex-col items-center justify-center bg-[#0a0a0a] p-4 selection:bg-[#2563eb] selection:text-white">
         <InteractiveProductCard
-          title="Nitish"
-          description="Web Designer · Iuvora"
-          price="Shimoga, KA"
+          title="Nitish Jogi"
+          description="Product Designer · Iuvora"
+          price="India"
           imageUrl="/cards/nitish-card-bg.jpeg"
           logoIcon={<Palette className="w-5 h-5" />}
           email="nitishjogiwork@gmail.com"
