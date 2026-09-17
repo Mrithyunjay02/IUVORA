@@ -108,11 +108,11 @@ export default function CaseStudyHero({ project }: CaseStudyHeroProps) {
               )}
             </div>
 
-            {/* Oversized Display Title */}
+            {/* Display Title */}
             <h1
               ref={titleRef}
-              className="hero-headline mb-6"
-              style={{ color: "var(--fg)" }}
+              className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tighter mb-6 break-words"
+              style={{ color: "var(--fg)", fontFamily: "var(--font-display)", lineHeight: "1.05" }}
             >
               {project.title}
             </h1>

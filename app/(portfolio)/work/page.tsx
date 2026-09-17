@@ -4,7 +4,6 @@ import Hero from "@/components/portfolio/Hero";
 import { PortfolioGallery } from "@/components/ui/portfolio-gallery";
 import MinimalDeliveryProcess from "@/components/portfolio/MinimalDeliveryProcess";
 import Footer from "@/components/portfolio/Footer";
-import MobileQuickConnect from "@/components/portfolio/MobileQuickConnect";
 
 export default function WorkPage() {
   return (
@@ -14,7 +13,6 @@ export default function WorkPage() {
       <PortfolioGallery />
       <MinimalDeliveryProcess />
       <Footer />
-      <MobileQuickConnect />
     </main>
   );
 }
