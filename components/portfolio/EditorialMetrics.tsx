@@ -59,7 +59,7 @@ export default function EditorialMetrics() {
   return (
     <section
       ref={metricsRef}
-      className="relative py-20 sm:py-28 lg:py-36 bg-[var(--bg)] border-t transition-colors duration-200"
+      className="relative py-20 sm:py-28 lg:py-36 border-t transition-colors duration-200"
       style={{ borderColor: "color-mix(in srgb, var(--fg) 8%, transparent)" }}
     >
       <div className="portfolio-container">

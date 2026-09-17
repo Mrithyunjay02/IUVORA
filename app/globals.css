@@ -18,12 +18,26 @@
   --bg: var(--color-black);
   --fg: var(--color-white);
   --fg-muted: var(--color-gray-mid);
+
+  /* shadcn / component token mappings matching brand */
+  --background: var(--bg);
+  --foreground: var(--fg);
+  --muted-foreground: var(--fg-muted);
+  --border: color-mix(in srgb, var(--fg) 12%, transparent);
+  --secondary: color-mix(in srgb, var(--fg) 5%, transparent);
+  --secondary-foreground: var(--fg);
 }
 
 html.light {
   --bg: #ffffff;
   --fg: #0a0a0a;
   --fg-muted: #52525b;
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --muted-foreground: #52525b;
+  --border: rgba(0, 0, 0, 0.1);
+  --secondary: rgba(0, 0, 0, 0.04);
+  --secondary-foreground: #0a0a0a;
   color-scheme: light;
 }
 
@@ -31,6 +45,12 @@ html.dark {
   --bg: var(--color-black);
   --fg: var(--color-white);
   --fg-muted: var(--color-gray-mid);
+  --background: var(--color-black);
+  --foreground: var(--color-white);
+  --muted-foreground: var(--color-gray-mid);
+  --border: rgba(255, 255, 255, 0.12);
+  --secondary: rgba(255, 255, 255, 0.05);
+  --secondary-foreground: var(--color-white);
   color-scheme: dark;
 }
 
@@ -39,9 +59,28 @@ html.dark {
   --color-white: #fafafa;
   --color-gray-mid: #6b6b6b;
   --color-accent: #2f7bff;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
   --font-display: "Geist", system-ui, sans-serif;
   --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
   --breakpoint-xs: 360px;
+  
+  --animate-marquee-vertical: marquee-vertical 40s linear infinite;
+  --animate-marquee-horizontal: marquee-horizontal var(--duration, 40s) linear infinite;
+  
+  @keyframes marquee-vertical {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+  }
+
+  @keyframes marquee-horizontal {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - var(--gap))); }
+  }
 }
 
 /* ─── Base ───────────────────────────────────────────────────────── */

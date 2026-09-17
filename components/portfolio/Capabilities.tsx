@@ -27,18 +27,6 @@ const CATEGORIES = [
     filter: (p: Project) => p.id === "shams-al-kanari",
   },
   {
-    id: "realestate",
-    label: "Real Estate",
-    count: PROJECTS.filter((p) => p.id === "mh-developers").length,
-    filter: (p: Project) => p.id === "mh-developers",
-  },
-  {
-    id: "fitness",
-    label: "Fitness & Health",
-    count: PROJECTS.filter((p) => p.id === "fitforce").length,
-    filter: (p: Project) => p.id === "fitforce",
-  },
-  {
     id: "arts",
     label: "Performing Arts",
     count: PROJECTS.filter((p) => p.id === "style-dance-crew").length,

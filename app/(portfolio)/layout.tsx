@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Plus_Jakarta_Sans } from "next/font/google";
 import "../globals.css";
-import { ThemeProvider } from "@/components/portfolio/ThemeProvider";
+import { SiteThemeProvider } from "@/components/layout/SiteThemeProvider";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -31,8 +31,6 @@ export const metadata: Metadata = {
     "App Development",
     "Daynit Enterprises",
     "Shams Al Kanari",
-    "MH Developers",
-    "FitForce",
     "Style Dance Crew Studio",
   ],
   authors: [{ name: "Iuvora", url: "https://www.iuvora.com" }],
@@ -89,9 +87,9 @@ export default function PortfolioRootLayout({
         >
           Skip to main content
         </a>
-        <ThemeProvider>
+        <SiteThemeProvider>
           {children}
-        </ThemeProvider>
+        </SiteThemeProvider>
       </body>
     </html>
   );

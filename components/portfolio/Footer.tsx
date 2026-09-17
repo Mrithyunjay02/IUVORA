@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
 
 export default function Footer() {
@@ -10,7 +11,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="relative bg-[var(--bg)] border-t pt-20 pb-16 sm:pb-12 safe-area-bottom overflow-hidden transition-colors duration-200 scroll-mt-16"
+      className="relative border-t pt-20 pb-16 sm:pb-12 safe-area-bottom overflow-hidden transition-colors duration-200 scroll-mt-16"
       style={{ borderColor: "color-mix(in srgb, var(--fg) 10%, transparent)" }}
     >
       {/* Subtle top light gradient */}
@@ -39,13 +40,13 @@ export default function Footer() {
             >
               Explore our full capabilities, company methodology, and services on our main corporate platform.
             </p>
-            <a
+            <Link
               href="/"
               className="inline-flex items-center gap-3 px-7 py-4 rounded-xl font-semibold text-sm bg-[#2563eb] text-white hover:bg-[#1d4ed8] transition-all duration-300 shadow-[0_4px_25px_rgba(37,99,235,0.3)] cursor-pointer"
             >
               <span>Visit iuvora.com</span>
               <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
 
           <div className="lg:col-span-5 flex flex-col justify-between space-y-8">

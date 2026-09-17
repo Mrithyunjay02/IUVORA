@@ -12,7 +12,11 @@ import { SiteThemeToggle } from "./SiteThemeToggle";
  * Header - Sticky nav that reads --fg/--bg from the live CSS custom props
  * so it naturally inverts with the section theme. No hardcoded colors.
  */
-export function Header() {
+interface HeaderProps {
+  navLinks?: { label: string; href: string }[];
+}
+
+export function Header({ navLinks = NAV_LINKS }: HeaderProps = {}) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -58,7 +62,7 @@ export function Header() {
 
           {/* Desktop Nav */}
           <ul className="hidden md:flex items-center gap-8 list-none m-0 p-0">
-            {NAV_LINKS.map((link) => {
+            {navLinks.map((link) => {
               const isActive =
                 pathname === link.href ||
                 (link.href !== "/" && pathname.startsWith(link.href));
@@ -136,7 +140,7 @@ export function Header() {
           style={{ maxHeight: menuOpen ? "400px" : "0" }}
         >
           <ul className="flex flex-col gap-2 pb-6 list-none m-0 p-0">
-            {NAV_LINKS.map((link) => {
+            {navLinks.map((link) => {
               const isActive =
                 pathname === link.href ||
                 (link.href !== "/" && pathname.startsWith(link.href));

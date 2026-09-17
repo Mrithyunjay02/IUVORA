@@ -52,7 +52,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[90vh] flex flex-col justify-between pt-32 pb-12 overflow-hidden bg-grid-pattern hero-radial-glow"
+      className="relative min-h-[90vh] flex flex-col justify-between pt-32 pb-12 overflow-hidden"
     >
       {/* Main Content */}
       <div className="portfolio-container relative z-10 my-auto flex flex-col items-start w-full">

@@ -11,6 +11,65 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const baseWords = [
+  "Web Designing",
+  "App Development",
+  "Software",
+  "Digital Marketing",
+  "Video Shooting",
+  "SEO",
+];
+
+// Tripled to ensure one group is taller than large viewports for seamless looping
+const MARQUEE_WORDS = [...baseWords, ...baseWords, ...baseWords];
+
+function VerticalMarquee({ reverse, side }: { reverse?: boolean; side: "left" | "right" }) {
+  // Hide the right side on mobile to prevent chaotic overlapping in narrow viewports
+  const displayClass = side === "right" ? "hidden md:flex" : "flex";
+
+  return (
+    <div
+      className={`absolute inset-y-0 w-[45%] ${displayClass} flex-col select-none pointer-events-none opacity-[0.06] dark:opacity-[0.03] md:opacity-[0.08] md:dark:opacity-[0.05] ${
+        side === "left" ? "left-0 items-start" : "right-0 items-end"
+      }`}
+      style={{
+        maskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
+        WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
+        zIndex: 0,
+      }}
+      aria-hidden="true"
+    >
+      <div
+        className="flex flex-col animate-marquee-vertical"
+        style={{ animationDirection: reverse ? "reverse" : "normal" }}
+      >
+        {[0, 1].map((group) => (
+          <div
+            key={group}
+            className={`flex flex-col gap-4 md:gap-6 py-2 md:py-3 ${
+              side === "left" ? "items-start" : "items-end"
+            }`}
+          >
+            {MARQUEE_WORDS.map((word, idx) => (
+              <span
+                key={`${group}-${idx}`}
+                className="font-display font-black text-3xl md:text-6xl lg:text-8xl uppercase tracking-tighter text-transparent whitespace-nowrap"
+                style={{
+                  WebkitTextStroke: "1px var(--fg)",
+                  marginLeft: side === "left" ? "-5%" : "0",
+                  marginRight: side === "right" ? "-5%" : "0",
+                }}
+              >
+                {word}
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function CtaBand() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -39,7 +98,11 @@ export function CtaBand() {
   }, { scope: containerRef });
 
   return (
-    <SectionWrapper theme="dark" id="cta-band">
+    <SectionWrapper theme="dark" id="cta-band" className="overflow-hidden">
+      {/* Background Marquees */}
+      <VerticalMarquee side="left" />
+      <VerticalMarquee side="right" reverse />
+
       <div className="container-grid relative" ref={containerRef}>
         {/* Background accent blob */}
         <div

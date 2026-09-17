@@ -76,143 +76,8 @@ export const PROJECTS: Project[] = [
       "Delivered a credible digital gateway that clarifies product lines, reinforces trade confidence, and provides global buyers with a frictionless path from product discovery to business inquiry."
   },
   {
-    id: "shams-al-kanari",
-    number: "02",
-    title: "Shams Al Kanari",
-    category: "Web Development",
-    liveUrl: "https://shamsalkanari.com",
-    image: "/case-studies/shams.webp",
-    description:
-      "A luxury architectural service and property maintenance brand serving Dubai's premium villas, penthouses, and commercial spaces. The site presents their bespoke services, portfolio of featured projects, and booking channels for discerning clients.",
-    tags: ["Luxury Architecture", "Dubai High-End", "Bespoke Services"],
-    industry: "Luxury Architectural Services & Property Maintenance",
-    platform: "Web Platform",
-    scope: "Brand Web Experience, Portfolio Gallery & Consultation Booking",
-    status: "Production / Live",
-    challenge:
-      "Operating in Dubai's premier residential and commercial sector, Shams Al Kanari needed a digital flagship reflecting the sophistication of their bespoke architectural fit-outs and high-end property management while making consultation scheduling intuitive for VIP property owners.",
-    solution:
-      "Crafted a minimalist, luxury-focused web platform emphasizing architectural photography, curated service breakdowns for villas and penthouses, and seamless direct booking channels tailored for discerning private and commercial clients.",
-    features: [
-      {
-        title: "Bespoke Architectural Services",
-        description:
-          "Curated breakdowns of specialized services including premium interior fit-outs, comprehensive maintenance, and spatial renovations."
-      },
-      {
-        title: "High-End Project Showcase",
-        description:
-          "Visual gallery presenting completed works across prestigious Dubai villas, luxury penthouses, and commercial spaces."
-      },
-      {
-        title: "Direct Client Booking Channel",
-        description:
-          "Frictionless consultation and inquiry booking flow designed for high-value property owners and facility managers."
-      },
-      {
-        title: "Luxury Spatial Aesthetic",
-        description:
-          "Refined typography, high-contrast dark tones, and expansive whitespace tailored to luxury real estate standards."
-      }
-    ],
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Responsive UI"],
-    gallery: ["/case-studies/shams.webp"],
-    outcome:
-      "Established an elevated digital flagship that projects the brand's architectural craft and simplifies consultation inquiries for luxury property owners across the UAE."
-  },
-  {
-    id: "mh-developers",
-    number: "03",
-    title: "MH Developers",
-    category: "Web Development",
-    liveUrl: "https://mhdevelopers.netlify.app/",
-    image: "/case-studies/mhdevelopers.webp",
-    description:
-      "A construction and real estate development company showcasing completed and ongoing residential projects, leadership team, and a project inquiry system for prospective buyers across Karnataka.",
-    tags: ["Real Estate", "Construction", "Property Inquiries"],
-    industry: "Real Estate & Construction Development",
-    platform: "Web Platform",
-    scope: "Real Estate Directory, Builder Profile & Lead Capture",
-    status: "Production / Live",
-    challenge:
-      "MH Developers needed a structured digital showcase to establish company authority in Karnataka's residential construction sector, showcase finished and ongoing developments, and provide prospective homebuyers with an accessible inquiry channel.",
-    solution:
-      "Developed a robust property showcase platform presenting residential projects with status tracking, builder credentials, executive leadership profiles, and an integrated lead inquiry system for site visit scheduling.",
-    features: [
-      {
-        title: "Residential Developments Directory",
-        description:
-          "Organized showcase distinguishing between completed residential developments and active ongoing construction sites."
-      },
-      {
-        title: "Leadership & Company Profile",
-        description:
-          "Dedicated background on executive leadership, construction philosophy, and regional builder reputation across Karnataka."
-      },
-      {
-        title: "Prospective Buyer Inquiries",
-        description:
-          "Integrated lead capture forms enabling prospective buyers to request property brochures and schedule on-site visits."
-      },
-      {
-        title: "Architectural & Project Details",
-        description:
-          "Structured overviews of project specifications, floor plan highlights, and locational advantages."
-      }
-    ],
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Modern Web Architecture"],
-    gallery: ["/case-studies/mhdevelopers.webp"],
-    outcome:
-      "Provided homebuyers and real estate investors with a clear, credible view of MH Developers' construction track record and simplified property inquiries."
-  },
-  {
-    id: "fitforce",
-    number: "04",
-    title: "FitForce",
-    category: "Web Development",
-    liveUrl: "https://getfitwith-abhi.netlify.app",
-    image: "/case-studies/fitforce.webp",
-    description:
-      "A personal fitness coaching brand offering online training plans, nutrition guidance, and trainer certifications, built with a full enrollment and plan-selection experience for clients.",
-    tags: ["Fitness & Coaching", "Enrollment System", "Training Plans"],
-    industry: "Health & Fitness Coaching",
-    platform: "Web Platform",
-    scope: "Coaching Portal, Program Directory & Client Enrollment",
-    status: "Production / Live",
-    challenge:
-      "A personal coaching brand required an engaging digital portal to present training methodologies, nutrition guidance, and trainer qualifications while providing a clear enrollment funnel for prospective fitness clients.",
-    solution:
-      "Engineered an energetic, mobile-first coaching web application featuring categorized fitness programs, nutritional guidance overviews, verified trainer certifications, and an interactive plan-selection flow.",
-    features: [
-      {
-        title: "Tiered Training Plans",
-        description:
-          "Clear breakdown of customized online fitness programs, workout regimens, and 1-on-1 coaching options."
-      },
-      {
-        title: "Nutritional Guidance System",
-        description:
-          "Educational nutrition overviews and dietary advice designed to complement active workout routines."
-      },
-      {
-        title: "Trainer Certification Showcase",
-        description:
-          "Accreditation and credential display establishing coaching authority and professional fitness expertise."
-      },
-      {
-        title: "Interactive Client Enrollment",
-        description:
-          "Intuitive plan selection and client onboarding pathway guiding trainees from initial interest to program enrollment."
-      }
-    ],
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Client State Management"],
-    gallery: ["/case-studies/fitforce.webp"],
-    outcome:
-      "Streamlined client onboarding with a modern coaching presentation that communicates program value and enables direct enrollment."
-  },
-  {
     id: "style-dance-crew",
-    number: "05",
+    number: "02",
     title: "Style Dance Crew Studio",
     category: "Web Platform",
     liveUrl: "https://styledancecrew.com",
@@ -258,6 +123,51 @@ export const PROJECTS: Project[] = [
     ],
     outcome:
       "Modernized the institution's digital footprint, providing parents and students with clear program access, schedule transparency, and instant inquiry response."
+  },
+  {
+    id: "shams-al-kanari",
+    number: "03",
+    title: "Shams Al Kanari",
+    category: "Web Development",
+    liveUrl: "https://shamsalkanari.com",
+    image: "/case-studies/shams.webp",
+    description:
+      "A luxury architectural service and property maintenance brand serving Dubai's premium villas, penthouses, and commercial spaces. The site presents their bespoke services, portfolio of featured projects, and booking channels for discerning clients.",
+    tags: ["Luxury Architecture", "Dubai High-End", "Bespoke Services"],
+    industry: "Luxury Architectural Services & Property Maintenance",
+    platform: "Web Platform",
+    scope: "Brand Identity, Visual Portfolio & Client Bookings",
+    status: "Production / Live",
+    challenge:
+      "Operating in Dubai's premier residential and commercial sector, Shams Al Kanari needed a digital flagship reflecting the sophistication of their bespoke architectural fit-outs and high-end property management while making consultation scheduling intuitive for VIP property owners.",
+    solution:
+      "Crafted a minimalist, luxury-focused web platform emphasizing architectural photography, curated service breakdowns for villas and penthouses, and seamless direct booking channels tailored for discerning private and commercial clients.",
+    features: [
+      {
+        title: "Bespoke Architectural Services",
+        description:
+          "Curated breakdowns of specialized services including premium interior fit-outs, comprehensive maintenance, and spatial renovations."
+      },
+      {
+        title: "High-End Project Showcase",
+        description:
+          "Visual gallery presenting completed works across prestigious Dubai villas, luxury penthouses, and commercial spaces."
+      },
+      {
+        title: "Direct Client Booking Channel",
+        description:
+          "Frictionless consultation and inquiry booking flow designed for high-value property owners and facility managers."
+      },
+      {
+        title: "Luxury Spatial Aesthetic",
+        description:
+          "Refined typography, high-contrast dark tones, and expansive whitespace tailored to luxury real estate standards."
+      }
+    ],
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Responsive UI"],
+    gallery: ["/case-studies/shams.webp"],
+    outcome:
+      "Established an elevated digital flagship that projects the brand's architectural craft and simplifies consultation inquiries for luxury property owners across the UAE."
   }
 ];
 

@@ -16,7 +16,7 @@ import {
   Phone,
   Layers
 } from "lucide-react";
-import Navbar from "@/components/portfolio/Navbar";
+import { Header } from "@/components/layout/Header";
 import Footer from "@/components/portfolio/Footer";
 import CaseStudyHero from "@/components/portfolio/CaseStudyHero";
 import CaseStudyNav from "@/components/portfolio/CaseStudyNav";
@@ -87,7 +87,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
   return (
     <main id="main-content" className="relative min-h-screen bg-[var(--bg)] text-[var(--fg)] selection:bg-[#2563eb] selection:text-white flex flex-col transition-colors duration-200">
-      <Navbar />
+      <Header navLinks={[{ label: "Work", href: "/work" }, { label: "Inquire", href: "/contact" }]} />
 
       {/* Sticky Floating Case Study Section Navigator */}
       <CaseStudyNav />
@@ -503,13 +503,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-4">
-                <a
+                <Link
                   href="/"
                   className="inline-flex items-center gap-2.5 px-7 py-4 rounded-xl font-semibold text-sm bg-[#2563eb] text-white hover:bg-[#1d4ed8] transition-all duration-300 shadow-[0_4px_25px_rgba(37,99,235,0.3)] cursor-pointer"
                 >
                   <span>Visit iuvora.com</span>
                   <ArrowUpRight className="w-4 h-4" />
-                </a>
+                </Link>
 
                 <BackButton href="/work#gallery" label="Back to Works Archive" />
               </div>
