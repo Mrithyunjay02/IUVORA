@@ -30,6 +30,17 @@ export function InteractiveProductCard({
 }: InteractiveProductCardProps) {
   const cardRef = React.useRef<HTMLDivElement>(null);
   const [style, setStyle] = React.useState<React.CSSProperties>({});
+  
+  const backgroundColors = [
+    null, // Default image
+    "bg-yellow-500",
+    "bg-black",
+    "bg-white",
+    "bg-blue-500",
+    "bg-pink-500",
+    "bg-orange-500"
+  ];
+  const [bgIndex, setBgIndex] = React.useState(0);
 
   // --- MOUSE MOVE HANDLER ---
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -105,29 +116,50 @@ export function InteractiveProductCard({
       )}
       {...props}
     >
-      {/* Background Image - scales slightly to avoid showing edges on tilt */}
-      <img
-        src={imageUrl}
-        alt={title}
-        className="absolute inset-0 h-full w-full object-cover rounded-3xl transition-transform duration-300 group-hover:scale-110"
-        style={{ transform: "translateZ(-20px) scale(1.1)" }}
-      />
+      {/* Background Layer */}
+      {backgroundColors[bgIndex] === null ? (
+        <img
+          src={imageUrl}
+          alt={title}
+          className="absolute inset-0 h-full w-full object-cover rounded-3xl transition-transform duration-300 group-hover:scale-110"
+          style={{ transform: "translateZ(-20px) scale(1.1)" }}
+        />
+      ) : (
+        <div 
+          className={cn(
+            "absolute inset-0 h-full w-full rounded-3xl transition-transform duration-300 group-hover:scale-110",
+            backgroundColors[bgIndex]
+          )} 
+          style={{ transform: "translateZ(-20px) scale(1.1)" }}
+        />
+      )}
       {/* Gradient Overlay - Less dark so the image shows clearly */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent rounded-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30 rounded-3xl pointer-events-none" />
 
       {/* Main Content with 3D effect */}
       <div
-        className="absolute inset-0 p-5 flex flex-col"
+        className="absolute inset-0 p-5 flex flex-col pointer-events-none"
         style={{ transform: "translateZ(40px)" }}
       >
         {/* Glassmorphism Header */}
-        <div className="flex items-start justify-between rounded-xl border border-white/20 bg-white/20 p-4 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+        <div className="flex items-start justify-between rounded-xl border border-white/20 bg-white/20 p-4 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.1)] pointer-events-auto">
           <div className="flex flex-col drop-shadow-md">
             <h3 className="text-xl font-bold text-white">{title}</h3>
             <p className="text-xs text-white/90 font-medium">{description}</p>
           </div>
           {logoIcon ? (
-            <div className="text-white opacity-100 drop-shadow-md">{logoIcon}</div>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setBgIndex((prev) => (prev + 1) % backgroundColors.length);
+              }}
+              className="text-white opacity-100 drop-shadow-md cursor-pointer hover:scale-110 transition-transform active:scale-95 z-50 p-1 -m-1"
+              aria-label="Change background color"
+            >
+              {logoIcon}
+            </button>
           ) : logoUrl ? (
             <img src={logoUrl} alt="Logo" className="h-4 w-auto drop-shadow-md" />
           ) : null}
@@ -143,7 +175,7 @@ export function InteractiveProductCard({
         )}
 
         {/* Action Buttons */}
-        <div className="mt-auto w-full pb-2 flex flex-col gap-2.5">
+        <div className="mt-auto w-full pb-2 flex flex-col gap-2.5 pointer-events-auto">
           {linkedin && (
             <a
               href={linkedin}
