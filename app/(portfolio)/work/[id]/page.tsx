@@ -89,13 +89,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
     <main id="main-content" className="relative min-h-screen bg-[var(--bg)] text-[var(--fg)] selection:bg-[#2563eb] selection:text-white flex flex-col transition-colors duration-200">
       <Header navLinks={[{ label: "Work", href: "/work" }, { label: "Inquire", href: "/contact" }]} />
 
-      {/* Sticky Floating Case Study Section Navigator */}
-      <CaseStudyNav />
-
       {/* 1. Cinematic Hero Header */}
       <CaseStudyHero project={project} />
 
-      <div className="portfolio-container space-y-32 sm:space-y-40 lg:space-y-48 pb-32">
+      {/* Sticky Case Study Section Navigator */}
+      <CaseStudyNav />
+
+      <div className="portfolio-container space-y-32 sm:space-y-40 lg:space-y-48 pb-32 pt-16">
         
         {/* 2. Luxury Specification Sheet (Project Overview) */}
         <section id="overview" className="scroll-mt-28">

@@ -56,7 +56,7 @@ export default function CaseStudyGallery({
   return (
     <div className="space-y-8">
       {/* Editorial Gallery Grid */}
-      <div className="grid grid-cols-1 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         {images.map((src, idx) => (
           <div
             key={idx}

@@ -168,6 +168,86 @@ export const PROJECTS: Project[] = [
     gallery: ["/case-studies/shams.webp"],
     outcome:
       "Established an elevated digital flagship that projects the brand's architectural craft and simplifies consultation inquiries for luxury property owners across the UAE."
+  },
+  {
+    id: "mh-developers",
+    number: "04",
+    title: "MH Developers",
+    category: "Web Development",
+    liveUrl: "https://mhdevelopers.com",
+    image: "/case-studies/mhdevelopers.webp",
+    description:
+      "A comprehensive digital platform for a leading real estate developer, showcasing their premier properties, upcoming developments, and architectural vision.",
+    tags: ["Real Estate", "Property Showcase", "Corporate Identity"],
+    industry: "Real Estate & Construction",
+    platform: "Web Platform",
+    scope: "Brand Identity, Property Directory & Lead Generation",
+    status: "Production / Live",
+    challenge:
+      "MH Developers needed a modern, sophisticated digital presence to effectively showcase their diverse portfolio of residential and commercial properties while capturing high-quality leads from prospective buyers and investors.",
+    solution:
+      "Engineered a visually immersive property showcase platform with dynamic project filtering, high-resolution architectural galleries, and seamless lead generation channels integrated directly into property listings.",
+    features: [
+      {
+        title: "Dynamic Property Directory",
+        description:
+          "Advanced filtering and search capabilities allowing users to effortlessly browse properties by status, type, and location."
+      },
+      {
+        title: "Immersive Architectural Galleries",
+        description:
+          "High-definition image and video galleries showcasing the interior and exterior details of premier developments."
+      },
+      {
+        title: "Integrated Lead Generation",
+        description:
+          "Frictionless inquiry forms embedded within property listings to capture prospective buyer information securely."
+      }
+    ],
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    gallery: ["/case-studies/mhdevelopers.webp"],
+    outcome:
+      "Successfully launched a scalable real estate platform that elevates the brand's digital identity and significantly increases qualified lead generation."
+  },
+  {
+    id: "fitforce",
+    number: "05",
+    title: "FitForce",
+    category: "Web Platform",
+    liveUrl: "https://fitforce.app",
+    image: "/case-studies/fitforce.webp",
+    description:
+      "A holistic fitness and wellness platform empowering users to track their progress, access customized workout plans, and connect with certified trainers.",
+    tags: ["Fitness", "Wellness App", "Health Tech"],
+    industry: "Health & Fitness",
+    platform: "Web Application",
+    scope: "UI/UX Design, Application Architecture & User Dashboard",
+    status: "Production / Live",
+    challenge:
+      "FitForce aimed to disrupt the digital fitness space by providing a unified platform where users could seamlessly switch between self-guided workouts, trainer consultations, and nutrition tracking.",
+    solution:
+      "Designed and developed a highly interactive, responsive web application featuring personalized user dashboards, real-time progress analytics, and a comprehensive library of video-guided exercises.",
+    features: [
+      {
+        title: "Personalized User Dashboard",
+        description:
+          "A centralized hub for users to view their daily goals, upcoming workouts, and historical fitness metrics."
+      },
+      {
+        title: "Video-Guided Exercise Library",
+        description:
+          "An extensive, easily searchable catalog of workout routines complete with form demonstrations and timing intervals."
+      },
+      {
+        title: "Progress Analytics",
+        description:
+          "Interactive charts and data visualizations helping users track their strength gains and consistency over time."
+      }
+    ],
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Data Visualization"],
+    gallery: ["/case-studies/fitforce.webp"],
+    outcome:
+      "Delivered a robust health tech platform that increases user retention through personalized fitness tracking and intuitive digital coaching."
   }
 ];
 

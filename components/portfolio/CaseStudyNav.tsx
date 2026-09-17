@@ -75,23 +75,20 @@ export default function CaseStudyNav() {
   return (
     <aside
       aria-label="Case study section navigation"
-      className={`fixed bottom-[max(1rem,env(safe-area-inset-bottom,1rem))] left-1/2 -translate-x-1/2 z-40 transition-all duration-500 pointer-events-none ${
-        isVisible
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-6"
-      }`}
+      className="sticky top-16 md:top-20 z-40 w-full border-b bg-[var(--bg)]/80 backdrop-blur-xl transition-all duration-300"
+      style={{ borderColor: "color-mix(in srgb, var(--fg) 10%, transparent)" }}
     >
-      <div className="pointer-events-auto flex items-center gap-1.5 p-1.5 rounded-full bg-white/90 dark:bg-[#0a0a0f]/85 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.8),0_0_20px_rgba(47,123,255,0.15)]">
-        <nav className="flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[85vw] sm:max-w-none px-1">
+      <div className="portfolio-container flex items-center justify-between py-3 sm:py-4">
+        <nav className="flex items-center gap-2 overflow-x-auto no-scrollbar max-w-full">
           {SECTIONS.map((sec) => {
             const isActive = activeSection === sec.id;
             return (
               <button
                 key={sec.id}
                 onClick={() => scrollTo(sec.id)}
-                className={`relative min-h-[38px] px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer select-none whitespace-nowrap touch-press active:scale-95 ${
+                className={`relative px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none whitespace-nowrap touch-press ${
                   isActive
-                    ? "text-white bg-[#3b82f6] dark:bg-[#2563eb] shadow-[0_0_15px_rgba(59,130,246,0.4)] font-semibold"
+                    ? "text-white bg-[#3b82f6] shadow-sm font-semibold"
                     : "text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
                 }`}
                 aria-current={isActive ? "true" : undefined}
@@ -102,15 +99,13 @@ export default function CaseStudyNav() {
           })}
         </nav>
 
-        <div className="h-4 w-px bg-black/10 dark:bg-white/10 mx-0.5 hidden sm:block" />
-
         <button
           onClick={scrollToTop}
-          className="w-9 h-9 min-h-[36px] flex items-center justify-center rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/15 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer touch-press active:scale-90"
+          className="hidden md:flex w-9 h-9 items-center justify-center rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer ml-4 shrink-0"
           title="Scroll to top"
           aria-label="Scroll to top"
         >
-          <ArrowUp className="w-3.5 h-3.5" />
+          <ArrowUp className="w-4 h-4" />
         </button>
       </div>
     </aside>
