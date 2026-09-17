@@ -33,12 +33,11 @@ export function InteractiveProductCard({
   
   const backgroundColors = [
     null, // Default image
-    "bg-yellow-500",
-    "bg-black",
-    "bg-white",
-    "bg-blue-500",
-    "bg-pink-500",
-    "bg-orange-500"
+    "bg-gradient-to-br from-[#FFD700] via-white to-black", // Yellow, white, black
+    "bg-gradient-to-tr from-red-500 via-pink-500 to-blue-600", // Red, pink, blue
+    "bg-gradient-to-bl from-indigo-900 via-purple-600 to-pink-500", // Indigo, purple, pink
+    "bg-gradient-to-tr from-emerald-400 via-cyan-400 to-blue-600", // Emerald, cyan, blue
+    "bg-gradient-to-br from-orange-500 via-red-500 to-pink-600" // Orange, red, pink
   ];
   const [bgIndex, setBgIndex] = React.useState(0);
 
