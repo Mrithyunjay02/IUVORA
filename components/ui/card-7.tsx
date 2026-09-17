@@ -31,13 +31,11 @@ export function InteractiveProductCard({
   const cardRef = React.useRef<HTMLDivElement>(null);
   const [style, setStyle] = React.useState<React.CSSProperties>({});
   
-  const backgroundColors = [
-    null, // Default image
-    "bg-gradient-to-br from-[#FFD700] via-white to-black", // Yellow, white, black
-    "bg-gradient-to-tr from-red-500 via-pink-500 to-blue-600", // Red, pink, blue
-    "bg-gradient-to-bl from-indigo-900 via-purple-600 to-pink-500", // Indigo, purple, pink
-    "bg-gradient-to-tr from-emerald-400 via-cyan-400 to-blue-600", // Emerald, cyan, blue
-    "bg-gradient-to-br from-orange-500 via-red-500 to-pink-600" // Orange, red, pink
+  const backgroundImages = [
+    imageUrl,
+    "/cards/NHeZ5apzmcLVxbiWGcJ0yncmbk.avif",
+    "/cards/xoEnLGTbWJEb8VJxEuaIePDLxs.avif",
+    "/cards/ym3xIrPHcrQSfgutHgxKO6PIO0.avif"
   ];
   const [bgIndex, setBgIndex] = React.useState(0);
 
@@ -116,22 +114,13 @@ export function InteractiveProductCard({
       {...props}
     >
       {/* Background Layer */}
-      {backgroundColors[bgIndex] === null ? (
-        <img
-          src={imageUrl}
-          alt={title}
-          className="absolute inset-0 h-full w-full object-cover rounded-3xl transition-transform duration-300 group-hover:scale-110"
-          style={{ transform: "translateZ(-20px) scale(1.1)" }}
-        />
-      ) : (
-        <div 
-          className={cn(
-            "absolute inset-0 h-full w-full rounded-3xl transition-transform duration-300 group-hover:scale-110",
-            backgroundColors[bgIndex]
-          )} 
-          style={{ transform: "translateZ(-20px) scale(1.1)" }}
-        />
-      )}
+      <img
+        src={backgroundImages[bgIndex]}
+        alt={title}
+        className="absolute inset-0 h-full w-full object-cover rounded-3xl transition-all duration-300 group-hover:scale-110"
+        style={{ transform: "translateZ(-20px) scale(1.1)" }}
+      />
+      
       {/* Gradient Overlay - Less dark so the image shows clearly */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30 rounded-3xl pointer-events-none" />
 
@@ -152,7 +141,7 @@ export function InteractiveProductCard({
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                setBgIndex((prev) => (prev + 1) % backgroundColors.length);
+                setBgIndex((prev) => (prev + 1) % backgroundImages.length);
               }}
               className="text-white opacity-100 drop-shadow-md cursor-pointer hover:scale-110 transition-transform active:scale-95 z-50 p-1 -m-1"
               aria-label="Change background color"
