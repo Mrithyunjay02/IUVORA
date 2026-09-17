@@ -8,8 +8,10 @@ export const nitishProfile: CardProfile = {
   oneLineBio: "Web Designer at Iuvora · Crafting modern digital interfaces and visual brand experiences.",
   phone: "",
   whatsapp: "",
-  email: "info@iuvora.com",
-  socials: {},
+  email: "nitishjogiwork@gmail.com",
+  socials: {
+    linkedin: "https://www.linkedin.com/in/nitishjogi",
+  },
   location: "Shimoga, Karnataka",
   company: "Iuvora",
   workUrl: "https://www.iuvora.com/work",

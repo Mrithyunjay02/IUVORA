@@ -55,12 +55,29 @@ export async function generateMetadata({
   };
 }
 
+import { InteractiveProductCard } from "@/components/ui/card-7";
+import { Palette } from "lucide-react";
+
 export default async function CardPage({ params }: CardPageProps) {
   const { slug } = await params;
   const profile = getCardProfile(slug);
 
   if (!profile) {
     notFound();
+  }
+
+  if (slug === "nitish") {
+    return (
+      <div className="flex min-h-screen w-full flex-col items-center justify-center bg-[#0a0a0a] p-4 selection:bg-[#2563eb] selection:text-white">
+        <InteractiveProductCard
+          title="Nitish"
+          description="Web Designer · Iuvora"
+          price="Shimoga, KA"
+          imageUrl="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
+          logoIcon={<Palette className="w-5 h-5" />}
+        />
+      </div>
+    );
   }
 
   return <CardContainer profile={profile} />;
