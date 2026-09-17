@@ -58,7 +58,7 @@ export default function Footer() {
               
               <a
                 href="mailto:info@iuvora.com"
-                className="card-border flex items-center justify-between p-4 rounded-2xl bg-black/[0.02] dark:bg-white/[0.03] hover:bg-black/[0.05] dark:hover:bg-white/[0.06] transition-all group shadow-sm touch-press active:scale-[0.98]"
+                className="card-border flex items-center justify-between p-4 rounded-2xl bg-white/[0.4] dark:bg-[#111111]/60 backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] hover:border-[#3b82f6]/50 transition-all group touch-press active:scale-[0.98]"
               >
                 <div className="flex items-center gap-3.5">
                   <div className="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center text-[var(--color-accent)]">
@@ -76,7 +76,7 @@ export default function Footer() {
 
               <a
                 href="tel:+918792400712"
-                className="card-border flex items-center justify-between p-4 rounded-2xl bg-black/[0.02] dark:bg-white/[0.03] hover:bg-black/[0.05] dark:hover:bg-white/[0.06] transition-all group shadow-sm touch-press active:scale-[0.98]"
+                className="card-border flex items-center justify-between p-4 rounded-2xl bg-white/[0.4] dark:bg-[#111111]/60 backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] hover:border-[#3b82f6]/50 transition-all group touch-press active:scale-[0.98]"
               >
                 <div className="flex items-center gap-3.5">
                   <div className="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center text-[var(--color-accent)]">
@@ -103,7 +103,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/company/aktekdynamics/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="card-border px-4 py-2 rounded-lg bg-black/[0.02] dark:bg-white/[0.03] text-xs font-medium transition-colors hover:border-[var(--color-accent)]"
+                  className="card-border px-4 py-2 rounded-lg bg-white/[0.4] dark:bg-[#111111]/60 backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] text-xs font-medium transition-colors hover:border-[#3b82f6]/50"
                   style={{ color: "var(--fg)" }}
                 >
                   LinkedIn ↗
@@ -112,7 +112,7 @@ export default function Footer() {
                   href="https://www.instagram.com/iuvora_info"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="card-border px-4 py-2 rounded-lg bg-black/[0.02] dark:bg-white/[0.03] text-xs font-medium transition-colors hover:border-[var(--color-accent)]"
+                  className="card-border px-4 py-2 rounded-lg bg-white/[0.4] dark:bg-[#111111]/60 backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] text-xs font-medium transition-colors hover:border-[#3b82f6]/50"
                   style={{ color: "var(--fg)" }}
                 >
                   Instagram ↗

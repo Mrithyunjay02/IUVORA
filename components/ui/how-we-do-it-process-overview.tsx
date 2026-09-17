@@ -15,7 +15,7 @@ export interface ProcessCardProps {
 export const ProcessCard: React.FC<ProcessCardProps> = ({ icon: Icon, title, description, className }) => (
   <div
     className={cn(
-      "group relative w-full rounded-2xl border bg-black/[0.02] dark:bg-white/[0.03] p-6 sm:p-8 flex flex-col transition-all cursor-pointer duration-300 hover:border-[#3b82f6]/50 hover:shadow-lg",
+      "group relative w-full rounded-2xl border bg-white/[0.4] dark:bg-[#111111]/60 backdrop-blur-xl p-6 sm:p-8 flex flex-col transition-all cursor-pointer duration-300 hover:border-[#3b82f6]/50 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] hover:shadow-lg",
       className
     )}
     style={{ borderColor: "color-mix(in srgb, var(--fg) 8%, transparent)" }}

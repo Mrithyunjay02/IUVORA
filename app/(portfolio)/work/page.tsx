@@ -2,7 +2,6 @@ import React from "react";
 import { Header } from "@/components/layout/Header";
 import Hero from "@/components/portfolio/Hero";
 import { PortfolioGallery } from "@/components/ui/portfolio-gallery";
-import EditorialMetrics from "@/components/portfolio/EditorialMetrics";
 import MinimalDeliveryProcess from "@/components/portfolio/MinimalDeliveryProcess";
 import Footer from "@/components/portfolio/Footer";
 import MobileQuickConnect from "@/components/portfolio/MobileQuickConnect";
@@ -13,7 +12,6 @@ export default function WorkPage() {
       <Header navLinks={[{ label: "Work", href: "/work" }, { label: "Inquire", href: "/contact" }]} />
       <Hero />
       <PortfolioGallery />
-      <EditorialMetrics />
       <MinimalDeliveryProcess />
       <Footer />
       <MobileQuickConnect />
