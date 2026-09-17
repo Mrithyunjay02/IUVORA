@@ -11,6 +11,8 @@ interface InteractiveProductCardProps extends React.HTMLAttributes<HTMLDivElemen
   title: string;
   description: string;
   price?: string;
+  email?: string;
+  linkedin?: string;
 }
 
 // --- COMPONENT DEFINITION ---
@@ -22,6 +24,8 @@ export function InteractiveProductCard({
   title,
   description,
   price,
+  email,
+  linkedin,
   ...props
 }: InteractiveProductCardProps) {
   const cardRef = React.useRef<HTMLDivElement>(null);
@@ -108,8 +112,8 @@ export function InteractiveProductCard({
         className="absolute inset-0 h-full w-full object-cover rounded-3xl transition-transform duration-300 group-hover:scale-110"
         style={{ transform: "translateZ(-20px) scale(1.1)" }}
       />
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 rounded-3xl" />
+      {/* Gradient Overlay - Less dark so the image shows clearly */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent rounded-3xl" />
 
       {/* Main Content with 3D effect */}
       <div
@@ -117,35 +121,47 @@ export function InteractiveProductCard({
         style={{ transform: "translateZ(40px)" }}
       >
         {/* Glassmorphism Header */}
-        <div className="flex items-start justify-between rounded-xl border border-white/10 bg-white/10 p-4 backdrop-blur-md">
-          <div className="flex flex-col">
+        <div className="flex items-start justify-between rounded-xl border border-white/20 bg-white/20 p-4 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+          <div className="flex flex-col drop-shadow-md">
             <h3 className="text-xl font-bold text-white">{title}</h3>
-            <p className="text-xs text-white/80">{description}</p>
+            <p className="text-xs text-white/90 font-medium">{description}</p>
           </div>
           {logoIcon ? (
-            <div className="text-white opacity-90">{logoIcon}</div>
+            <div className="text-white opacity-100 drop-shadow-md">{logoIcon}</div>
           ) : logoUrl ? (
-            <img src={logoUrl} alt="Logo" className="h-4 w-auto" />
+            <img src={logoUrl} alt="Logo" className="h-4 w-auto drop-shadow-md" />
           ) : null}
         </div>
 
         {/* Price Tag - Absolute position for pixel perfection */}
         {price && (
           <div className="absolute top-[108px] left-5">
-            <div className="rounded-full bg-black/50 border border-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur-sm">
+            <div className="rounded-full bg-black/40 border border-white/20 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur-md shadow-lg">
               {price}
             </div>
           </div>
         )}
 
-        {/* Action Button - Replaced Pagination Dots */}
-        <div className="mt-auto w-full pb-2">
-          <a
-            href="mailto:nitishjogiwork@gmail.com"
-            className="flex items-center justify-center w-full gap-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors"
-          >
-            Contact Nitish
-          </a>
+        {/* Action Buttons */}
+        <div className="mt-auto w-full pb-2 flex flex-col gap-2.5">
+          {linkedin && (
+            <a
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-full gap-2 rounded-xl bg-[#0077b5]/90 hover:bg-[#0077b5] border border-white/20 py-3 text-sm font-semibold text-white backdrop-blur-md shadow-lg transition-colors"
+            >
+              LinkedIn Profile
+            </a>
+          )}
+          {email && (
+            <a
+              href={`mailto:${email}`}
+              className="flex items-center justify-center w-full gap-2 rounded-xl bg-white/20 hover:bg-white/30 border border-white/20 py-3 text-sm font-semibold text-white backdrop-blur-md shadow-lg transition-colors"
+            >
+              {email}
+            </a>
+          )}
         </div>
       </div>
     </div>

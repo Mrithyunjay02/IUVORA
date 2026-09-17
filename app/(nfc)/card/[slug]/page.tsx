@@ -73,8 +73,10 @@ export default async function CardPage({ params }: CardPageProps) {
           title="Nitish"
           description="Web Designer · Iuvora"
           price="Shimoga, KA"
-          imageUrl="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
+          imageUrl="/cards/nitish-card-bg.jpeg"
           logoIcon={<Palette className="w-5 h-5" />}
+          email="nitishjogiwork@gmail.com"
+          linkedin="https://www.linkedin.com/in/nitishjogi"
         />
       </div>
     );
